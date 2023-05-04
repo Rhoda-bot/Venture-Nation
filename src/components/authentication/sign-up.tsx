@@ -1,13 +1,14 @@
-import React, { useState } from 'react';
+import { log } from 'console';
+import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const SignUp = () => {
     const [hideorshowPassword, setHideorShowPassword] = useState<boolean>(false);
-    const [validInputs, setValidInputs] = useState<boolean>(true);
     const [hasDigit, setHasDigit] = useState<boolean>(false);
     const [hasSpecialChar, setSpecialChar] = useState<boolean>(false);
     const [hasUpperCase, setUpperCase] = useState<boolean>(false);
     const [passwordStrength, setPasswordStrength] = useState<string>('weak');
+    const [progressBarColor, setProgressBarColor] = useState<string>("#ff0000");
 
     const [password, setPassword] = useState<string>('');
     const [email, setEmail] = useState<string>('');
@@ -21,12 +22,11 @@ const SignUp = () => {
         }
       
     };
-
-    const validateInputForm = (email: string, password: string): boolean => {
-        const mailRegex = /^[a-zA-Z0-9._]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,}$/;
-        const passwordRex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9]).{8,}$/;
-        return mailRegex.test(email) && passwordRex.test(password);
-    }
+    useEffect(() => {
+        setProgressBarColor(getProgressBarColor());
+        console.log(progressBarColor);
+        
+      }, [passwordStrength]);
 
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
         const {name, value} = event.target;
@@ -62,9 +62,9 @@ const SignUp = () => {
 
     const getPasswordStrengthMessage = () => {
         if (passwordStrength === "weak") {
-          return "Strong password must contain at least 8 characters, digits and uppercase letters.";
+          return "Password is weak. It must contain at least one number, one uppercase letter, and one special character, and be at least 8 characters long.";
         } else if (passwordStrength === "fair") {
-          return "Strong password must contain at least 8 characters, digits and uppercase letters.";
+          return "Password is fair. It must contain at least one more number, uppercase letter, or special character.";
         } else {
           return "Password is strong!";
         }
@@ -75,12 +75,12 @@ const SignUp = () => {
     }
     return(
         <>
-            <div className="signup py-3">
-                <div className="container py-5">
-                    <div className="row ">
-                        <div className="col-md-6 col-sm-12 signup__col">
+            <div className="signup p-0">
+                <div className="container-fluid p-lg-0">
+                    <div className="row g-0">
+                        <div className="col-md-6 col-sm-12 signup__col py-lg-3 py-md-4">
                             <form onSubmit={handleSubmitForm}>
-                                <img src="/assets/venture-logo.png" className='mb-3' alt="Logo" />
+                                <img src="/assets/venture-logo.png" className='mb-3 mt-4' alt="Logo" />
                                 <h1 className='signup__col--title'>Create an account</h1>
                                 <p className='signup__col--text'>Please fill all the required input fields.</p>
                                 <div className="row justify-content-center text-start">
@@ -124,20 +124,22 @@ const SignUp = () => {
                                             </div>
                                         </div>
                                     </div>
+                                    <div className="col-md-8 text-center">
                                     {
                                         passwordStrength !== "strong" && (
-                                        <div className="col-md-12 text-center">
+                                           <>
                                             <progress
                                             value={
                                               passwordStrength === "fair" ? 0.5 : passwordStrength === "weak" ? 0.25 : 1
                                             }
                                             max={1} 
-                                            style={{ backgroundColor: getProgressBarColor(), width: '65%', borderRadius: '50%' }}
+                                            style={{ color: progressBarColor, width: '100%' }}
                                           />
                                           <p>{getPasswordStrengthMessage()}</p>
-                                        </div>
+                                           </>
                                         )
                                     }
+                                        </div>
                                     <div className="col-md-8 mt-3">
                                         <input type="submit" 
                                         value="Next"
@@ -154,7 +156,12 @@ const SignUp = () => {
                                 </div>
                             </form>
                         </div>
-                        <div className="col-md-6 border-start">
+                        <div className="col-md-6 signup__img d-none d-lg-block"  style={{
+                                backgroundImage: 'linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(/assets/auth/1.png)',
+                                height: '100vh',
+                                backgroundRepeat: 'no-repeat',
+                                backgroundSize: 'cover'
+                            }}>
                         </div>
                     </div>
                 </div>

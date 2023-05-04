@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
-const SignIn: React.FC = () => {
+const ResetPassword = () => {
     const [hideorshowPassword, setHideorShowPassword] = useState<boolean>(false);
-    const [password, setPassword] = useState<string>('');
-    const [email, setEmail] = useState<string>('');
+    const [hasDigit, setHasDigit] = useState<boolean>(false);
+    const [hasSpecialChar, setSpecialChar] = useState<boolean>(false);
+    const [hasUpperCase, setUpperCase] = useState<boolean>(false);
+    const [passwordStrength, setPasswordStrength] = useState<string>('weak');
     const handleHideOrShowPassword = () => {
         if (hideorshowPassword == false) {
             setHideorShowPassword(true);
@@ -13,65 +15,41 @@ const SignIn: React.FC = () => {
         }
       
     };
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        const {name, value} = event.target;
-        if(name === 'email'){
-            setEmail(value);
-        }else if (name === 'password') {
-            setPassword(value)
-        }
-    }
     return(
         <>
-            <div className="signup">
-                <div className="container-fluid p-lg-0">
+             <div className="signup">
+                <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-6 col-sm-12 signup__col">
                             <form>
-                                <img src="/assets/venture-logo.png" className='mb-3 mt-5'  alt="Logo" />
-                                <h1 className='signup__col--title'>Welcome back!</h1>
-                                <p className='signup__col--text'>Kindly input your details to access your account.</p>
-                                <div className="row justify-content-center text-start mb-3">
-                                    <div className="col-md-8 mb-3">
-                                        <label htmlFor="email" className='signup__col--label'>Email</label>
-                                        <input type="text" 
-                                        className="form-control signup__col--inp"
-                                        placeholder="Enter your email"
-                                        value={email}
-                                        name='email'
-                                        onChange={handleInputChange}
-                                        />
-                                    </div>
+                                <img src="/assets/venture-logo.png" className='mb-3 mt-5 py-3'  alt="Logo" />
+                                <h1 className='signup__col--title'>Set new password</h1>
+                                <p className='signup__col--text mb-3 pb-4'>
+                                    Your new password must be different from the previously used passwords.
+                                </p>
+                                <div className="row justify-content-center text-start ">
                                     <div className="col-md-8 position-relative mb-2">
                                         <label htmlFor="password" className='signup__col--label'>Password</label>
                                         <input type={hideorshowPassword == false? "password" : "text" } 
                                         className='form-control signup__col--inp' 
                                         placeholder='Password'
-                                        value={password}
+                                        // value={password}
                                         name='password'
-                                        onChange={handleInputChange}
+                                        // onChange={handleInputChange}
                                          />
                                         <i className={hideorshowPassword == false?`fa-regular fa-eye signup__col--icon`:`fa-regular fa-eye-slash signup__col--icon` } onClick={handleHideOrShowPassword}/>
                                     </div>
-                                    <div className="col-md-8">
-                                        
-                                        <NavLink to="/forgot-password"><b style={{color:'rgba(90, 39, 213, 1)',
-                                        fontSize: '14px'
-                                        }}>Forgot password?</b>
-                                        </NavLink>
                                     
-                                    </div>
                                     <div className="col-md-8 mt-3">
                                         <input type="submit" 
-                                        value="Sign in"
+                                        value="Next"
                                         className='signup__col--btn'
                                         />
                                     </div>
                                     <div className="col-md-8 text-center mt-3">
-                                        <p>
-                                        Don’t have an account?  
-                                        <NavLink to="/auth/sign-up"><b style={{color:'rgba(90, 39, 213, 1)'
-                                        }}>Sign up</b></NavLink>
+                                        <p>  
+                                        <NavLink to="/auth/sign-in"><b style={{color:'rgba(90, 39, 213, 1)'
+                                        }}>Back to Login</b></NavLink>
                                         </p>
                                     </div>
                                 </div>
@@ -90,4 +68,4 @@ const SignIn: React.FC = () => {
         </>
     )
 }
-export default SignIn;
+export default ResetPassword
