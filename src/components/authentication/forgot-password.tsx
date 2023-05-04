@@ -2,13 +2,19 @@ import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const ForgotPassword = () => {
+    const [email, setEmail] = useState<string>('');
+
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        const newEmail = event.target.value;
+        setEmail(newEmail);
+    }
 
     return(
         <>
             <div className="signup">
-                <div className="container">
+                <div className="container-fluid p-lg-0 ">
                     <div className="row">
-                        <div className="col-md-6 col-sm-12 signup__col">
+                        <div className="col-md-6 col-sm-12 signup__col py-4">
                             <form>
                                 <img src="/assets/venture-logo.png" className='mb-3 mt-5'  alt="Logo" />
                                 <h1 className='signup__col--title'>Forgot password?</h1>
@@ -18,7 +24,11 @@ const ForgotPassword = () => {
                                         <label htmlFor="email" className='signup__col--label'>Enter email Adress</label>
                                         <input type="text" 
                                         className="form-control signup__col--inp"
-                                        placeholder="Enter your email"/>
+                                        placeholder="Enter your email"
+                                        onChange={handleInputChange}
+                                        name="email"
+                                        value={email}
+                                        />
                                     </div>
                                     
                                     <div className="col-md-8 mt-3">

@@ -1,12 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 
 const ResetPassword = () => {
     const [hideorshowPassword, setHideorShowPassword] = useState<boolean>(false);
+    const [password, setPassword] = useState<string>('')
     const [hasDigit, setHasDigit] = useState<boolean>(false);
     const [hasSpecialChar, setSpecialChar] = useState<boolean>(false);
     const [hasUpperCase, setUpperCase] = useState<boolean>(false);
-    const [passwordStrength, setPasswordStrength] = useState<string>('weak');
+    const [progressBarColor, setProgressBarColor] = useState<string>("#ff0000");
+
+    const [passwordStrength, setPasswordStrength] = useState<string>('weak');  useEffect(() => {
+        setProgressBarColor(getProgressBarColor());
+        console.log(progressBarColor);
+        
+      }, [passwordStrength]);
+
     const handleHideOrShowPassword = () => {
         if (hideorshowPassword == false) {
             setHideorShowPassword(true);
@@ -15,6 +23,38 @@ const ResetPassword = () => {
         }
       
     };
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        const newPassword = event.target.value;
+        setPassword(newPassword);
+        setHasDigit(/\d/.test(newPassword))
+        setSpecialChar(/[!@#$%^&*(),.?":{}|<>]/.test(newPassword));
+        setUpperCase(/[A-Z]/.test(newPassword));
+        if(newPassword.length >= 8 && hasDigit && hasSpecialChar && hasUpperCase){
+            setPasswordStrength("strong")
+        }else if (newPassword.length >= 8 && (hasDigit || hasSpecialChar || hasUpperCase)) {
+            setPasswordStrength("fair")
+        }else{
+            setPasswordStrength("weak")
+        }
+    }
+    const getProgressBarColor = () =>{
+        if (passwordStrength === "weak") {
+            return "#ff0000"; // red
+          } else if (passwordStrength === "fair") {
+            return "#ffa500"; // orange
+          } else {
+            return "#008000"; // green
+          }
+    };
+    const getPasswordStrengthMessage = () => {
+        if (passwordStrength === "weak") {
+          return "Password is weak. It must contain at least one number, one uppercase letter, and one special character, and be at least 8 characters long.";
+        } else if (passwordStrength === "fair") {
+          return "Password is fair. It must contain at least one more number, uppercase letter, or special character.";
+        } else {
+          return "Password is strong!";
+        }
+      };
     return(
         <>
              <div className="signup">
@@ -33,13 +73,38 @@ const ResetPassword = () => {
                                         <input type={hideorshowPassword == false? "password" : "text" } 
                                         className='form-control signup__col--inp' 
                                         placeholder='Password'
-                                        // value={password}
+                                        value={password}
                                         name='password'
-                                        // onChange={handleInputChange}
+                                        onChange={handleInputChange}
                                          />
                                         <i className={hideorshowPassword == false?`fa-regular fa-eye signup__col--icon`:`fa-regular fa-eye-slash signup__col--icon` } onClick={handleHideOrShowPassword}/>
                                     </div>
-                                    
+                                    <div className="col-md-8">
+                                        <div className="row">
+                                            <div className="col-md-6">
+                                                Password Strength
+                                            </div>
+                                            <div className="col-md-6 text-end">
+                                                {passwordStrength}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-8 text-center">
+                                    {
+                                        passwordStrength !== "strong" && (
+                                           <>
+                                            <progress
+                                            value={
+                                              passwordStrength === "fair" ? 0.5 : passwordStrength === "weak" ? 0.25 : 1
+                                            }
+                                            max={1} 
+                                            style={{ color: progressBarColor, width: '100%' }}
+                                          />
+                                          <p>{getPasswordStrengthMessage()}</p>
+                                           </>
+                                        )
+                                    }
+                                    </div>
                                     <div className="col-md-8 mt-3">
                                         <input type="submit" 
                                         value="Next"

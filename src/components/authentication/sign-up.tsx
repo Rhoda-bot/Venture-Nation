@@ -1,6 +1,7 @@
 import { log } from 'console';
 import React, { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import { postRequest } from '../../utility/apiRequest';
 
 const SignUp = () => {
     const [hideorshowPassword, setHideorShowPassword] = useState<boolean>(false);
@@ -70,8 +71,11 @@ const SignUp = () => {
         }
       };
 
-    const handleSubmitForm = (e: any) =>{
+    const handleSubmitForm = async(e: any) =>{
         e.preventDefault();
+        // const result = await postRequest({name:fullname, email, password}, 'auth/register');
+        console.log({name:fullname, email, password});
+        
     }
     return(
         <>
@@ -139,7 +143,7 @@ const SignUp = () => {
                                            </>
                                         )
                                     }
-                                        </div>
+                                    </div>
                                     <div className="col-md-8 mt-3">
                                         <input type="submit" 
                                         value="Next"
