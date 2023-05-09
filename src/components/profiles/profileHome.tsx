@@ -29,18 +29,18 @@ const ProfileHome = () => {
         <>
         <ProfileNavbar />
             <div className="profile">
-                <div className="container-fluid">
-                    <div className="row justify-content-center ">
+                <div className="container-fluid p-0 ">
+                    <div className="row justify-content-center g-0">
                         <div className="col-md-2 border-end">
                             <Sidebar />
                         </div>
-                        <div className="col-md-7">
+                        <div className="col-md-10 p-0">
                             <Outlet />
                         </div>
-                        <div className="col-md-2">
+                        {/* <div className="col-md-2">
                             <UserContact />
                             <Socials />
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>

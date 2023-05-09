@@ -65,7 +65,6 @@ const ProfileNavbar = () => {
                         </li>
                       <li className="nav-item px-2 pt-lg-1 my-lg-2 mx-lg-2 border-end">
                         <NavLink to="#" className="nav-link"><img src="/assets/icons/bell.png"
-                         
                         alt="" /></NavLink>
                     </li>
                     <li className="nav-item px-2 pt-1 my-lg-2">

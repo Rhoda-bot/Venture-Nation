@@ -2,33 +2,33 @@
     {
         "id": 1,
         "name": "Dashboard",
-        "icon": "fa-light fa-bolt"
+        "icon": "/assets/icons/3dcube.svg"
     },
     {
         "id": 2,
         "name": "Learning hub",
-        "icon": "fa-light fa-user"
+        "icon": "/assets/icons/book.png"
         
     },
     {
         "id": 3,
         "name": "Resource hub",
-        "icon": "fa-thin fa-award"
+        "icon": "/assets/icons/color-swatch.png"
     },
     {
         "id": 4,
         "name": "Profile",
-        "icon": "fa-thin fa-heart"
+        "icon": "/assets/icons/profile.png"
     },
     {
         "id": 5,
         "name": "Communities",
-        "icon": "fa-thin fa-gear"
+        "icon": "/assets/icons/people.png"
     },
     {
         "id": 6,
         "name": "Messages",
-        "icon": "fa-thin fa-gear"
+        "icon": "/assets/icons/sms.png"
 
     }
 ]

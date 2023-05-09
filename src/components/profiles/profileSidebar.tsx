@@ -11,7 +11,7 @@ const Sidebar = () => {
                 sidebarMenu.map(({id, name, icon}) => (
                     <NavLink to={name.toLocaleLowerCase()} key={id} className="sidebar--link m-1 text-decoration-none d-none d-lg-block">
                         <div  className="mt-1">
-                        <i className={`${icon} mx-2`}/> {name}
+                        <img src={icon} alt="image" /> {name}
                         </div>
                     </NavLink>
                 ))
