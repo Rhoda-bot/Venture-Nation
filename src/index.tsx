@@ -8,7 +8,7 @@ const root = createRoot(document.getElementById('root')!) // createRoot(containe
 root.render(<App />)
 
 
-axios.defaults.baseURL = 'http://127.0.0.1:8080/api/v1/';
+axios.defaults.baseURL = 'https://api.venturenation.co/api/v1/';
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA

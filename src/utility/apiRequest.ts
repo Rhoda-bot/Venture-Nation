@@ -6,3 +6,14 @@ export const postRequest = async(data?: any, url?: any) => {
    .catch((error) => error.response);
    return result;
 }
+
+export const getRequest = async(url: any) => {
+   const result = await axios.get(url, {
+      headers: {
+         Authorization: `Bearer ${localStorage.getItem('token')}`,
+         'Content-Type': 'multipart/json',
+      }
+   }).then((response) => response)
+      .catch((error) => error.response)
+   return result;
+}

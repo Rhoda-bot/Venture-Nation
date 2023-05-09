@@ -1,13 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { postRequest } from "../../utility/apiRequest";
 
 const ResetPassword = () => {
     const [hideorshowPassword, setHideorShowPassword] = useState<boolean>(false);
+    const [hideorshowPassword2, setHideorShowPassword2] = useState<boolean>(false);
     const [password, setPassword] = useState<string>('')
+    const [confirmPassword, setConfirmPassword] = useState<string>('')
     const [hasDigit, setHasDigit] = useState<boolean>(false);
     const [hasSpecialChar, setSpecialChar] = useState<boolean>(false);
     const [hasUpperCase, setUpperCase] = useState<boolean>(false);
     const [progressBarColor, setProgressBarColor] = useState<string>("#ff0000");
+    const [message, setMessage] = useState<string>('')
 
     const [passwordStrength, setPasswordStrength] = useState<string>('weak');  useEffect(() => {
         setProgressBarColor(getProgressBarColor());
@@ -16,25 +20,47 @@ const ResetPassword = () => {
       }, [passwordStrength]);
 
     const handleHideOrShowPassword = () => {
-        if (hideorshowPassword == false) {
+        if (hideorshowPassword == false ) {
             setHideorShowPassword(true);
         }else{
             setHideorShowPassword(false)
         }
       
     };
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        const newPassword = event.target.value;
-        setPassword(newPassword);
-        setHasDigit(/\d/.test(newPassword))
-        setSpecialChar(/[!@#$%^&*(),.?":{}|<>]/.test(newPassword));
-        setUpperCase(/[A-Z]/.test(newPassword));
-        if(newPassword.length >= 8 && hasDigit && hasSpecialChar && hasUpperCase){
-            setPasswordStrength("strong")
-        }else if (newPassword.length >= 8 && (hasDigit || hasSpecialChar || hasUpperCase)) {
-            setPasswordStrength("fair")
+    const handleHideOrShowPassword2 = () => {
+        if (hideorshowPassword2 == false ) {
+            setHideorShowPassword2(true);
         }else{
-            setPasswordStrength("weak")
+            setHideorShowPassword2(false)
+        }
+      
+    };
+    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
+        const {name, value}= event.target;
+        if (name === 'password') {
+            setPassword(value);
+            setHasDigit(/\d/.test(value))
+            setSpecialChar(/[!@#$%^&*(),.?":{}|<>]/.test(value));
+            setUpperCase(/[A-Z]/.test(value));
+            if(value.length >= 8 && hasDigit && hasSpecialChar && hasUpperCase){
+                setPasswordStrength("strong")
+            }else if (value.length >= 8 && (hasDigit || hasSpecialChar || hasUpperCase)) {
+                setPasswordStrength("fair")
+            }else{
+                setPasswordStrength("weak")
+            }
+        }else if(name === 'cpassword'){
+            setConfirmPassword(value);
+            setHasDigit(/\d/.test(value))
+            setSpecialChar(/[!@#$%^&*(),.?":{}|<>]/.test(value));
+            setUpperCase(/[A-Z]/.test(value));
+            if(value.length >= 8 && hasDigit && hasSpecialChar && hasUpperCase){
+                setPasswordStrength("strong")
+            }else if (value.length >= 8 && (hasDigit || hasSpecialChar || hasUpperCase)) {
+                setPasswordStrength("fair")
+            }else{
+                setPasswordStrength("weak")
+            }
         }
     }
     const getProgressBarColor = () =>{
@@ -55,13 +81,23 @@ const ResetPassword = () => {
           return "Password is strong!";
         }
       };
+      const handleSubmitForm = async(e: any) =>{
+        e.preventDefault();
+        const response =await postRequest({ password, confirmPassword}, 'auth/reset-password');
+        console.log(response);
+        
+        if (response.data.status === 'success') {
+            setMessage('success, your new password has been created');
+            
+
+    }}
     return(
         <>
              <div className="signup">
                 <div className="container-fluid">
                     <div className="row">
                         <div className="col-md-6 col-sm-12 signup__col">
-                            <form>
+                            <form onSubmit={handleSubmitForm}>
                                 <img src="/assets/venture-logo.png" className='mb-3 mt-5 py-3'  alt="Logo" />
                                 <h1 className='signup__col--title'>Set new password</h1>
                                 <p className='signup__col--text mb-3 pb-4'>
@@ -71,13 +107,28 @@ const ResetPassword = () => {
                                     <div className="col-md-8 position-relative mb-2">
                                         <label htmlFor="password" className='signup__col--label'>Password</label>
                                         <input type={hideorshowPassword == false? "password" : "text" } 
-                                        className='form-control signup__col--inp' 
+                                        className='form-control 
+                                        shadow-none
+                                        signup__col--inp' 
                                         placeholder='Password'
                                         value={password}
                                         name='password'
                                         onChange={handleInputChange}
                                          />
                                         <i className={hideorshowPassword == false?`fa-regular fa-eye signup__col--icon`:`fa-regular fa-eye-slash signup__col--icon` } onClick={handleHideOrShowPassword}/>
+                                    </div>
+                                    <div className="col-md-8 position-relative mb-2">
+                                        <label htmlFor="password" className='signup__col--label'>Password</label>
+                                        <input type={hideorshowPassword2 == false? "password" : "text" } 
+                                        className='form-control 
+                                        shadow-none
+                                        signup__col--inp' 
+                                        placeholder='Password'
+                                        value={confirmPassword}
+                                        name='cpassword'
+                                        onChange={handleInputChange}
+                                         />
+                                        <i className={hideorshowPassword2 == false?`fa-regular fa-eye signup__col--icon`:`fa-regular fa-eye-slash signup__col--icon` } onClick={handleHideOrShowPassword2}/>
                                     </div>
                                     <div className="col-md-8">
                                         <div className="row">

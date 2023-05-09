@@ -8,14 +8,14 @@ const ForgotPassword = () => {
         const newEmail = event.target.value;
         setEmail(newEmail);
     }
-
+    const handleSubmitForm = (e:any)=> {}
     return(
         <>
             <div className="signup">
                 <div className="container-fluid p-lg-0 ">
                     <div className="row">
-                        <div className="col-md-6 col-sm-12 signup__col py-4">
-                            <form>
+                        <div className="col-md-6 col-sm-12 signup__col">
+                            <form onSubmit={handleSubmitForm}>
                                 <img src="/assets/venture-logo.png" className='mb-3 mt-5'  alt="Logo" />
                                 <h1 className='signup__col--title'>Forgot password?</h1>
                                 <p className='signup__col--text mb-3 pb-4'>No worries, we’ll send reset instructions to you.</p>
@@ -23,7 +23,9 @@ const ForgotPassword = () => {
                                     <div className="col-md-8 mb-3 pb-3">
                                         <label htmlFor="email" className='signup__col--label'>Enter email Adress</label>
                                         <input type="text" 
-                                        className="form-control signup__col--inp"
+                                        className="form-control
+                                        shadow-none
+                                         signup__col--inp"
                                         placeholder="Enter your email"
                                         onChange={handleInputChange}
                                         name="email"

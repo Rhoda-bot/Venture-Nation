@@ -1,7 +1,8 @@
 import { log } from 'console';
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { postRequest } from '../../utility/apiRequest';
+import { ToastContainer } from 'react-toastify';
 
 const SignUp = () => {
     const [hideorshowPassword, setHideorShowPassword] = useState<boolean>(false);
@@ -10,10 +11,13 @@ const SignUp = () => {
     const [hasUpperCase, setUpperCase] = useState<boolean>(false);
     const [passwordStrength, setPasswordStrength] = useState<string>('weak');
     const [progressBarColor, setProgressBarColor] = useState<string>("#ff0000");
+    const [errorMessage, setErrorMessage] = useState<string>('');
+
 
     const [password, setPassword] = useState<string>('');
     const [email, setEmail] = useState<string>('');
     const [fullname, setFullname] = useState<string>('');
+    const navigate = useNavigate();
 
     const handleHideOrShowPassword = () => {
         if (hideorshowPassword == false) {
@@ -73,8 +77,22 @@ const SignUp = () => {
 
     const handleSubmitForm = async(e: any) =>{
         e.preventDefault();
-        // const result = await postRequest({name:fullname, email, password}, 'auth/register');
-        console.log({name:fullname, email, password});
+        const result = await postRequest({name:fullname, email, password}, 'auth/register');
+        if (result.data.status === 'success') {
+                setErrorMessage('success, kindly check you mailbox for verification.');
+                setFullname('');
+                setEmail('');
+                setPassword('');
+                navigate('/confirm-email')
+        }
+       if (result.data.errors) {
+            const errorsArr = result.data.errors;
+            errorsArr.map((val:any) =>{
+                setErrorMessage(val.message)
+        })
+       }
+       
+        
         
     }
     return(
@@ -82,16 +100,21 @@ const SignUp = () => {
             <div className="signup p-0">
                 <div className="container-fluid p-lg-0">
                     <div className="row g-0">
-                        <div className="col-md-6 col-sm-12 signup__col py-lg-3 py-md-4">
+                        <div className="col-md-6 col-sm-12 signup__col">
                             <form onSubmit={handleSubmitForm}>
                                 <img src="/assets/venture-logo.png" className='mb-3 mt-4' alt="Logo" />
                                 <h1 className='signup__col--title'>Create an account</h1>
                                 <p className='signup__col--text'>Please fill all the required input fields.</p>
                                 <div className="row justify-content-center text-start">
-
+                                    <p>
+                                        {errorMessage}
+                                    </p>
                                     <div className="col-md-8 mb-2">
                                         <label htmlFor="fullname" className='signup__col--label'>Full Name</label>
-                                        <input type="text" className='form-control signup__col--inp' 
+                                        <input type="text" className='
+                                        form-control 
+                                        shadow-none
+                                        signup__col--inp' 
                                         value={fullname} name='fullname' 
                                         onChange={handleInputChange}
                                         placeholder='Full name'
@@ -100,7 +123,10 @@ const SignUp = () => {
 
                                     <div className="col-md-8 mb-2">
                                         <label htmlFor="email" className='signup__col--label'>Email</label>
-                                        <input type="text" className='form-control signup__col--inp' 
+                                        <input type="text" className='
+                                        form-control
+                                        shadow-none
+                                         signup__col--inp' 
                                         value={email} name='email' 
                                         onChange={handleInputChange}
                                         placeholder='Enter your email address'
@@ -110,7 +136,10 @@ const SignUp = () => {
                                     <div className="col-md-8 position-relative mb-2">
                                         <label htmlFor="password" className='signup__col--label'>Password</label>
                                         <input type={hideorshowPassword == false? "password" : "text" } 
-                                        className='form-control signup__col--inp' 
+                                        className='
+                                        form-control
+                                        shadow-none
+                                         signup__col--inp' 
                                         placeholder='Password'
                                         value={password}
                                         name='password'
@@ -149,6 +178,7 @@ const SignUp = () => {
                                         value="Next"
                                         className='signup__col--btn'
                                         />
+
                                     </div>
                                     <div className="col-md-8 text-center mt-3">
                                         <p>
@@ -164,7 +194,7 @@ const SignUp = () => {
                                 backgroundImage: 'linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(/assets/auth/1.png)',
                                 height: '100vh',
                                 backgroundRepeat: 'no-repeat',
-                                backgroundSize: 'cover'
+                                backgroundSize: 'cover',
                             }}>
                         </div>
                     </div>

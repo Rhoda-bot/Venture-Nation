@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "name": "Dashboard",
+        "icon": "fa-light fa-bolt"
+    },
+    {
+        "id": 2,
+        "name": "Learning hub",
+        "icon": "fa-light fa-user"
+        
+    },
+    {
+        "id": 3,
+        "name": "Resource hub",
+        "icon": "fa-thin fa-award"
+    },
+    {
+        "id": 4,
+        "name": "Profile",
+        "icon": "fa-thin fa-heart"
+    },
+    {
+        "id": 5,
+        "name": "Communities",
+        "icon": "fa-thin fa-gear"
+    },
+    {
+        "id": 6,
+        "name": "Messages",
+        "icon": "fa-thin fa-gear"
+
+    }
+]
