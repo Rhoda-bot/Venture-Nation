@@ -12,6 +12,7 @@ import ConfirmEmail from './components/authentication/confirm-email'
 import { ProtectedRoute } from './resources/protectedRoute'
 import ProfileView from './components/profiles/profile-venture/profileView'
 import ProfileProfile from './components/profiles/profile-profile'
+import EditProfile from './components/profiles/profile-profile/edit-profile'
 
 const RootComponent: React.FC = () => {
     return (
@@ -27,6 +28,7 @@ const RootComponent: React.FC = () => {
 
                 <Route path='/' element={<ProtectedRoute />}>
                     <Route path='/profile' element={<ProfileProfile />}/>
+                    <Route path='/edit-profile' element={<EditProfile />}/>
                 </Route>
             </Routes>
         </Router>

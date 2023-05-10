@@ -3,6 +3,7 @@ import { UserContext } from "../../../context/userContext";
 import UserVentures from "../profile-venture/user-ventures";
 import UserContact from "../profile-venture/contact";
 import Socials from "./socials";
+import { NavLink } from "react-router-dom";
 
 const ProfileProfile = () => {
     const {user, setUser}: any = useContext<any>(UserContext);
@@ -24,7 +25,9 @@ const ProfileProfile = () => {
                         }}>
                             <img src="/assets/profile/ava.png" className="img-fluid  profile__details--avartar"  alt="" />
                             <div className="text-end t bg-dark">
-                                <button className="position-abolute profile__details--edit">Edit profile</button>
+                               <NavLink to="/edit-profile">
+                               <button className="position-abolute profile__details--edit">Edit profile</button>
+                               </NavLink>
                             </div>
                         </div>
                         <div className="container py-5">
