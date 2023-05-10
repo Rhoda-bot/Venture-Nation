@@ -49,7 +49,7 @@ const ProfileNavbar = () => {
                     <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
-                    <a className="navbar-brand" href="#">
+                    <a className="navbar-brand" href="/">
                         <img src="/assets/venture-logo.png" alt="logo" width={50}  className="img-fluid"/>
                         <span className="m-1">Venture Nation</span>
                     </a>

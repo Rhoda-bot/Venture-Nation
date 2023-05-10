@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import GeneralProfile from "./profile-general";
+import ProfilePassword from "./profile-passsword";
 
 const EditProfile = () => {
     const [general, setGeneral] = useState<any>()
@@ -41,6 +42,9 @@ const EditProfile = () => {
                         <div className="col-md-7">
                             {swapStateItems === 1 && (
                                 <GeneralProfile />
+                            )}
+                            {swapStateItems === 2 && (
+                                <ProfilePassword />
                             )}
                         </div>
                     </div>

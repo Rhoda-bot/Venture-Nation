@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { postRequest } from "../../utility/apiRequest";
 
 const SignIn: React.FC = () => {
@@ -8,6 +8,7 @@ const SignIn: React.FC = () => {
     const [email, setEmail] = useState<string>('');
     const [errorMessage, setErrorMessage] = useState<string>('');
     const [responseStatus, setResponseStatus] = useState(false);
+    const navigate = useNavigate();
     const handleHideOrShowPassword = () => {
         if (hideorshowPassword == false) {
             setHideorShowPassword(true);
@@ -32,6 +33,7 @@ const SignIn: React.FC = () => {
         if (response.data.status === 'success') {
             localStorage.setItem('token', response.data.token);
             setErrorMessage('success, login sucessfully');
+            navigate('/profile')
 
 
     }
