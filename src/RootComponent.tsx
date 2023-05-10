@@ -22,9 +22,9 @@ const RootComponent: React.FC = () => {
                 {/* <Route path={ROUTES.HOMEPAGE_ROUTE} element={<HomePage />} /> */}
                 <Route path="/auth/sign-in" element={<SignIn />} />
                 <Route path="/auth/sign-up" element={<SignUp />} />
-                <Route path="/forgot-password" element={<ForgotPassword />} />
-                <Route path="/reset-password" element={<ResetPassword />} />
-                <Route path="/confirm-email" element={<ConfirmEmail />} />
+                <Route path="/auth/forgot-password" element={<ForgotPassword />} />
+                <Route path="/auth/reset-password" element={<ResetPassword />} />
+                <Route path="/auth/confirm-email" element={<ConfirmEmail />} />
 
                 <Route path='/' element={<ProtectedRoute />}>
                     <Route path='/profile' element={<ProfileProfile />}/>

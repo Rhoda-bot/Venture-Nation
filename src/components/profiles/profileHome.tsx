@@ -23,7 +23,7 @@ const ProfileHome = () => {
                 
             }
         })
-    })
+    }, [localStorage.getItem('token')])
     
     return(
         <>

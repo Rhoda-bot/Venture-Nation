@@ -97,12 +97,12 @@ const SignUp = () => {
     }
     return(
         <>
-            <div className="signup p-0">
+            <div className="signup">
                 <div className="container-fluid p-lg-0">
-                    <div className="row g-0">
+                    <div className="row align-items-center">
                         <div className="col-md-6 col-sm-12 signup__col">
                             <form onSubmit={handleSubmitForm}>
-                                <img src="/assets/venture-logo.png" className='mb-3 mt-4' alt="Logo" />
+                                <img src="/assets/venture-logo.png" className='mb-3' alt="Logo" />
                                 <h1 className='signup__col--title'>Create an account</h1>
                                 <p className='signup__col--text'>Please fill all the required input fields.</p>
                                 <div className="row justify-content-center text-start">

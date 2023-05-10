@@ -52,7 +52,7 @@ const SignIn: React.FC = () => {
         <>
             <div className="signup">
                 <div className="container-fluid p-lg-0">
-                    <div className="row">
+                    <div className="row align-items-center">
                         <div className="col-md-6 col-sm-12 signup__col">
                             <form onSubmit={handleSubmitForm}>
                                 <img src="/assets/venture-logo.png" className='mb-3 mt-5'  alt="Logo" />

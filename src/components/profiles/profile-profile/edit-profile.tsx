@@ -25,7 +25,7 @@ const EditProfile = () => {
         <>
             <div className="editprofile">
                 <div className="container">
-                    <div className="row">
+                    <div className="row mt-4">
                         <div className="col-md-4 border-end">
                             <h5 className="profile__details--name">Edit profile</h5>
                             <p className="profile__details--location">Personalize and keep your profile up-to-date.</p>

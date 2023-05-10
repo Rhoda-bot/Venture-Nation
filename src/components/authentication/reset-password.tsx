@@ -95,7 +95,7 @@ const ResetPassword = () => {
         <>
              <div className="signup">
                 <div className="container-fluid">
-                    <div className="row">
+                    <div className="row align-items-center">
                         <div className="col-md-6 col-sm-12 signup__col">
                             <form onSubmit={handleSubmitForm}>
                                 <img src="/assets/venture-logo.png" className='mb-3 mt-5 py-3'  alt="Logo" />
@@ -118,7 +118,7 @@ const ResetPassword = () => {
                                         <i className={hideorshowPassword == false?`fa-regular fa-eye signup__col--icon`:`fa-regular fa-eye-slash signup__col--icon` } onClick={handleHideOrShowPassword}/>
                                     </div>
                                     <div className="col-md-8 position-relative mb-2">
-                                        <label htmlFor="password" className='signup__col--label'>Password</label>
+                                        <label htmlFor="password" className='signup__col--label'>Confirm Password</label>
                                         <input type={hideorshowPassword2 == false? "password" : "text" } 
                                         className='form-control 
                                         shadow-none
