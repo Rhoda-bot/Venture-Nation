@@ -55,7 +55,7 @@ const SignIn: React.FC = () => {
                     <div className="row align-items-center">
                         <div className="col-md-6 col-sm-12 signup__col">
                             <form onSubmit={handleSubmitForm}>
-                                <img src="/assets/venture-logo.png" className='mb-3 mt-5'  alt="Logo" />
+                                <img src="/assets/venture-logo.png" className='mb-3 mt-5' alt="Logo" />
                                 <h1 className='signup__col--title'>Welcome back!</h1>
                                 <p className='signup__col--text'>Kindly input your details to access your account.</p>
                                 <div className="row justify-content-center text-start mb-3">
@@ -93,7 +93,7 @@ const SignIn: React.FC = () => {
                                     </div>
                                     <div className="col-md-8">
                                         
-                                        <NavLink to="/forgot-password"><b style={{color:'rgba(90, 39, 213, 1)',
+                                        <NavLink to="/auth/forgot-password"><b style={{color:'rgba(90, 39, 213, 1)',
                                         fontSize: '14px'
                                         }}>Forgot password?</b>
                                         </NavLink>
@@ -108,7 +108,7 @@ const SignIn: React.FC = () => {
                                     <div className="col-md-8 text-center mt-3">
                                         <p>
                                         Don’t have an account?  
-                                        <NavLink to="/auth/sign-up"><b style={{color:'rgba(90, 39, 213, 1)'
+                                        <NavLink to="/auth/sign-up"><b className='mx-1' style={{color:'rgba(90, 39, 213, 1)'
                                         }}>Sign up</b></NavLink>
                                         </p>
                                     </div>

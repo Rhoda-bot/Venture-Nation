@@ -183,7 +183,7 @@ const SignUp = () => {
                                     <div className="col-md-8 text-center mt-3">
                                         <p>
                                         Already have an account? 
-                                        <NavLink to="/auth/sign-in"><b style={{color:'rgba(90, 39, 213, 1)'
+                                        <NavLink to="/auth/sign-in"><b className='mx-1' style={{color:'rgba(90, 39, 213, 1)',
                                         }}>Log in</b></NavLink>
                                         </p>
                                     </div>
