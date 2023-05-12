@@ -4,10 +4,14 @@ import { PersistGate } from 'redux-persist/integration/react'
 import RootComponent from './RootComponent'
 import { persistor, store } from './store/reducers/store'
 import { UserContext } from './context/userContext'
+import { createContext } from "react";
 
 const App: React.FC = () => {
     const [user, setUser] = useState<any>([]);
-    
+
+
+
+
     return (
         <Provider store={store}>
             <PersistGate loading={null} persistor={persistor}>

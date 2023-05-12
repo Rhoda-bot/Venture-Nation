@@ -1,22 +1,19 @@
-import { log } from 'console';
 import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { postRequest } from '../../utility/apiRequest';
-import { ToastContainer } from 'react-toastify';
+import { Formik, Form, Field, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+import { ToastContainer, toast } from 'react-toastify';
 
 const SignUp = () => {
     const [hideorshowPassword, setHideorShowPassword] = useState<boolean>(false);
-    const [hasDigit, setHasDigit] = useState<boolean>(false);
-    const [hasSpecialChar, setSpecialChar] = useState<boolean>(false);
-    const [hasUpperCase, setUpperCase] = useState<boolean>(false);
-    const [passwordStrength, setPasswordStrength] = useState<string>('weak');
-    const [progressBarColor, setProgressBarColor] = useState<string>("#ff0000");
-    const [errorMessage, setErrorMessage] = useState<string>('');
+    const [progressColor, setProgressColor] = useState<string>("#DC2626");
+    const [progressStrength, setProgressStrength] = useState<string>("Weak");
+    const [response, setResponse] = useState<string>('');
+    const [loading, setIsLoading] = useState<boolean>(false)
 
 
-    const [password, setPassword] = useState<string>('');
-    const [email, setEmail] = useState<string>('');
-    const [fullname, setFullname] = useState<string>('');
+
     const navigate = useNavigate();
 
     const handleHideOrShowPassword = () => {
@@ -27,168 +24,227 @@ const SignUp = () => {
         }
       
     };
-    useEffect(() => {
-        setProgressBarColor(getProgressBarColor());
-        console.log(progressBarColor);
-        
-      }, [passwordStrength]);
 
-    const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
-        const {name, value} = event.target;
-        if(name === 'email'){
-            setEmail(value);
-        }else if (name === 'password') {
-            setPassword(value);
-            setHasDigit(/\d/.test(value))
-            setSpecialChar(/[!@#$%^&*(),.?":{}|<>]/.test(value))
-            setUpperCase(/[A-Z]/.test(value))
-            if(value.length >= 8 && hasDigit && hasSpecialChar && hasUpperCase){
-                setPasswordStrength("strong")
-            }else if (value.length >= 8 && (hasDigit || hasSpecialChar || hasUpperCase)) {
-                setPasswordStrength("fair")
-            }else{
-                setPasswordStrength("weak")
-            }
-            
-        }else if (name === 'fullname') {
-            setFullname(value);
-        }
-        
-    };
-    const getProgressBarColor = () =>{
-        if (passwordStrength === "weak") {
-            return "#ff0000"; // red
-          } else if (passwordStrength === "fair") {
-            return "#ffa500"; // orange
-          } else {
-            return "#008000"; // green
-          }
-    };
+      const validationSchema = Yup.object().shape({
+        name: Yup.string()
+        .required("Full name is required"),
+        email: Yup.string()
+        .email("Invalid email Address")
+        .required("Email is required"),
+        password: Yup.string()
+        .min(8,"Password must be at least 8 characters")
+        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/,
+        'Password must contain at least 8 characters, one uppercase letter, one number, and one special character')
+      })
+ 
+  
 
-    const getPasswordStrengthMessage = () => {
-        if (passwordStrength === "weak") {
-          return "Password is weak. It must contain at least one number, one uppercase letter, and one special character, and be at least 8 characters long.";
-        } else if (passwordStrength === "fair") {
-          return "Password is fair. It must contain at least one more number, uppercase letter, or special character.";
-        } else {
-          return "Password is strong!";
-        }
-      };
+  
 
     const handleSubmitForm = async(e: any) =>{
-        e.preventDefault();
-        const result = await postRequest({name:fullname, email, password}, 'auth/register');
+        setIsLoading(true)
+        
+        const result = await postRequest(e, 'auth/register');
         if (result.data.status === 'success') {
-                setErrorMessage('success, kindly check you mailbox for verification.');
-                setFullname('');
-                setEmail('');
-                setPassword('');
+            setIsLoading(false)
+                setResponse('success, kindly check you mailbox for verification.');
+                toast('success, kindly check you mailbox for verification.')
                 navigate('/confirm-email')
         }
        if (result.data.errors) {
+        setIsLoading(false)
             const errorsArr = result.data.errors;
             errorsArr.map((val:any) =>{
-                setErrorMessage(val.message)
+                setResponse(val.message)
+                toast(val.message)
         })
        }
        
         
         
     }
+    
+
     return(
         <>
             <div className="signup">
                 <div className="container-fluid p-lg-0">
                     <div className="row align-items-center">
                         <div className="col-md-6 col-sm-12 signup__col">
-                            <form onSubmit={handleSubmitForm}>
-                                <img src="/assets/venture-logo.png" className='mb-3' alt="Logo" />
-                                <h1 className='signup__col--title'>Create an account</h1>
-                                <p className='signup__col--text'>Please fill all the required input fields.</p>
-                                <div className="row justify-content-center text-start">
-                                    <p>
-                                        {errorMessage}
-                                    </p>
-                                    <div className="col-md-8 mb-2">
-                                        <label htmlFor="fullname" className='signup__col--label'>Full Name</label>
-                                        <input type="text" className='
-                                        form-control 
-                                        shadow-none
-                                        signup__col--inp' 
-                                        value={fullname} name='fullname' 
-                                        onChange={handleInputChange}
-                                        placeholder='Full name'
-                                        />
-                                    </div>
-
-                                    <div className="col-md-8 mb-2">
-                                        <label htmlFor="email" className='signup__col--label'>Email</label>
-                                        <input type="text" className='
-                                        form-control
-                                        shadow-none
-                                         signup__col--inp' 
-                                        value={email} name='email' 
-                                        onChange={handleInputChange}
-                                        placeholder='Enter your email address'
-                                        />
-                                    </div>
-
-                                    <div className="col-md-8 position-relative mb-2">
-                                        <label htmlFor="password" className='signup__col--label'>Password</label>
-                                        <input type={hideorshowPassword == false? "password" : "text" } 
-                                        className='
-                                        form-control
-                                        shadow-none
-                                         signup__col--inp' 
-                                        placeholder='Password'
-                                        value={password}
-                                        name='password'
-                                        onChange={handleInputChange}
-                                         />
-                                        <i className={hideorshowPassword == false?`fa-regular fa-eye signup__col--icon`:`fa-regular fa-eye-slash signup__col--icon` } onClick={handleHideOrShowPassword}/>
-                                    </div>
-                                    <div className="col-md-8">
-                                        <div className="row">
-                                            <div className="col-md-6">
-                                                Password Strength
+                            <Formik initialValues={{name: '', email: '', password: ''}}
+                                    validationSchema={validationSchema}
+                                    onSubmit={handleSubmitForm
+                                    }
+                            >
+                                {
+                                    (props) => {
+                                        const {errors, dirty, touched,isValid, values} = props;
+                                        const validationConditions = [
+                                            { condition: "Password is valid", isValid: !errors.password },
+                                            {
+                                              condition: "Password is at least 8 characters long",
+                                              isValid: values.password.length >= 8,
+                                            },
+                                            {
+                                              condition: "Password contains at least one uppercase letter",
+                                              isValid: /[A-Z]/.test(values.password),
+                                            },
+                                            {
+                                              condition: "Password contains at least one lowercase letter",
+                                              isValid: /[a-z]/.test(values.password),
+                                            },
+                                            {
+                                              condition: "Password contains at least one number",
+                                              isValid: /\d/.test(values.password),
+                                            },
+                                            {
+                                              condition: "Password contains at least one special character",
+                                              isValid: /[!@#$%^&*(),.?":{}|<>]/.test(values.password),
+                                            },
+                                          ];
+                                
+                                          const fulfilledConditions = validationConditions.filter(
+                                            (condition) => condition.isValid
+                                          );
+                                
+                                          const progress = Math.floor(
+                                            (fulfilledConditions.length / validationConditions.length) * 100
+                                          );
+                                
+                                          if (progress <= 25) {
+                                            setProgressColor("#DC2626");
+                                            setProgressStrength("Weak");
+                                          } else if (progress > 25 && progress <= 50) {
+                                            setProgressColor("#F59E0B");
+                                            setProgressStrength("Fair");
+                                          } else if (progress > 50 && progress <= 70) {
+                                            setProgressColor("#22C55E");
+                                            setProgressStrength("Good");
+                                          } else if (progress > 70) {
+                                            setProgressColor("#16A34A");
+                                            setProgressStrength("Strong");
+                                          }
+                                       return(
+                                        <Form>
+                                        <img src="/assets/venture-logo.png" className='mb-3' alt="Logo" />
+                                        <h1 className='signup__col--title'>Create an account</h1>
+                                        <p className='signup__col--text'>Please fill all the required input fields.</p>
+                                        <div className="row justify-content-center text-start">
+                                            <div className="col-md-8 mb-2">
+                                                <label htmlFor="fullname" className='signup__col--label'>Full Name</label>
+                                                <Field 
+                                                    type="text"
+                                                    name="name"
+                                                    id="name"
+                                                    className={touched.name && errors.name ? 
+                                                        'form-control signup__col--inpisIvalid shadow-none' : 
+                                                        'form-control signup__col--inp shadow-none'}
+                                                />
+                                                 <ErrorMessage name="fullname" component="div" className="error" />
+                                            
                                             </div>
-                                            <div className="col-md-6 text-end">
-                                                {passwordStrength}
+                                            <div className="col-md-8 mb-2">
+                                                <label htmlFor="email" className='signup__col--label'>Email</label>
+                                                <Field 
+                                                    type="email"
+                                                    name="email"
+                                                    id="email"
+                                                    className={touched.email && errors.email ? 
+                                                        'form-control  signup__col--inpisIvalid shadow-none' 
+                                                        : 'form-control  signup__col--inp shadow-none'}
+                                                />
+                                                 <ErrorMessage name="email" component="div" className="error" />
+                                                 <p className='text-danger'>{response}</p>
+                                            </div>
+                                            <div className="col-md-8 mb-2 position-relative">
+                                                <label htmlFor="password" className='signup__col--label'>Password</label>
+                                                <Field 
+                                                    type={hideorshowPassword == false? "password" : "text" } 
+                                                    name="password"
+                                                    id="password"
+                                                    className={touched.password && errors.password ? 
+                                                        'form-control  signup__col--inpisIvalid shadow-none' 
+                                                        : 'form-control  signup__col--inp shadow-none'}
+                                                />
+                                                 <ErrorMessage name="password" component="div" className="error" />
+                                                
+                                                <i className={hideorshowPassword == false?`fa-regular fa-eye signup__col--icon`:`fa-regular fa-eye-slash signup__col--icon`}
+                                                 onClick={handleHideOrShowPassword}/>
+                                            </div>
+                                            <div className="col-md-8 mb-3">
+                                                <div className="row">
+                                                    <div className="col-md-6">
+                                                        Password Strength
+                                                    </div>
+                                                    <div className="col-md-6 text-end">
+                                                        { <small>{progressStrength}</small>}
+                                                    </div>
+                                                    <p>
+                                                        <img src="/assets/icons/i.png" className='px-1' alt="" />
+                                                    <small>
+                                                        Strong password must contain at least 8 characters,
+                                                        digits, which includes special characters, lowercase
+                                                        and uppercase letters.
+                                                    </small>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div className="col-md-8 text-start mb-3">
+                                            
+                                            <div
+                                            className="progress"
+                                            role="progressbar"
+                                            aria-label="Basic example"
+                                            aria-valuenow={0}
+                                            aria-valuemin={0}
+                                            aria-valuemax={100}
+                                            style={{height: '10px'}}
+                                            >
+                                            <div
+                                                className={`progress-bar`}
+                                                style={{
+                                                width: `${progress}%`,
+                                                backgroundColor: progressColor,
+                    
+                                                }}
+                                            ></div>
+                                            </div>
+                                            </div>
+                                            <div className="col-md-8">
+                                                {
+                                                    loading ? (
+
+                                                        <button className={!( dirty && isValid)? 'disabled-btn signup__col--btn' : 'signup__col--btn'} disabled>
+
+                                                            Submit</button>
+                                                    ):(
+                                                        <>
+                                                        <button type='submit'
+                                                        className={
+                                                            !(dirty && isValid) ? 'disabled-btn signup__col--btn' : "signup__col--btn py-3 ms-0 w-100 fw-bold"
+                                                        }
+                                                        >
+                                                             Sign up
+                                                        </button>
+
+                                                        </>
+                                                    )
+                                                }
+                                            </div>
+                                            <div className="col-md-8 text-center mt-3">
+                                                <p>
+                                                Already have an account? 
+                                                <NavLink to="/auth/sign-in"><b className='mx-1' style={{color:'rgba(90, 39, 213, 1)',
+                                                }}>Log in</b></NavLink>
+                                                </p>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="col-md-8 text-center">
-                                    {
-                                        passwordStrength !== "strong" && (
-                                           <>
-                                            <progress
-                                            value={
-                                              passwordStrength === "fair" ? 0.5 : passwordStrength === "weak" ? 0.25 : 1
-                                            }
-                                            max={1} 
-                                            style={{ color: progressBarColor, width: '100%' }}
-                                          />
-                                          <p>{getPasswordStrengthMessage()}</p>
-                                           </>
-                                        )
-                                    }
-                                    </div>
-                                    <div className="col-md-8 mt-3">
-                                        <input type="submit" 
-                                        value="Next"
-                                        className='signup__col--btn'
-                                        />
-
-                                    </div>
-                                    <div className="col-md-8 text-center mt-3">
-                                        <p>
-                                        Already have an account? 
-                                        <NavLink to="/auth/sign-in"><b className='mx-1' style={{color:'rgba(90, 39, 213, 1)',
-                                        }}>Log in</b></NavLink>
-                                        </p>
-                                    </div>
-                                </div>
-                            </form>
+                                    </Form>
+                                       )
+}
+                                }
+                            </Formik>
+                           
                         </div>
                         <div className="col-md-6 signup__img d-none d-lg-block"  style={{
                                 backgroundImage: 'linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),url(/assets/auth/1.png)',
