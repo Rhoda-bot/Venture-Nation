@@ -4,6 +4,7 @@ import Teams from "./teams";
 import Socials from "../profile-profile/socials";
 import UserContact from "./contact";
 import { NavLink } from "react-router-dom";
+import ProfileOverview from "./profile-overview";
 
 const ProfileView = () => {
     const [overview, setOverview] = useState<any>("This is Overview");
@@ -22,10 +23,10 @@ const ProfileView = () => {
     }
     return(
         <>
-            <div className="profileview">
-                <div className="container">
+            <div className="ventureview">
+                <div className="container px-3">
                     <div className="row">
-                        <div className="col-md-9">
+                        <div className="col-md-9 ">
                             <div className="col-md-12 position-relative" style={{
                                 backgroundImage: 'url(/assets/profile/venturebg.png)',
                                 height: '190px',
@@ -35,55 +36,43 @@ const ProfileView = () => {
                                 objectFit: 'cover',
                             }}>
                                 <img src={ "/assets/profile/venture.png"} className="position-absolute top-100 start-50 translate-middle"  alt="" />
-                                <div className="text-end  bg-dark">
-                                <NavLink to="/edit-profile">
-                                <button className="position-abolute profile__details--edit">Edit profile</button>
-                                </NavLink>
+                                <div className="text-end row">
+                                    <div className="col-md-3 d-flex">
+                                        <NavLink to="/edit-venture" className="px-3">
+                                        <button className="position-abolute profile__details--edit">Edit profile</button>
+                                        </NavLink>
+                                    </div>
                                 </div>
+                            </div>
+                            <div className="row text-center py-5 mt-4">
+                                    <h5>Venture name</h5>
+                                    <p>Expanding Africas vast and efficient delivery and fulfillment network.</p>
+                                    <h5></h5>
+                                    <p className="text-start">
+                                    Lorem ipsum dolor sit amet consectetur. Integer consequat lacus laoreet eget. Massa id pellentesque dolor sed facilisi posuere. 
+                                    Ac eget consectetur tellus faucibus. Nibh egestas etiam eu nulla ut orci. Nec sem habitant in sit ipsum sit arcu sed.
+                                    Amet imperdiet turpis nisl ut tincidunt. Orci vitae vitae urna sit blandit. Sed egestas non ut odio ut nunc. 
+                                    Amet in mauris senectus purus quis enim urna.
+                                    </p>
+                                    <p className="text-start">
+                                    Lorem ipsum dolor sit amet consectetur. 
+                                    Integer conseq uat lacus laoreet eget. Massa id pellentesque dolor sed facilisi posuere. Ac eget consectetur tellus faucibus.
+                                    Nibh egestas etiam eu nulla ut orci. Nec sem habitant in sit ipsum sit arcu sed. Amet imperdiet turpis nisl ut tincidunt. 
+                                    Orci vitae vitae urna sit blandit. 
+                                    Sed egestas non ut odio ut nunc. Amet in mauris senectus purus quis enim urna.
+                                    </p>
+                            </div>
+                            <div className="row">
+                                <ProfileOverview />
+                            </div>
+                            <div className="row">
+                                <Teams />
                             </div>
                         </div>
                         <div className="col-md-3">
                             <UserContact />
                             <Socials />
                         </div>
-                        {/* <div className="col-md-12">
-                            <img src="/assets/profile/pro.png" className="position-relative h-100 img-fluid "  alt="" />
-                        </div>
-                           <div>
-                           <img src="/assets/profile/com.png" className="position-absolute top-75 start-50 translate-middle" alt="" />
-                           </div>
-                    </div>
-                    <div className="row mt-5 py-5 text-center">
-                        <h1 className="">Venture name</h1>
-                        <p className="">Expanding Africas delivery and fulfillment network
-                            involves creating a  <br/>vast and efficient
-                            infrastructure capable of delivering.</p>
-                            <div className="col-md-3 mx-auto">
-                            <button>send stage</button>
-                            </div>
-                    </div>
-                    <div className="row ">
-                        <div className=" text-center justify-content-center">
-                            <button onClick={handleOverviewContents}>Overview</button>
-                            <button onClick={handleScorecardContents}>Scorecard</button>
-                            <button onClick={handleTeamMembersContents}>Team members</button>
-                           <div className="col-md-12 mt-3">
-                           
-                                { swapStateItems === 1 && (
-                                    <div>
-                                        <Overviews />
-                                    </div>
-                                )}
-                                { swapStateItems === 3 && (
-                                    <div>
-                                        <Teams />
-                                    </div>
-                                )}
-                            
-                           </div>
-                        </div>
-
-                    */}
                     </div>
                 </div>
             </div>

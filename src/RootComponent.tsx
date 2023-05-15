@@ -13,6 +13,7 @@ import { GaurdSignInPage, GaurdSignupPages, ProtectedRoute } from './resources/p
 import ProfileView from './components/profiles/profile-venture/profileView'
 import ProfileProfile from './components/profiles/profile-profile'
 import EditProfile from './components/profiles/profile-profile/edit-profile'
+import Ventures from './components/ventures'
 
 const RootComponent: React.FC = () => {
     return (
@@ -34,6 +35,7 @@ const RootComponent: React.FC = () => {
                     <Route path='/profile' element={<ProfileProfile />}/>
                     <Route path='/edit-profile' element={<EditProfile />}/>
                     <Route path='/ventures' element={<ProfileView />}/>
+                    <Route path='/edit-venture' element={<Ventures />}/>
                 </Route>
             </Routes>
         </Router>

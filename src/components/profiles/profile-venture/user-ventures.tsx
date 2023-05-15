@@ -12,9 +12,11 @@ const UserVentures = () => {
                 <button className="ventures--btn" > + add venture</button>
                 </div>
                 <div className="col-md-6 mt-3">
-                    <div className="card">
+                    <div className="card ventures__card border-0">
                         <img src="/assets/profile/pro1.png"  className="card-img-top position-relative " alt="" />
+                        <NavLink to="/ventures">
                         <img src="/assets/profile/venture1.png" className="position-absolute top-50 start-50 translate-middle pb-5" alt="" />
+                        </NavLink>
                         <div className="card-body text-center" >
                             <h5 className="ventures--name">Venture name</h5>
                             <p>Building africa’s largest delivery and fufilment network.</p>
@@ -26,7 +28,7 @@ const UserVentures = () => {
                     </div>
                 </div>
                 <div className="col-md-6 mt-3">
-                    <div className="card">
+                    <div className="card ventures__card border-0">
                         <img src="/assets/profile/pro3.png"  className="card-img-top position-relative " alt="" />
                         <NavLink to="/ventures">
                         <img src="/assets/profile/venture.png" className="position-absolute top-50 start-50 translate-middle pb-5" alt="" />

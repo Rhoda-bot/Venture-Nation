@@ -1,9 +1,16 @@
 .sidebar
-    background-color: transparent !important
+    background-color: $white !important
+    height: 100vh
+   
     &--link
         color: #7E848E
         padding: 1rem
         border-radius: 5px 15px 15px 5px
-        margin: .7rem
+        margin: .2rem
         &:hover
-            background: #F8F5FF
+            background-color: #F8F5FF
+        &.active
+            border-left: 4px solid #5a27d5
+            color:  #5a27d5
+            background-color: #F8F5FF
+             
