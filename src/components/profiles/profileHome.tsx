@@ -8,7 +8,7 @@ import { getRequest } from "../../utility/apiRequest";
 import Socials from "./profile-profile/socials";
 
 const ProfileHome = () => {
-    const {user, setUser}: any = useContext<any>(UserContext)
+    const {user, setUser}: any = useContext<any>(UserContext);
     useEffect(() => {
 
         const getCurrentUser = async() => {
@@ -27,7 +27,7 @@ const ProfileHome = () => {
     
     return(
         <>
-        <ProfileNavbar />
+        <ProfileNavbar currentUser={user}/>
             <div className="profile">
                 <div className="container-fluid p-0 ">
                     <div className="row justify-content-center g-0">

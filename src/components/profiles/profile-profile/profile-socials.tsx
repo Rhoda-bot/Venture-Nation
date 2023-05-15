@@ -28,8 +28,8 @@ const ProfileSocials = () => {
                 <div className="signup">
                     <div className="container">
                         <div className="row">
-                        <h4 className="profile__details--name">Password</h4>
-                        <p className="profile__details--location">Manage your account password</p>
+                        <h4 className="profile__details--name">Social profiles</h4>
+                        <p className="profile__details--location">Attach your other social media account to your profile. </p>
                             <div className="col-md-12">
                             <hr />
                                 <Formik initialValues={{linkedIn: '', twitter: '', instagram: '', facebook: ''}}
@@ -86,6 +86,10 @@ const ProfileSocials = () => {
                                                                          'form-control  signup__col--inp shadow-none'}
                                                                     />
                                                                      
+                                                                </div>
+                                                                <div className="col-md-7"/>
+                                                                <div className="col-md-3">
+                                                                    <button className="signup__col--btn py-3 ms-0 w-100 fw-bold">Save changes</button>
                                                                 </div>
                                                                
                                                             </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const UserVentures = () => {
     return(
@@ -13,7 +14,7 @@ const UserVentures = () => {
                 <div className="col-md-6 mt-3">
                     <div className="card">
                         <img src="/assets/profile/pro1.png"  className="card-img-top position-relative " alt="" />
-                        <img src="/assets/profile/circle.png" className="position-absolute top-50 start-50 translate-middle pb-5" alt="" />
+                        <img src="/assets/profile/venture1.png" className="position-absolute top-50 start-50 translate-middle pb-5" alt="" />
                         <div className="card-body text-center" >
                             <h5 className="ventures--name">Venture name</h5>
                             <p>Building africa’s largest delivery and fufilment network.</p>
@@ -27,7 +28,9 @@ const UserVentures = () => {
                 <div className="col-md-6 mt-3">
                     <div className="card">
                         <img src="/assets/profile/pro3.png"  className="card-img-top position-relative " alt="" />
-                        <img src="/assets/profile/circle.png" className="position-absolute top-50 start-50 translate-middle pb-5" alt="" />
+                        <NavLink to="/ventures">
+                        <img src="/assets/profile/venture.png" className="position-absolute top-50 start-50 translate-middle pb-5" alt="" />
+                        </NavLink>
                         <div className="card-body text-center">
                             <h5 className="ventures--name">Venture name</h5>
                             <p>Building africa’s largest delivery and fufilment network.</p>

@@ -101,25 +101,13 @@ const SignIn: React.FC = () => {
                         
                                         
                                             <div className="col-md-8">
-                                                {
-                                                    loading ? (
-
-                                                        <button className={!( dirty && isValid)? 'disabled-btn signup__col--btn' : 'signup__col--btn'} disabled>
-
-                                                            Submit</button>
-                                                    ):(
-                                                        <>
-                                                        <button type='submit'
-                                                        className={
-                                                            !(dirty && isValid) ? 'disabled-btn signup__col--btn' : "signup__col--btn py-3 ms-0 w-100 fw-bold"
-                                                        }
-                                                        >
-                                                             Sign in
-                                                        </button>
-
-                                                        </>
-                                                    )
-                                                }
+                                            <button
+                                                type="submit"
+                                                className={dirty && isValid ? "signup__col--btn" : "disabled-btn signup__col--btn"}
+                                                disabled={!(dirty && isValid)}>
+                                                Sign In
+                                                </button>
+                                               
                                             </div>
                                             <div className="col-md-8 text-center mt-3">
                                                 <p>

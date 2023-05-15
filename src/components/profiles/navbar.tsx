@@ -1,47 +1,12 @@
 import React, { useState } from "react";
-// import { NavLink } from "react-router-dom";
-import { Navbar, Nav, NavItem, NavLink, Button, Collapse } from 'reactstrap';
 
-const ProfileNavbar = () => {
+import { NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownItem, DropdownMenu } from 'reactstrap';
+
+const ProfileNavbar = ({currentUser}: any) => {
     const [isOpen, setIsOpen] = useState(false);
 
-    const toggle = () => setIsOpen(!isOpen);
-
     return(
-        <>
-        {/* <div>
-        <Navbar color="light" light expand="md">
-        <Nav className="mr-auto" navbar>
-          <NavItem>
-            <NavLink href="/">Home</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="/about">About</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="/contact">Contact</NavLink>
-          </NavItem>
-        </Nav>
-        <button className="navbar-toggler d-block d-md-none" type="button" onClick={toggle}>
-          <span className="navbar-toggler-icon"></span>
-        </button>
-      </Navbar>
-      <div className={`sidebar ${isOpen ? 'open' : ''} col-md-3`}>
-        <Nav vertical>
-          <NavItem>
-            <NavLink href="/">Home</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="/about">About</NavLink>
-          </NavItem>
-          <NavItem>
-            <NavLink href="/contact">Contact</NavLink>
-          </NavItem>
-        </Nav>
-      </div>
-    </div> */}
-     
-
+        <>     
             <div className="navigation">
             <nav className="navbar navbar-expand-lg px-5">
                 <div className="container-fluid px-3  mx-3">
@@ -68,19 +33,30 @@ const ProfileNavbar = () => {
                         alt="" /></NavLink>
                     </li>
                     <li className="nav-item px-2 pt-1 my-lg-2">
-                        <img src= "/assets/icons/avatar.png" width={50} height={50} alt="" />
-                        <span className="mx-lg-2">Olivia Clark</span>
+                        <img src={(currentUser?.avatar === null) ? "/assets/profiles/ava.png" : currentUser?.avatar} width={50} height={50} alt="" />
+                        <small className="mx-lg-1">{currentUser?.name}</small>
                     </li>
-                       {/* <li className="nav-item px-3 pt-1">
-                        <img src={(user?.avatar === null) ? "/assets/profiles/profile1.png" : user?.avatar} width={30} height={30} alt="" />
-                       </li>
-                      <li className="nav-item px-3 pt-1">
-                        <h5>{user?.name}</h5>
-                        <span style={{
-                            fontSize: "15px",
-                            lineHeight: -1
-                        }}>{user?.email}</span>
-                      </li> */}
+                     <li className="nav-item dropdown  pt-lg-2 my-lg-2 mx-lg-5">
+                     <UncontrolledDropdown nav inNavbar>
+                      <DropdownToggle nav caret >
+                        <span></span>
+                      </DropdownToggle>
+                      <DropdownMenu end>
+                        <DropdownItem>Settings</DropdownItem>
+                        {/* <DropdownItem>Option 2</DropdownItem> */}
+                        <DropdownItem divider />
+                        <DropdownItem>Log out</DropdownItem>
+                      </DropdownMenu>
+                    </UncontrolledDropdown>
+                      </li>
+                      <NavItem>
+                      <NavLink></NavLink>
+                      </NavItem>
+                      <li>
+                        <div>
+                          
+                        </div>
+                      </li>
                       </ul>
                     </form>
                     </div>

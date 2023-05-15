@@ -1,6 +1,8 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
 import ProfileHome from "../components/profiles/profileHome";
+import SignIn from "../components/authentication/sign-in";
+import SignUp from "../components/authentication/sign-up";
 
 const checkAuthenticatedUser = () => {
     const user_token = localStorage.getItem('token' || []);
@@ -11,4 +13,14 @@ const checkAuthenticatedUser = () => {
  export const ProtectedRoute = () => {
     const isAuthenticated = checkAuthenticatedUser();
     return isAuthenticated ? <ProfileHome /> : <Navigate to="/auth/sign-in" />
+}
+
+export const GaurdSignInPage = () => {
+    const isAuthenticated = checkAuthenticatedUser();
+    return !isAuthenticated ? <SignIn /> : <Navigate to="/profile" />
+}
+
+export const GaurdSignupPages = () => {
+    const isAuthenticated = checkAuthenticatedUser();
+    return !isAuthenticated ? <SignUp /> : <Navigate to="/profile" />
 }

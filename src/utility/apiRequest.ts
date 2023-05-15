@@ -17,3 +17,13 @@ export const getRequest = async(url: any) => {
       .catch((error) => error.response)
    return result;
 }
+export const patchRequest = async(url: any, data?: any) => {
+   const result = await axios.patch(url, data, {
+      headers: {
+         Authorization: `Bearer ${localStorage.getItem('token')}`,
+         'Content-Type': 'multipart/json',
+      }
+   }).then((response) => response)
+      .catch((error) => error.response)
+   return result;
+}

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import Overviews from "./overviews";
 import Teams from "./teams";
+import Socials from "../profile-profile/socials";
+import UserContact from "./contact";
+import { NavLink } from "react-router-dom";
 
 const ProfileView = () => {
     const [overview, setOverview] = useState<any>("This is Overview");
@@ -20,9 +23,30 @@ const ProfileView = () => {
     return(
         <>
             <div className="profileview">
-                <div className="container-fluid">
+                <div className="container">
                     <div className="row">
-                        <div className="col-md-12">
+                        <div className="col-md-9">
+                            <div className="col-md-12 position-relative" style={{
+                                backgroundImage: 'url(/assets/profile/venturebg.png)',
+                                height: '190px',
+                                width: '100%',
+                                backgroundSize: 'cover',
+                                backgroundRepeat: 'no-repeat',
+                                objectFit: 'cover',
+                            }}>
+                                <img src={ "/assets/profile/venture.png"} className="position-absolute top-100 start-50 translate-middle"  alt="" />
+                                <div className="text-end  bg-dark">
+                                <NavLink to="/edit-profile">
+                                <button className="position-abolute profile__details--edit">Edit profile</button>
+                                </NavLink>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="col-md-3">
+                            <UserContact />
+                            <Socials />
+                        </div>
+                        {/* <div className="col-md-12">
                             <img src="/assets/profile/pro.png" className="position-relative h-100 img-fluid "  alt="" />
                         </div>
                            <div>
@@ -59,6 +83,7 @@ const ProfileView = () => {
                            </div>
                         </div>
 
+                    */}
                     </div>
                 </div>
             </div>
