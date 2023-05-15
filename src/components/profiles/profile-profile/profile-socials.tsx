@@ -25,9 +25,9 @@ const ProfileSocials = () => {
     return(
         <>
             <Fade>
-                <div className="signup">
+                <div className="signup bg-white">
                     <div className="container">
-                        <div className="row">
+                        <div className="row mx-3">
                         <h4 className="profile__details--name">Social profiles</h4>
                         <p className="profile__details--location">Attach your other social media account to your profile. </p>
                             <div className="col-md-12">
@@ -88,7 +88,7 @@ const ProfileSocials = () => {
                                                                      
                                                                 </div>
                                                                 <div className="col-md-7"/>
-                                                                <div className="col-md-3">
+                                                                <div className="col-md-3 py-3">
                                                                     <button className="signup__col--btn py-3 ms-0 w-100 fw-bold">Save changes</button>
                                                                 </div>
                                                                

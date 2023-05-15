@@ -29,16 +29,16 @@ const VentureGeneral = () => {
                             <h4 className="profile__details--name">General</h4>
                             <p className="profile__details--location">Personalize and keep your profile up-to-date.</p>
                             <div className="col-md-12 position-relative " style={{
-                                backgroundImage: 'url(/assets/profile/pro2.png)',
+                                backgroundImage: 'url(/assets/profile/venturebg.png)',
                                 height: '170px',
                                 width: '100%',
-                                borderRadius: '0px 0px 30px 0px'
                             }}>
                                  <div className="file-upload mx-auto">
                                     <label htmlFor="file-input" className="">Upload local image</label>
                                     <input id="file-input" type="file" />
                                 </div>
                                 <div>
+                                <img src={"/assets/profile/ava.png"} className="img-fluid  profile__details--avartar"  alt="" />
                                 {/* <img src={(user?.avatar === null) ? "/assets/profiles/ava.png": user?.avatar} className="img-fluid  profile__details--avartar"  alt="" /> */}
                                 </div>
                                 

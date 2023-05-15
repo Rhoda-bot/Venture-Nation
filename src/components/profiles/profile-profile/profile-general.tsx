@@ -54,7 +54,7 @@ const GeneralProfile = () => {
     return(
         <>
            <Fade>
-            <div className="general">
+            <div className="general bg-white">
                     <div className="container">
                         <div className="row">
                             <h4 className="profile__details--name">General</h4>

@@ -61,7 +61,7 @@ const EditProfile = () => {
             <div className="editprofile">
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-4 pe-0 border-end">
+                        <div className="col-lg-4 pe-0 mx-2 px-2 bg-white">
                     
                             <h5 className="profile__details--name px-3 px-lg-4">Edit profile</h5>
                             <p className="profile__details--location px-3 px-lg-4">Personalize and keep your profile up-to-date.</p>

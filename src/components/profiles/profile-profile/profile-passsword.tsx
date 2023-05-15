@@ -45,7 +45,7 @@ const ProfilePassword = () => {
     return(
         <>
             <Fade>
-                <div className="signup">
+                <div className="signup bg-white">
                     <div className="container">
                         <div className="row">
                         <h4 className="profile__details--name">Password</h4>
