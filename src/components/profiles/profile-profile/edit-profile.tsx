@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import GeneralProfile from "./profile-general";
 import ProfilePassword from "./profile-passsword";
 import ProfileSocials from "./profile-socials";
+import ProfileEmail from "./profile-email";
 
 
 const EditProfile = () => {
@@ -88,6 +89,9 @@ const EditProfile = () => {
                             )}
                             {swapStateItems === 2 && (
                                 <ProfilePassword />
+                            )}
+                             {swapStateItems === 3 && (
+                                <ProfileEmail />
                             )}
                              {swapStateItems === 4 && (
                                 <ProfileSocials />
