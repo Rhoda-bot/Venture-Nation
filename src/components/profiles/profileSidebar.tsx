@@ -6,7 +6,7 @@ const Sidebar = () => {
     const sidebarMenu = SIDEBAR
     return(
         <>
-           <div className="sidebar" style={{
+           <div className="sidebar " style={{
             height: '100%'
            }}>
             {

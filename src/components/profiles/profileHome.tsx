@@ -28,19 +28,16 @@ const ProfileHome = () => {
     return(
         <>
         <ProfileNavbar currentUser={user}/>
-            <div className="profile">
-                <div className="container-fluid p-0 ">
-                    <div className="row justify-content-center g-0">
+            <div className="profile p-0">
+                <div className="container-fluid ">
+                    <div className="row">
                         <div className="col-md-2">
                             <Sidebar />
                         </div>
-                        <div className="col-md-10 ">
+                        <div className="col-md-10 p-0">
                             <Outlet />
                         </div>
-                        {/* <div className="col-md-2">
-                            <UserContact />
-                            <Socials />
-                        </div> */}
+                        
                     </div>
                 </div>
             </div>
