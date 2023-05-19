@@ -1,19 +1,28 @@
 .profile
     padding: 0 0 10px 10px
-    &__details
-        &--avartar
-            top: 120px
-            left:38px
-            position: absolute
-            width: 120px
+    &__banner
+        background-color: $red 
+        padding: 2rem
+    &__box
+        height: 100px
+        top: 50px
+        transform: translate(0px, 70px)
+        position: relative
         &--edit
-            position: absolute
-            right: 0
-            top: 200px
+            margin-top: 40px
             border-radius: 5px
-            border: 1px solid #5a27d5
+            border: .14rem solid #5a27d5
             color: #5a27d5
             padding: 10px 20px
+            background-color: transparent
+            font-weight: 700
+            &:hover
+                background: linear-gradient(90.73deg, #5A27D5 0%, #5F27D3 32.36%, #AE2EC4 100%)
+                color: $white
+                border: .14rem solid transparent
+        &--avartar
+            width: 100px
+    &__details
         &--name
             color: #404040
             font-weight: 600
@@ -36,3 +45,11 @@
             border: 2px solid #F8F5FF
             color: #404040
             font-weight: 400
+
+
+    @media screen and (max-width: 400px)
+     .profile
+        &__banner
+        &__box
+            &--edit     
+                 margin-top: -150px !important

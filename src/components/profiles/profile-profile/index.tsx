@@ -15,8 +15,8 @@ const ProfileProfile = () => {
         <>
             <div className="container-fluid">
                 <div className="row align-items-center" >
-                    <div className="col-md-9   profile__details bg-white p-0">
-                        <div className="col-md-12 position-relative" style={{
+                    <div className="col-md-9 profile__details bg-white p-0">
+                        <div className="profile__banner" style={{
                             backgroundImage: 'url(/assets/profile/profile-bg.png)',
                             height: '190px',
                             width: '100%',
@@ -25,14 +25,19 @@ const ProfileProfile = () => {
                             objectFit: 'cover',
                             backgroundPosition: 'center center'
                         }}>
-                            <img src={(user?.avatar === null) ? "/assets/profiles/ava.png": user?.avatar} className="img-fluid  profile__details--avartar"  alt="" />
-                            <div className="text-end">
-                               <NavLink to="/edit-profile">
-                               <button className="position-abolute profile__details--edit"><i className="fa fa-edit"/> Edit profile</button>
-                               </NavLink>
+                            <div className="row align-items-center profile__box">
+                                 <div className=" col-sm-4 col-md-6">
+                                    <img src={ "/assets/profile/ava.png"} className="img-fluid profile__box--avartar"  alt="" />
+                                </div>
+                                <div className="col-md-6 col-sm-4 text-end">
+                                    <NavLink to="/edit-profile">
+                                    <button className="profile__box--edit "><i className="fa fa-edit"/> Edit profile</button>
+                                </NavLink>
+                                </div>
                             </div>
                         </div>
-                        <div className="container py-5">
+                            
+                        <div className="container py-5 my-0 my-lg-3">
                         <div className="row px-3 mx-1">
                             <h4 className="pt-2 profile__details--name">{user?.name}</h4>
                             <div className=" profile__details--mail">{user?.email}</div>
@@ -46,7 +51,7 @@ const ProfileProfile = () => {
                             <div className="profile__skills">
                                 {skills &&
                                     skills?.map((val:any, index: number)=>(
-                                            <span className="mx-1 profile__skills--btn" key={index}>{val}</span>
+                                            <span className="mx-1 profile__box--btn" key={index}>{val}</span>
                                             ))
                                         }
                                 </div>

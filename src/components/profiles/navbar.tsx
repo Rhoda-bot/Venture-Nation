@@ -1,9 +1,21 @@
 import React, { useState } from "react";
 
 import { NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownItem, DropdownMenu } from 'reactstrap';
+import { logoutRequest } from "../../utility/apiRequest";
+import { useNavigate } from "react-router-dom";
 
 const ProfileNavbar = ({currentUser}: any) => {
     const [isOpen, setIsOpen] = useState(false);
+    const navigate = useNavigate();
+
+    const handleLogout = async() => {
+      const response = await logoutRequest('/auth/logout');
+     if (response.data.status === 'success') {
+        localStorage.removeItem("token");
+        navigate('/auth/sign-in');
+     }
+      
+    }
 
     return(
         <> 
@@ -42,7 +54,7 @@ const ProfileNavbar = ({currentUser}: any) => {
                            <span></span>
                           </a>
                           <ul className="dropdown-menu  dropdown-menu-end">
-                            <li><a className="dropdown-item" href="#">Logout</a></li>
+                            <li role="button" onClick={handleLogout}><a className="dropdown-item" href="#">Logout</a></li>
                             <li><hr className="dropdown-divider" /></li>
                             
                           </ul>

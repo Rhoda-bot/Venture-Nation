@@ -1,9 +1,12 @@
 import React from "react";
 import SIDEBAR  from '../../utility/sidebar.json'
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
     const sidebarMenu = SIDEBAR
+    const {pathname} = useLocation();
+
+    
     return(
         <>
            <div className="sidebar " style={{

@@ -27,3 +27,14 @@ export const patchRequest = async(url: any, data?: any) => {
       .catch((error) => error.response)
    return result;
 }
+
+export const logoutRequest = async(url:any) => {
+   const result = await axios.post(url, {
+      headers: {
+         Authorization: `Bearer ${localStorage.getItem('token')}`,
+         'Content-Type': 'multipart/json',
+      }
+   }).then((response) => response)
+      .catch((error) => error.response)
+   return result;
+}

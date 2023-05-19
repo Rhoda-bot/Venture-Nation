@@ -14,6 +14,7 @@ import ProfileView from './components/profiles/profile-venture/profileView'
 import ProfileProfile from './components/profiles/profile-profile'
 import EditProfile from './components/profiles/profile-profile/edit-profile'
 import Ventures from './components/ventures'
+import AddVenture from './components/ventures/add-venture'
 
 const RootComponent: React.FC = () => {
     return (
@@ -36,6 +37,7 @@ const RootComponent: React.FC = () => {
                     <Route path='/edit-profile' element={<EditProfile />}/>
                     <Route path='/ventures' element={<ProfileView />}/>
                     <Route path='/edit-venture' element={<Ventures />}/>
+                    <Route path='/venture/add-venture' element={<AddVenture />}/>
                 </Route>
             </Routes>
         </Router>

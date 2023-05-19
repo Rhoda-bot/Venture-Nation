@@ -6,6 +6,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { patchRequest } from "../../../utility/apiRequest";
 import axios from "axios";
+import { NavLink } from "react-router-dom";
 
 const GeneralProfile = () => {
     const [skills, setSkills] = useState<any>([]);
@@ -59,21 +60,22 @@ const GeneralProfile = () => {
                         <div className="row">
                             <h4 className="profile__details--name">General</h4>
                             <p className="profile__details--location">Personalize and keep your profile up-to-date.</p>
-                            <div className="col-md-12 position-relative" style={{
-                                backgroundImage: 'url(/assets/profile/pro2.png)',
-                                height: '170px',
-                                width: '100%',
-                                borderRadius: '0px 0px 30px 0px'
-                            }}>
-                                 <div className="file-upload mx-auto">
-                                    <label htmlFor="file-input" className="">Upload local image</label>
-                                    <input id="file-input" type="file" />
+                            <div className="profile__banner" style={{
+                            backgroundImage: 'url(/assets/profile/pro2.png)',
+                            height: '190px',
+                            width: '100%',
+                            backgroundSize: 'cover',
+                            backgroundRepeat: 'no-repeat',
+                            objectFit: 'cover',
+                            backgroundPosition: 'center center',
+                            borderRadius: '0px 0px 30px 0px'
+                        }}>
+                            <div className="row align-items-center profile__box">
+                                 <div className=" col-sm-4 col-md-6">
+                                    <img src={(user?.avatar === null) ? "/assets/profiles/ava.png": user?.avatar} className="img-fluid  profile__box--avartar"  alt="" />
                                 </div>
-                                <div>
-                                <img src={(user?.avatar === null) ? "/assets/profiles/ava.png": user?.avatar} className="img-fluid  profile__details--avartar"  alt="" />
-                                </div>
-                                
                             </div>
+                        </div>
                             <div className="col-md-12 py-5 mt-5">
                                 <Formik initialValues={{
                                     name: '',

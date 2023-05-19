@@ -37,7 +37,7 @@ function Tag({ setSkills, skills }: props) {
           onKeyUp={handleKeyDown}
           // onSubmit={handleKeyDown}
           className="tag__container--input"
-          placeholder="List out your skills and press enter"
+          placeholder="Type and press enter"
         />
       </div>
     </div>

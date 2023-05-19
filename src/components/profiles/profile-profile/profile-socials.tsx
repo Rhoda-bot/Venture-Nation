@@ -44,7 +44,7 @@ const ProfileSocials = () => {
                                                     return(
                                                         <Form>
                                                             <div className="row">
-                                                                <div className="col-md-10 mb-3">
+                                                                <div className="col-md-6 mb-3">
                                                                     <label htmlFor="linkedIn">LinkedIn profile link</label>
                                                                     <Field value="https://"
                                                                     type= "text" 
@@ -54,7 +54,7 @@ const ProfileSocials = () => {
                                                                          'form-control  signup__col--inp shadow-none'}
                                                                     />
                                                                 </div>
-                                                                <div className="col-md-10 mb-3">
+                                                                <div className="col-md-6 mb-3">
                                                                     <label htmlFor="twitter">Twitter profile link</label>
                                                                     <Field value="https://"
                                                                     type= "text" 
@@ -65,7 +65,7 @@ const ProfileSocials = () => {
                                                                     />
                                                                      
                                                                 </div>
-                                                                <div className="col-md-10 mb-3">
+                                                                <div className="col-md-6 mb-3">
                                                                     <label htmlFor="">Instagram profile link</label>
                                                                     <Field value="https://"
                                                                     type= "text" 
@@ -76,7 +76,7 @@ const ProfileSocials = () => {
                                                                     />
                                                                      
                                                                 </div>
-                                                                <div className="col-md-10 mb-3">
+                                                                <div className="col-md-6 mb-3">
                                                                     <label htmlFor="">Facebook profile link</label>
                                                                     <Field value="https://"
                                                                     type= "text" 
@@ -87,8 +87,8 @@ const ProfileSocials = () => {
                                                                     />
                                                                      
                                                                 </div>
-                                                                <div className="col-md-7"/>
-                                                                <div className="col-md-3 py-3">
+                                                                <div className="col-md-8"/>
+                                                                <div className="col-md-4 py-4">
                                                                     <button className="signup__col--btn py-3 ms-0 w-100 fw-bold">Save changes</button>
                                                                 </div>
                                                                
