@@ -55,28 +55,28 @@ const GeneralProfile = () => {
     return(
         <>
            <Fade>
-            <div className="general bg-white">
+            <div className="general">
                     <div className="container">
                         <div className="row">
-                            <h4 className="profile__details--name">General</h4>
-                            <p className="profile__details--location">Personalize and keep your profile up-to-date.</p>
-                            <div className="profile__banner" style={{
-                            backgroundImage: 'url(/assets/profile/pro2.png)',
-                            height: '190px',
-                            width: '100%',
-                            backgroundSize: 'cover',
-                            backgroundRepeat: 'no-repeat',
-                            objectFit: 'cover',
-                            backgroundPosition: 'center center',
-                            borderRadius: '0px 0px 30px 0px'
-                        }}>
-                            <div className="row align-items-center profile__box">
-                                 <div className=" col-sm-4 col-md-6">
-                                    <img src={(user?.avatar === null) ? "/assets/profiles/ava.png": user?.avatar} className="img-fluid  profile__box--avartar"  alt="" />
+                            <div className="general__header py-4 px-5">
+                                <h4 className="profile__details--name">General</h4>
+                                <p className="profile__details--location">Personalize and keep your profile up-to-date.</p>
+                            </div>
+                          
+                            <div className="row align-items-center profile__box px-3 mx-2">
+                                 <div className=" col-sm-4 col-md-6 position-relative">
+                                    <h6>Profile image</h6>
+                                    {/* <img src={"/assets/profile/ava.png"} className="img-fluid  profile__box--avartar"  alt="hhshhshshh" /> */}
+                                    <img src={(user?.avatar === null) ? "/assets/profile/ava.png": user?.avatar} className="img-fluid  profile__box--avartar"  alt="" />
+                                    <div className="profile__updateavatar">
+                                        <label htmlFor="updateavatar" role="button">
+                                            <img src="/assets/profile/upload.svg" alt="" />
+                                            <input id="file-input" type="file" />
+                                        </label>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                            <div className="col-md-12 py-5 mt-5">
+                            <div className="col-md-12">
                                 <Formik initialValues={{
                                     name: '',
                                     nationality: '',
@@ -93,11 +93,11 @@ const GeneralProfile = () => {
                                             const {touched} = props;
                                             return(
                                                 <Form>
-                                                <div className="row">
+                                                <div className="row px-3 mx-1">
                                                  <div className="col-md-6 mb-3">
                                                      <label htmlFor="name" className="className='signup__col--label">Full name</label>
                                                      <Field type="text" 
-                                                     className="form-control shadow-none
+                                                     className="form-control py-3 px-3 shadow-none
                                                      signup__col--inp" 
                                                      placeholder="Full name"
                                         
@@ -106,7 +106,7 @@ const GeneralProfile = () => {
                                                  </div>
                                                  <div className="col-md-6 mb-3">
                                                  <label htmlFor="gender" className="className='signup__col--label">Gender</label>
-                                                 <Field as="select" name="gender" className="form-select shadow-none
+                                                 <Field as="select" name="gender" className="form-select px-3 py-3 shadow-none
                                                      signup__col--inp" aria-label="Default select example">
                                                      <option defaultValue={"Male"} value="male">Male</option>
                                                      <option value="female">Female</option>
@@ -118,7 +118,7 @@ const GeneralProfile = () => {
                                                      <Field 
                                                          placeholder="Phone no"
                                                          className="form-control shadow-none
-                                                         signup__col--inp"
+                                                         signup__col--inp px-3 py-3"
                                                          name="phone"
                                                          
                                                      />
@@ -127,7 +127,7 @@ const GeneralProfile = () => {
                                                      <label htmlFor="phone" className="className='signup__col--label">Nationality</label>
                                                      <Field 
                                                          placeholder="Nigeria"
-                                                         className="form-control shadow-none
+                                                         className="form-control px-3 py-3 shadow-none
                                                          signup__col--inp"
                                                          name="nationality"
                                                          
@@ -136,7 +136,7 @@ const GeneralProfile = () => {
                                                  <div className="col-md-12 mb-3">
                                                      <label htmlFor="dob" className="className='signup__col--label">Date of birth</label>
                                                      <Field type="date" 
-                                                     className="form-control shadow-none
+                                                     className="form-control px-3 py-3 shadow-none
                                                      signup__col--inp" name="dob"/>
                                                  </div>
                                                  <div className="col-md-12">
@@ -144,15 +144,15 @@ const GeneralProfile = () => {
                                                  </div>
                                                  <div className="col-md-12 mb-3 ">
                                                  <label htmlFor="exampleFormControlTextarea1" className="form-label">Bio</label>
-                                                 <Field as="textarea" className="form-control shadow-none
+                                                 <Field as="textarea" className="form-control px-3 py-3 shadow-none
                                                      signup__col--inp" name="bio" id="exampleFormControlTextarea1" rows={3}></Field>
                                                      <p>Brief description for your profile.</p>
                                                  </div>
                                                  <div className="col-md-8"></div>
-                                                 <div className="col-md-4 text-end">
+                                                 <div className="col-md-4 text-end py-3">
                                                      <button
                                                          type="submit"
-                                                         className={"signup__col--btn"}
+                                                         className={"signup__col--btn px-3 py-3"}
                                                         >
                                                          Save changes
                                                          </button>

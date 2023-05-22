@@ -1,50 +1,59 @@
 .profile
     padding: 0 0 10px 10px
-    &__banner
-        background-color: $red 
-        padding: 2rem
-    &__box
-        height: 100px
-        top: 50px
-        transform: translate(0px, 70px)
+    &__banner  
+    &__updateavatar
         position: relative
+        overflow: hidden
+        display: inline-block 
+        left: -80px
+        top: 20px
+        & input[type=file] 
+            position: absolute
+            top: 0
+            right: 0
+            margin: 0
+            padding: 0
+            font-size: 20px
+            cursor: pointer
+            opacity: 0
+            filter: alpha(opacity=0)
+        & label
+            cursor: pointer        
+    &__details
+        margin-top: -30px
+        &--avatar
+            width:120px
+            border: 5px solid $white !important
         &--edit
-            margin-top: 40px
+            background: #fff
+            border: 1px solid #5a27d5
             border-radius: 5px
-            border: .14rem solid #5a27d5
             color: #5a27d5
             padding: 10px 20px
-            background-color: transparent
-            font-weight: 700
+            font-weight: 600
             &:hover
                 background: linear-gradient(90.73deg, #5A27D5 0%, #5F27D3 32.36%, #AE2EC4 100%)
                 color: $white
-                border: .14rem solid transparent
-        &--avartar
-            width: 100px
-    &__details
         &--name
             color: #404040
             font-weight: 600
         &--mail
             color: #7E848E
             font-weight: 400
-            font-size: 14px
-            line-height: 20px
-            padding-bottom: .5rem
-        &--text
-            font-size: 16px
-            padding-bottom: .5rem
+        &--bio
+            color: #7E848E
+            font-weight: 400
         &--location
             color: #7E848E
     &__skills
-        &--btn
+        &--tag
             background-color: #F8F5FF
             border-radius: 10px
             padding: 5px 15px 5px 10px
             border: 2px solid #F8F5FF
             color: #404040
             font-weight: 400
+            border-radius: 50px
 
 
     @media screen and (max-width: 400px)

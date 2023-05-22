@@ -36,6 +36,7 @@ const SignIn: React.FC = () => {
         
         if (response.data.status === 'success') {
             localStorage.setItem('token', response.data.token);
+            localStorage.setItem('userEmail', e.email)
             setErrorMessage('success, login sucessfully');
             setIsLoading(false);
             navigate('/profile')

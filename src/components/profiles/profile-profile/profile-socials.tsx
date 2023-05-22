@@ -25,11 +25,13 @@ const ProfileSocials = () => {
     return(
         <>
             <Fade>
-                <div className="signup bg-white">
+                <div className="general">
                     <div className="container">
-                        <div className="row mx-3">
-                        <h4 className="profile__details--name">Social profiles</h4>
-                        <p className="profile__details--location">Attach your other social media account to your profile. </p>
+                        <div className="row">
+                            <div className="general__header py-4 px-5">
+                            <h4 className="profile__details--name">Social profiles</h4>
+                            <p className="profile__details--location">Attach your other social media account to your profile. </p>
+                            </div>
                             <div className="col-md-12">
                             <hr />
                                 <Formik initialValues={{linkedIn: '', twitter: '', instagram: '', facebook: ''}}
@@ -43,7 +45,7 @@ const ProfileSocials = () => {
                                                      
                                                     return(
                                                         <Form>
-                                                            <div className="row">
+                                                            <div className="row px-4">
                                                                 <div className="col-md-6 mb-3">
                                                                     <label htmlFor="linkedIn">LinkedIn profile link</label>
                                                                     <Field value="https://"
@@ -51,7 +53,7 @@ const ProfileSocials = () => {
                                                                     name="linkedIn"
                                                                     id="linkedIn"
                                                                     className={ 
-                                                                         'form-control  signup__col--inp shadow-none'}
+                                                                         'form-control  signup__col--inp shadow-none py-3 px-3'}
                                                                     />
                                                                 </div>
                                                                 <div className="col-md-6 mb-3">
@@ -61,7 +63,7 @@ const ProfileSocials = () => {
                                                                     name="twitter"
                                                                     id="twitter"
                                                                     className={ 
-                                                                         'form-control  signup__col--inp shadow-none'}
+                                                                         'form-control  signup__col--inp shadow-none py-3 px-3'}
                                                                     />
                                                                      
                                                                 </div>
@@ -72,7 +74,7 @@ const ProfileSocials = () => {
                                                                     name="instagram"
                                                                     id="instagram"
                                                                     className={ 
-                                                                         'form-control  signup__col--inp shadow-none'}
+                                                                         'form-control  signup__col--inp shadow-none py-3 px-3'}
                                                                     />
                                                                      
                                                                 </div>
@@ -83,7 +85,7 @@ const ProfileSocials = () => {
                                                                     name="facebook"
                                                                     id="facebook"
                                                                     className={ 
-                                                                         'form-control  signup__col--inp shadow-none'}
+                                                                         'form-control  signup__col--inp shadow-none py-3 px-3'}
                                                                     />
                                                                      
                                                                 </div>

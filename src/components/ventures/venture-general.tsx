@@ -26,8 +26,10 @@ const VentureGeneral = () => {
             <div className="general bg-white">
                     <div className="container">
                         <div className="row">
-                            <h4 className="profile__details--name">General</h4>
-                            <p className="profile__details--location">Personalize and keep your profile up-to-date.</p>
+                        <div className="general__header py-4 px-5">
+                                <h4 className="profile__details--name">General</h4>
+                                <p className="profile__details--location">You can keep your venture information and data up-to-date by editing the form fields below.</p>
+                            </div>  
                             <div className="col-md-12 position-relative " style={{
                                 backgroundImage: 'url(/assets/profile/venturebg.png)',
                                 height: '170px',

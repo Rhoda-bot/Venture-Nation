@@ -13,7 +13,7 @@ const ProfileHome = () => {
     useEffect(() => {
 
         const getCurrentUser = async() => {
-            const fetchCurrentUser = await getRequest('users/current-user');
+            const fetchCurrentUser = await getRequest(`users/${localStorage.getItem('userEmail')}`);
             return fetchCurrentUser;
             
         }

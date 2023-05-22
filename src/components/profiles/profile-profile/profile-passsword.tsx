@@ -45,12 +45,14 @@ const ProfilePassword = () => {
     return(
         <>
             <Fade>
-                <div className="signup bg-white">
+                <div className="general" >
                     <div className="container">
                         <div className="row">
-                        <h4 className="profile__details--name">Password</h4>
-                        <p className="profile__details--location">Manage your account password</p>
-                            <div className="col-md-12">
+                            <div className="general__header py-4 px-5 ">
+                                <h4 className="profile__details--name">Password</h4>
+                                <p className="profile__details--location">Manage your account password</p>
+                            </div>
+                            <div className="col-md-12  ">
                             <hr />
                                 <Formik initialValues={{password: '', confirmPassword: ''}}
                                             onSubmit={handleSubmitForm}
@@ -105,11 +107,11 @@ const ProfilePassword = () => {
                                                       }
                                                     return(
                                                         <Form>
-                                                            <div className="row">
+                                                            <div className="row px-3 mx-auto">
                                                                 <div className="col-md-10 mb-3">
                                                                     <label htmlFor="oldPassword">Old Password</label>
                                                                     <input type="text" placeholder="Old Password"
-                                                                     className="form-control signup__col--inp shadow-none"/>
+                                                                     className="form-control signup__col--inp shadow-none py-3 px-3"/>
                                                                 </div>
                                                                 <div className="col-md-10 mb-3 position-relative">
                                                                     <label htmlFor="newPassword">New Password</label>
@@ -118,8 +120,8 @@ const ProfilePassword = () => {
                                                                     name="password"
                                                                     id="password"
                                                                     className={touched.password && errors.password ? 
-                                                                        'form-control  signup__col--inpisIvalid shadow-none' 
-                                                                        : 'form-control  signup__col--inp shadow-none'}
+                                                                        'form-control  signup__col--inpisIvalid py-3 px-3 shadow-none' 
+                                                                        : 'form-control  signup__col--inp py-3 px-3  shadow-none'}
                                                                     />
                                                                      <ErrorMessage name="password" component="div" className="error" />
                                                 
@@ -133,8 +135,8 @@ const ProfilePassword = () => {
                                                                     name="confirmPassword"
                                                                     id="confirmPassword"
                                                                     className={touched.password && errors.password ? 
-                                                                        'form-control  signup__col--inpisIvalid shadow-none' 
-                                                                        : 'form-control  signup__col--inp shadow-none'}
+                                                                        'form-control  signup__col--inpisIvalid shadow-none py-3 px-3' 
+                                                                        : 'form-control  signup__col--inp shadow-none py-3 px-3'}
                                                                     />
                                                                      <ErrorMessage name="confirmPassword" component="div" className="error" />
                                                 
