@@ -66,8 +66,7 @@ const GeneralProfile = () => {
                             <div className="row align-items-center profile__box px-3 mx-2">
                                  <div className=" col-sm-4 col-md-6 position-relative">
                                     <h6>Profile image</h6>
-                                    {/* <img src={"/assets/profile/ava.png"} className="img-fluid  profile__box--avartar"  alt="hhshhshshh" /> */}
-                                    <img src={(user?.avatar === null) ? "/assets/profile/ava.png": user?.avatar} className="img-fluid  profile__box--avartar"  alt="" />
+                                    <img src={(user?.avatar === null) ? "/assets/profile/ava.png": user?.avatar} className="img-fluid  profile__details--avatar"  alt="" />
                                     <div className="profile__updateavatar">
                                         <label htmlFor="updateavatar" role="button">
                                             <img src="/assets/profile/upload.svg" alt="" />

@@ -30,7 +30,7 @@ const VentureGeneral = () => {
                                 <h4 className="profile__details--name">General</h4>
                                 <p className="profile__details--location">You can keep your venture information and data up-to-date by editing the form fields below.</p>
                             </div>  
-                            <div className="col-md-12 position-relative " style={{
+                            <div className="col-md-12 " style={{
                                 backgroundImage: 'url(/assets/profile/venturebg.png)',
                                 height: '170px',
                                 width: '100%',

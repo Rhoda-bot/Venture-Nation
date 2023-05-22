@@ -3,6 +3,7 @@ import GeneralVenture from "./general-venture";
 import VentureOview from "./venture-overview";
 import VentureTeams from "./venture-teams";
 import VentureSocials from "./venture-socials";
+import VentureGeneral from "./venture-general";
 
 
 const EditVenture = () => {
@@ -87,7 +88,7 @@ const EditVenture = () => {
                         </div>
                         <div className="col-md-7 col-lg-7 col-xxl-6 px-2 px-md-3">
                             {swapStateItems === 1 &&   (
-                                <GeneralVenture />
+                                <VentureGeneral />
                             )}
                             {swapStateItems === 2 && (
                                 <VentureOview />
