@@ -21,8 +21,6 @@ const VentureDetails = () => {
         })
     }, [])
     
-    console.log(venture.name);
-    
     return(
         <>
             <div className="venturedetails py-3">

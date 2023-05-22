@@ -139,13 +139,13 @@ const AddVenture = ( ) => {
                                                         p-2
                                                         p-lg-3
                                                          shadow-none signup__col--inp`} aria-label="Default select example">
-                                                                 <option defaultValue={"Pre-seed"} value="Pre-seed">Pre-seed</option>
-                                                                 <option value="Seed">Seed</option>
-                                                                 <option value="Seed">Series A</option>
-                                                                 <option value="Seed">Series B</option>
-                                                                 <option value="Seed">Series C & Beyond</option>
-                                                                 <option value="Seed">Mezzanine</option>
-                                                                 <option value="Seed">Exit</option>
+                                                                 <option defaultValue={"Explore"} value="Explore">Explore</option>
+                                                                 <option value="Idea">Idea</option>
+                                                                 <option value="Concept">Concept</option>
+                                                                 <option value="Product">Product</option>
+                                                                 <option value="Revenue">Revenue</option>
+                                                                 <option value="Growth">Growth</option>
+                                                                 <option value="Stable">Stable</option>
                                                               
                                                     </Field>
                                                     <ErrorMessage name="stage" component="div" className="error"/>
@@ -194,7 +194,6 @@ const AddVenture = ( ) => {
                                                     <label htmlFor="description">Description <span>(required)</span></label>
                                                     <ReactQuill 
                                                         value={description}
-                                                        className="form-control"
                                                         placeholder="Compose an epic..."
                                                     />
                                                 </div>
@@ -251,7 +250,7 @@ const AddVenture = ( ) => {
                                                 </div>
                                                 
                                                 <div className="my-2 px-0 mb-3 mb-lg-4 text-end">
-                                                    <button className="py-3 ms-0 px-4 fw-bold" type="submit" style={{
+                                                    <button className="py-3 ms-0 px-4 fw-bold ventures--button" type="submit" style={{
                                                         minWidth: '160px'
                                                     }}>Create venture</button>
                                                 </div>

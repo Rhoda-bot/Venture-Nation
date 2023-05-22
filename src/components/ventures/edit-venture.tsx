@@ -86,7 +86,7 @@ const EditVenture = () => {
                                 
                             </ul>
                         </div>
-                        <div className="col-md-7 col-lg-7 col-xxl-6 px-2 px-md-3">
+                        <div className="col-lg-7 col-xxl-6 px-2 px-md-3">
                             {swapStateItems === 1 &&   (
                                 <VentureGeneral />
                             )}

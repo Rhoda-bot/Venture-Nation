@@ -6,7 +6,7 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { patchRequest } from "../../../utility/apiRequest";
 import axios from "axios";
-import { NavLink } from "react-router-dom";
+
 
 const GeneralProfile = () => {
     const [skills, setSkills] = useState<any>([]);
