@@ -60,7 +60,7 @@ const ProfileProfile = () => {
                             
                         <UserVentures />
                         </div>
-                <div className="col-md-3 d-none col-3 d-lg-block">
+                <div className="col-md-3 mt-4 pt-3 d-none col-3 d-lg-block">
                     <UserContact />
                     <Socials /> 
                 </div>
