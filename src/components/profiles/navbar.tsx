@@ -22,10 +22,10 @@ const ProfileNavbar = ({currentUser}: any) => {
              <div className="navigation d-none d-lg-block">
               <nav className="navbar navbar-expand-lg bg-white py-0">
                 <div className="container-fluid mx-5">
-                  <a className="navbar-brand d-flex" href="#">
+                  <NavLink className="navbar-brand d-flex" to="/">
                     <img src="/assets/venture-logo.png" alt="logo" width={45}  className="img-fluid navigation--logo"/>
                     <span className="d-none d-md-block mx-2 mt-2">Venture Nation</span>
-                  </a>
+                  </NavLink>
                   <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                   </button>
