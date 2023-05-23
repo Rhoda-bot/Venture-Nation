@@ -65,7 +65,7 @@ const VentureDetails = () => {
                                             ))
                                         }
                                         </p>
-                                        <NavLink className=" mb-1 mb-xl-2" to={""} target="_blank"> <i className="fa fa-link"/> {venture?.link}</NavLink>
+                                        <NavLink className=" mb-1 mb-xl-2" to={venture?.link} target="_blank" rel="no-referrer"> <i className="fa fa-link"/> {venture?.link}</NavLink>
 
                                     </div>
                                 </div>
