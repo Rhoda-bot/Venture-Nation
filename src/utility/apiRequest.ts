@@ -21,7 +21,7 @@ export const patchRequest = async(url: any, data?: any) => {
    const result = await axios.patch(url, data, {
       headers: {
          Authorization: `Bearer ${localStorage.getItem('token')}`,
-         'Content-Type': 'multipart/json',
+         'Content-Type': 'multipart/form-data',
       }
    }).then((response) => response)
       .catch((error) => error.response)

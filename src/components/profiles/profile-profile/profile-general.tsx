@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import Tag from "../../reusables/tag";
 import { Fade } from "reactstrap";
 import { UserContext } from "../../../context/userContext";
@@ -6,13 +6,15 @@ import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { patchRequest } from "../../../utility/apiRequest";
 import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 
 const GeneralProfile = () => {
     const [skills, setSkills] = useState<any>([]);
     const {user}: any = useContext<any>(UserContext);
-    const [avatar, setAvatar] = useState<any>();
+    // const [avatar, setAvatar] = useState<any>({});
     const [loading, setIsLoading] = useState(false);
+    const imgRef = useRef<any>()
    
     const validationSchema = Yup.object().shape({
         name: Yup.string(),
@@ -38,19 +40,30 @@ const GeneralProfile = () => {
         
         
     }
-    const saveAvatar = async () => {
+    const handleGetImage = async (e: any) =>{
+        const avatar = imgRef.current?.files[0];
         setIsLoading(true);
+       console.log(avatar);
+       
         const formData = new FormData();
-        if (avatar.name) {
             formData.append('image', avatar, avatar.name) 
-        }else{
-            formData.append("image", avatar, "image.png");
-        }
+        // if (avatar.name) {
+        //     formData.append('image',  avatar) 
+        // }else{
+        //     formData.append("image", "image.png");
+        // }
         const result = await patchRequest('users/update-avatar', formData);
-        if (result.status == 200) {
-            setIsLoading(false);
-        }
+        console.log(result);
         
+        if (result.status == 200) {
+            console.log(result);
+            
+            toast.success("Image updated successfully")
+            setIsLoading(false);
+        }else{
+            console.log(result);
+            toast.error("Image updated unsuccessfully")
+        }
     }
     return(
         <>
@@ -70,11 +83,12 @@ const GeneralProfile = () => {
                                     <div className="profile__updateavatar">
                                         <label htmlFor="updateavatar" role="button">
                                             <img src="/assets/profile/upload.svg" alt="" />
-                                            <input id="file-input" type="file" />
+                                            <input id="file-input" type="file" onChange={handleGetImage} ref={imgRef}/>
                                         </label>
                                     </div>
                                 </div>
                             </div>
+                            <ToastContainer />
                             <div className="col-md-12">
                                 <Formik initialValues={{
                                     name: '',

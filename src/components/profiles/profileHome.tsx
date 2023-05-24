@@ -24,7 +24,7 @@ const ProfileHome = () => {
                 
             }
         })
-    }, [localStorage.getItem('token')])
+    }, [user])
     
     return(
         <>

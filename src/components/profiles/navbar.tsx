@@ -45,7 +45,7 @@ const ProfileNavbar = ({currentUser}: any) => {
                       </li>
                         <li className="nav-item mt-2">
                         <a className="nav-link">
-                        <img src={(currentUser?.avatar === null) ? "/assets/profiles/ava.png"  : currentUser?.avatar} className="img-fluid p-0" width={35} height={35} alt="" />
+                        <img src={(currentUser?.avatar === null) ? "/assets/profiles/ava.png"  : currentUser?.avatar} className="img-fluid p-0" style={{borderRadius: '50px'}} width={35} height={35} alt="" />
                         <small className="mx-2">{currentUser?.name}</small>
                         </a>
                       </li>
