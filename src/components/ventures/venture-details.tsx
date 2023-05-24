@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { NavLink, useParams } from "react-router-dom";
 import { UserContext } from "../../context/userContext";
 import { getRequest } from "../../utility/apiRequest";
+import moment from "moment";
 
 const VentureDetails = () => {
     const {venturename} = useParams();
@@ -40,7 +41,7 @@ const VentureDetails = () => {
                                     }}>
 
                                     </div>
-                                    <div className="profile__details px-2 px-lg-4 pb-3 pb-xxl-4 bg-white">
+                                    <div className="profile__details px-2 px-lg-4 pb-3 pb-xxl-4 bg-white venturedetails__description">
                                         <div className="row align-items-end mb-2 mb-xxl-3 rounded">
                                             <div className="col-5">
                                                 <img src={venture?.logo && venture?.logo ? venture?.logo : "/assets/profile/defaultBg.webp"} className="ventures__card--img " alt="venture logo" />
@@ -71,30 +72,34 @@ const VentureDetails = () => {
                                 </div>
                             </div>
                         </div>
-                         <div className="col-xl-4 px-4 my-3  bg-white rounded">
-                            <div className="venturedetails__description p-4 h-100">
-                                <h5 className="my-4">Contact info</h5>
-                                <div className="my-3">
-                                    <div className="d-flex my-2">
-                                        <div className="px-md-2">
-                                            <img src="/assets/icons/dail.svg"/>
-                                            <p className="mb-1">
-                                                    Phone
-                                            </p>
-                                            <p className="mb-0">
-                                                {venture?.owner?.phone}
-                                            </p>
-                                        </div>
-                                    </div>
+                         <div className="col-xl-4 px-4 my-3">
+                            <div className="venturedetails__description bg-white p-4 h-100 venturedetails__card">
+                                <h5 className="fw-bold mb-3 my-1">Contact info</h5>
+                                <div className="">
+                                    <i className="fa fa-phone"/> <span className="mx-3 contact--span">Phone </span>
+                                    <p className="mx-4 px-2 contact--text">{venture?.phone}</p>
+
                                 </div>
+                                <div className="">
+                                    <i className="fa fa-message"/> <span className="mx-3 contact--span">Email Address </span>
+                                    <p className="mx-4 px-2 contact--text">{venture?.email}</p>
+
+                                </div>
+                                <div className="">
+                                    <i className="fa fa-map-marker"/> <span className="mx-3 contact--span">Location </span>
+                                    <p className="mx-4 px-2 contact--text">{venture?.location}</p>
+
+                                </div>
+                                <h5 className="fw-bold mb-3 my-1">Social Profiles</h5>
+                              
                             </div>
                          </div>
                          <div className="row my-4 px-3">
                             <div className="col-md-6 col-xl-3 px-4 my-2">
-                                <div className="row align-items-center p-2 px-3 py-4 py-lg-4 h-100 bg-white rounded">
+                                <div className="row align-items-center p-2 px-3 py-4 py-lg-4 h-100 venturedetails__card">
                                     <div className="col-9">
                                         <h6 className="mb-2 fw-bold ">
-                                            <small>Explore</small>
+                                            <small>{venture?.stage}</small>
                                         </h6>
                                         <p>Venture stage</p>
                                     </div>
@@ -104,10 +109,12 @@ const VentureDetails = () => {
                                 </div>
                             </div>
                             <div className="col-md-6 col-xl-3 px-4 my-2 ">
-                                <div className="row align-items-center px-3 py-4 py-lg-4 h-100 bg-white rounded">
+                                <div className="row align-items-center px-3 py-4 py-lg-4 h-100 venturedetails__card">
                                     <div className="col-9">
                                         <h6 className="mb-2 fw-bold ">
-                                            <small>Explore</small>
+                                             {venture?.businessModel && venture?.businessModel.map((val:any)=>(
+                                                <small key={val}>{val}</small>
+                                            ))}
                                         </h6>
                                         <p>Customer model</p>
                                     </div>
@@ -117,7 +124,7 @@ const VentureDetails = () => {
                                 </div>
                             </div>
                             <div className="col-md-6 col-xl-3 px-4 my-2 ">
-                                <div className="row align-items-center px-3 py-4 py-lg-4 h-100 bg-white rounded">
+                                <div className="row align-items-center px-3 py-4 py-lg-4 h-100 venturedetails__card">
                                     <div className="col-9">
                                         <h6 className="mb-2 fw-bold ">
                                             <small>NA</small>
@@ -130,26 +137,26 @@ const VentureDetails = () => {
                                 </div>
                             </div>
                             <div className="col-md-6 col-xl-3 px-4 my-2 ">
-                                <div className="row align-items-center px-3 py-4 py-lg-4 h-100 bg-white rounded">
+                                <div className="row align-items-center px-3 py-4 py-lg-4 h-100 venturedetails__card">
                                     <div className="col-9">
                                         <h6 className="mb-2 fw-bold ">
-                                            <small>2023</small>
+                                            <small>{moment(venture?.dateFounded).format('YYYY')}</small>
                                         </h6>
                                         <p>Year founded</p>
                                     </div>
                                     <div className="col-3">
-                                        <img src="/assets/icons/year.svg" alt="" />
+                                        <img src="/assets/icons/calendar.svg" alt="" />
                                     </div>
                                 </div>
                             </div>
                          </div>
                          <div className="row my-4">
                             <div className="col-lg-12 px-4 my-3">
-                                <div className="venturedetails__description p-4 h-100 bg-white">
+                                <div className="venturedetails__card p-4 h-100 bg-white">
                                     <div className="pe-5">
                                         <h5 className="my-3">Full description</h5>
                                         <div className="pe-5 me-5">
-                                            <p>Short description</p>
+                                            <p  dangerouslySetInnerHTML={{__html: venture?.description}} />
                                         </div>
                                     </div>
                                 </div>

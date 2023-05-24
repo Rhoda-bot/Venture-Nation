@@ -7,12 +7,11 @@ import * as Yup from 'yup';
 import { patchRequest } from "../../../utility/apiRequest";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
-
+import countries from '../../../utility/countries.json';
 
 const GeneralProfile = () => {
     const [skills, setSkills] = useState<any>([]);
     const {user}: any = useContext<any>(UserContext);
-    // const [avatar, setAvatar] = useState<any>({});
     const [loading, setIsLoading] = useState(false);
     const imgRef = useRef<any>()
    
@@ -22,7 +21,8 @@ const GeneralProfile = () => {
         phone: Yup.string(),
         dob: Yup.string(),
         bio: Yup.string(),
-        gender: Yup.string()
+        gender: Yup.string(),
+        skills: Yup.string()
 
       })
     const handleForm = (values: any) => {
@@ -79,7 +79,10 @@ const GeneralProfile = () => {
                             <div className="row align-items-center profile__box px-3 mx-2">
                                  <div className=" col-sm-4 col-md-6 position-relative">
                                     <h6>Profile image</h6>
-                                    <img src={(user?.avatar === null) ? "/assets/profile/ava.png": user?.avatar} className="img-fluid  profile__details--avatar"  alt="" />
+                                    <img src={(user?.avatar === null) ? "/assets/profile/ava.png": user?.avatar} className="img-fluid  profile__details--avatar" style={{
+                                        borderRadius: '50%',
+                                        border: '5px solid white'
+                                    }} alt="" />
                                     <div className="profile__updateavatar">
                                         <label htmlFor="updateavatar" role="button">
                                             <img src="/assets/profile/upload.svg" alt="" />
@@ -90,13 +93,16 @@ const GeneralProfile = () => {
                             </div>
                             <ToastContainer />
                             <div className="col-md-12">
-                                <Formik initialValues={{
-                                    name: '',
-                                    nationality: '',
-                                    phone: '',
-                                    dob: '',
-                                    bio: '',
-                                    gender: '',
+                                <Formik 
+                                enableReinitialize
+                                initialValues={{
+                                    name: user?.name,
+                                    nationality: user?.nationality,
+                                    phone: user?.phone,
+                                    dob: user?.dob,
+                                    bio: user?.bio,
+                                    gender: user?.gender,
+                                    skills: user?.skills
                                 }}
                                 onSubmit={handleForm}
 
@@ -113,7 +119,6 @@ const GeneralProfile = () => {
                                                      className="form-control py-3 px-3 shadow-none
                                                      signup__col--inp" 
                                                      placeholder="Full name"
-                                        
                                                      name="name"
                                                      />
                                                  </div>
@@ -121,7 +126,7 @@ const GeneralProfile = () => {
                                                  <label htmlFor="gender" className="className='signup__col--label">Gender</label>
                                                  <Field as="select" name="gender" className="form-select px-3 py-3 shadow-none
                                                      signup__col--inp" aria-label="Default select example">
-                                                     <option defaultValue={"Male"} value="male">Male</option>
+                                                     <option defaultValue={""} value="male">Male</option>
                                                      <option value="female">Female</option>
                                                   
                                                  </Field>
@@ -138,19 +143,24 @@ const GeneralProfile = () => {
                                                  </div>
                                                  <div className="col-md-6 mb-3">
                                                      <label htmlFor="phone" className="className='signup__col--label">Nationality</label>
-                                                     <Field 
-                                                         placeholder="Nigeria"
-                                                         className="form-control px-3 py-3 shadow-none
-                                                         signup__col--inp"
-                                                         name="nationality"
-                                                         
-                                                     />
+                                                        
+                                                            <Field as="select" name="gender" className="form-select px-3 py-3 shadow-none
+                                                            signup__col--inp" aria-label="Default select example">
+                                                                {
+                                                                   countries.map((val:any) => (
+                                                                <option  key={val.name}>{val.name}</option>
+                                                            
+                                                    
+                                                            )) }
+                                                        </Field>
                                                  </div>
                                                  <div className="col-md-12 mb-3">
                                                      <label htmlFor="dob" className="className='signup__col--label">Date of birth</label>
                                                      <Field type="date" 
                                                      className="form-control px-3 py-3 shadow-none
-                                                     signup__col--inp" name="dob"/>
+                                                     signup__col--inp" name="dob"
+                                                     
+                                                     />
                                                  </div>
                                                  <div className="col-md-12">
                                                      <Tag setSkills={setSkills} skills={skills}/>
@@ -158,7 +168,9 @@ const GeneralProfile = () => {
                                                  <div className="col-md-12 mb-3 ">
                                                  <label htmlFor="exampleFormControlTextarea1" className="form-label">Bio</label>
                                                  <Field as="textarea" className="form-control px-3 py-3 shadow-none
-                                                     signup__col--inp" name="bio" id="exampleFormControlTextarea1" rows={3}></Field>
+                                                     signup__col--inp" name="bio" id="exampleFormControlTextarea1" rows={3} >
+
+                                                     </Field>
                                                      <p>Brief description for your profile.</p>
                                                  </div>
                                                  <div className="col-md-8"></div>

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { NavItem, NavLink, UncontrolledDropdown, DropdownToggle, DropdownItem, DropdownMenu } from 'reactstrap';
 import { logoutRequest } from "../../utility/apiRequest";
 import { useNavigate } from "react-router-dom";
+import { ToastContainer, toast } from "react-toastify";
 
 const ProfileNavbar = ({currentUser}: any) => {
     const [isOpen, setIsOpen] = useState(false);
@@ -11,9 +12,16 @@ const ProfileNavbar = ({currentUser}: any) => {
     const handleLogout = async() => {
       const response = await logoutRequest('/auth/logout');
      if (response.data.status === 'success') {
+      toast.success("Logout successfully")
         localStorage.removeItem("token");
         navigate('/auth/sign-in');
+     }else{
+      response.data.errors
+      console.log(  response.data.errors);
+      toast.error('error')
+      
      }
+  
       
     }
 
@@ -95,6 +103,7 @@ const ProfileNavbar = ({currentUser}: any) => {
                 </div>
               </div>
             </nav>
+            <ToastContainer />
         </>
     )
 }
