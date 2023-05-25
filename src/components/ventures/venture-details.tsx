@@ -3,10 +3,13 @@ import { NavLink, useParams } from "react-router-dom";
 import { UserContext } from "../../context/userContext";
 import { getRequest } from "../../utility/apiRequest";
 import moment from "moment";
+import Chart from 'react-apexcharts';
+import { object } from "yup";
+import { isEmptyArray } from "formik";
 
 const VentureDetails = () => {
     const {venturename} = useParams();
-    const [venture, setVenture] = useState<any>([])
+    const [venture, setVenture] = useState<any>([]);
     useEffect(() => {
         const getCurrentVenture = async() => {
             const fetchCurrentVenture = await getRequest(`ventures/${venturename}`);
@@ -20,8 +23,65 @@ const VentureDetails = () => {
                 
             }
         })
-    }, [])
-    
+    }, []);
+
+    const chartOptions = {
+        chart: {
+          id: 'line-chart',
+        },
+        xaxis: {
+          categories: venture?.revenue && Object.values(venture?.revenue),
+        },
+        fill: {
+            type: 'gradient',
+            gradient: {
+              shade: 'dark',
+              shadeIntensity: 0.5,
+              gradientToColors: ['#ABE5A1'],
+              inverseColors: false,
+              opacityFrom: 1,
+              opacityTo: 0.9,
+              stops: [0, 100],
+            },
+          },
+      };
+
+      const chartRevenue:any =[
+        {
+            name: 'Revenue',
+            data: venture?.revenue && Object.keys(venture?.revenue)
+        } 
+      ] 
+    const userOptions = {
+        chart: {
+            id: 'line-chart',
+        },
+        xaxis: {
+            categories: venture?.noOfUsers && Object.values(venture?.noOfUsers)
+        }
+    }
+
+    const chartNoOfUsers:any = [
+        {
+            name: 'Users',
+            data: venture?.noOfUsers && Object.keys(venture?.noOfUsers)
+        }
+    ]
+    const grossTransactionOptions = {
+        chart: {
+            id: 'line-chart',
+        },
+        xaxis: {
+            categories: venture?.grossTransactionalValue && Object.values(venture?.grossTransactionalValue)
+        }
+    }
+
+    const chartGrossTransactionValue:any = [
+        {
+            name: 'Users',
+            data: venture?.grossTransactionalValue && Object.keys(venture?.grossTransactionalValue)
+        }
+    ]
     return(
         <>
             <div className="venturedetails py-3">
@@ -77,12 +137,12 @@ const VentureDetails = () => {
                                 <h5 className="fw-bold mb-3 my-1">Contact info</h5>
                                 <div className="">
                                     <i className="fa fa-phone"/> <span className="mx-3 contact--span">Phone </span>
-                                    <p className="mx-4 px-2 contact--text">{venture?.phone}</p>
+                                    <p className="mx-4 px-2 contact--text">{venture?.owner?.phone}</p>
 
                                 </div>
                                 <div className="">
                                     <i className="fa fa-message"/> <span className="mx-3 contact--span">Email Address </span>
-                                    <p className="mx-4 px-2 contact--text">{venture?.email}</p>
+                                    <p className="mx-4 px-2 contact--text">{venture?.owner?.email}</p>
 
                                 </div>
                                 <div className="">
@@ -101,7 +161,7 @@ const VentureDetails = () => {
                                         <h6 className="mb-2 fw-bold ">
                                             <small>{venture?.stage}</small>
                                         </h6>
-                                        <p>Venture stage</p>
+                                        <p className="profile__details--mail">Venture stage</p>
                                     </div>
                                     <div className="col-3">
                                         <img src="/assets/icons/stage.svg" alt="" />
@@ -116,7 +176,7 @@ const VentureDetails = () => {
                                                 <small key={val}>{val}</small>
                                             ))}
                                         </h6>
-                                        <p>Customer model</p>
+                                        <p className="profile__details--mail">Customer model</p>
                                     </div>
                                     <div className="col-3">
                                         <img src="/assets/icons/model.svg" alt="" />
@@ -129,7 +189,7 @@ const VentureDetails = () => {
                                         <h6 className="mb-2 fw-bold ">
                                             <small>NA</small>
                                         </h6>
-                                        <p>Average salary</p>
+                                        <p className="profile__details--mail">Average salary</p>
                                     </div>
                                     <div className="col-3">
                                         <img src="/assets/icons/avgSalary.svg" alt="" />
@@ -142,7 +202,7 @@ const VentureDetails = () => {
                                         <h6 className="mb-2 fw-bold ">
                                             <small>{moment(venture?.dateFounded).format('YYYY')}</small>
                                         </h6>
-                                        <p>Year founded</p>
+                                        <p className="profile__details--mail">Year founded</p>
                                     </div>
                                     <div className="col-3">
                                         <img src="/assets/icons/calendar.svg" alt="" />
@@ -156,9 +216,161 @@ const VentureDetails = () => {
                                     <div className="pe-5">
                                         <h5 className="my-3">Full description</h5>
                                         <div className="pe-5 me-5">
-                                            <p  dangerouslySetInnerHTML={{__html: venture?.description}} />
+                                            <p className="profile__details--mail" dangerouslySetInnerHTML={{__html: venture?.description}} />
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                         </div>
+                         <div className="row">
+                           <div>
+                           <div className="col-12 venturedetails__card p-md-4">
+                                <h6 className="mt-3 mx-2">Overview</h6>
+                                <div className="row">
+                                    <div className="col-md-6 my-2 px-3 px-lg-4">
+                                        <div className="row p-2">
+                                           <div className="col-md-6 p-2">
+                                                <div className="card p-2 h-100">
+                                                    <div className="row align-items-center ">
+                                                    <div className="col-4">
+                                                    <img src="/assets/icons/revenue.svg" className="img-fluid" alt="" />
+                                                    
+                                                    </div>
+                                                    <div className="col-8">
+                                                    <h6 className="mb-1 fw-bold">
+                                                        <small>{200000}</small>
+                                                    </h6>
+                                                        <p className="profile__details--mail">Revenue</p>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                           </div>
+                                           <div className="col-md-6 p-2">
+                                                <div className="card p-2 h-100">
+                                                    <div className="row align-items-center ">
+                                                    <div className="col-4">
+                                                    <img src="/assets/icons/users.svg" className="img-fluid" alt="" />
+                                                    
+                                                    </div>
+                                                    <div className="col-8">
+                                                    <h6 className="mb-1 fw-bold">
+                                                        <small>{200000}</small>
+                                                    </h6>
+                                                        <p className="profile__details--mail">No of users</p>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                           </div>
+                                           <div className="col-md-6 p-2">
+                                                <div className="card p-2 h-100">
+                                                    <div className="row align-items-center">
+                                                    <div className="col-4">
+                                                    <img src="/assets/icons/employ.svg" className="img-fluid" alt="" />
+                                                    
+                                                    </div>
+                                                    <div className="col-8">
+                                                    <h6 className="mb-1 fw-bold">
+                                                        <small>{200000}</small>
+                                                    </h6>
+                                                        <p className="profile__details--mail">Full-time employees</p>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                           </div>
+                                           <div className="col-md-6 p-2">
+                                                <div className="card p-2 h-100">
+                                                    <div className="row align-items-center ">
+                                                    <div className="col-4">
+                                                    <img src="/assets/icons/funds.svg" className="img-fluid" alt="" />
+                                                    
+                                                    </div>
+                                                    <div className="col-8">
+                                                    <h6 className="mb-1 fw-bold">
+                                                        <small>{200000}</small>
+                                                    </h6>
+                                                        <p className="profile__details--mail">Part-time workers</p>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                           </div>
+                                           <div className="col-md-6  p-2">
+                                                <div className="card p-2 h-100">
+                                                    <div className="row align-items-center">
+                                                    <div className="col-4">
+                                                    <img src="/assets/icons/revenue.svg" className="img-fluid" alt="" />
+                                                    
+                                                    </div>
+                                                    <div className="col-8">
+                                                    <h6 className="mb-1 fw-bold">
+                                                        <small>{200000}</small>
+                                                    </h6>
+                                                        <p className="profile__details--mail">External funds raised</p>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                           </div>
+                                           <div className="col-md-6  p-2">
+                                                <div className="card p-2 h-100">
+                                                    <div className="row align-items-center">
+                                                    <div className="col-4">
+                                                    <img src="/assets/icons/gtv.svg" className="img-fluid" alt="" />
+                                                    
+                                                    </div>
+                                                    <div className="col-8">
+                                                    <h6 className="mb-1 fw-bold">
+                                                        <small>{200000}</small>
+                                                    </h6>
+                                                        <p className="profile__details--mail">GTV</p>
+                                                    </div>
+                                                    </div>
+                                                </div>
+                                           </div>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6 my-2 px-3 px-lg-4">
+                                        <div className="card p-3">
+                                        <h6 className="mx-2">Revenue</h6>
+                                        <Chart
+                                            options={chartOptions}
+                                            series={chartRevenue}
+                                            type="line"
+                                            height={250}
+                                        />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6 my-2 px-3 px-lg-4">
+                                        <div className="card p-3">
+                                            <h6 className="mx-2">Number of Users</h6>
+                                            <Chart
+                                                options={userOptions}
+                                                series={chartNoOfUsers}
+                                                type="line"
+                                                height={250}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="col-md-6 my-2 px-3 px-lg-4">
+                                        <div className="card p-3">
+                                            <h6 className="mx-2">Gross Transaction Value</h6>
+                                            <Chart
+                                                options={grossTransactionOptions}
+                                                series={chartGrossTransactionValue}
+                                                type="line"
+                                                height={250}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                           </div>
+                         </div>
+                         <div className="row my-4 px-3">
+                            <div className="">
+                                <div className="col-md-12 col-12 venturedetails__card p-md-4 text-center">
+                                     <h6 className="text-start">Team members</h6>
+                                    {!venture?.team || venture?.team.length === 0 && (
+                                       <img src="/assets/profile/emptystate.svg" className="" alt="image" />
+                                    )}
                                 </div>
                             </div>
                          </div>
