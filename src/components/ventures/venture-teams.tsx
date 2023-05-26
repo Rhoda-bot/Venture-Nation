@@ -14,8 +14,8 @@ const VentureTeams = () => {
                         <div className="col-md-12">
                         <div className="row align-items-center">
                             <div className="col-6 text-start"></div>
-                            <div className="col-6 text-end">
-                                <button className="profile__details--edit ms-0"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <div className="col-5 text-end mx-3 px-2">
+                                <button className="profile__details--edit ms-0 "  data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     <i className="fa fa-plus"/> Add team member
                                 </button>
                             </div>

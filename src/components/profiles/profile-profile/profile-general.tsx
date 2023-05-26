@@ -4,7 +4,7 @@ import { Fade } from "reactstrap";
 import { UserContext } from "../../../context/userContext";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { patchRequest } from "../../../utility/apiRequest";
+import { patchRequest, patchRequestAvatar } from "../../../utility/apiRequest";
 import axios from "axios";
 import { ToastContainer, toast } from "react-toastify";
 import countries from '../../../utility/countries.json';
@@ -22,22 +22,19 @@ const GeneralProfile = () => {
         dob: Yup.string(),
         bio: Yup.string(),
         gender: Yup.string(),
-        skills: Yup.string()
+        skill: Yup.string()
 
       })
-    const handleForm = (values: any) => {
+    const handleForm =async (values: any) => {
         console.log({...values, skills});
-        
-        // const api =await patchRequest(`users/${user.email}`, {...values,skills});
-        // console.log(api);
-        axios.patch(`users/${user.email}`,  {...values,skills}, {
-            headers: {
-               Authorization: `Bearer ${localStorage.getItem('token')}`,
-               'Content-Type': 'multipart/json',
-            }
-         }).then((response) => console.log(response))
-            .catch((error) => console.log(error.response))
-        
+        const api =await patchRequest(`users/${user.email}`, {...values,skills});
+        console.log(api);
+        if (api.status === 200) {
+            toast.success("Profile updated successfully.")
+        }
+        if (api.data.errors) {
+            toast.error(api.data.errors.message);
+        }
         
     }
     const handleGetImage = async (e: any) =>{
@@ -47,12 +44,8 @@ const GeneralProfile = () => {
        
         const formData = new FormData();
             formData.append('image', avatar, avatar.name) 
-        // if (avatar.name) {
-        //     formData.append('image',  avatar) 
-        // }else{
-        //     formData.append("image", "image.png");
-        // }
-        const result = await patchRequest('users/update-avatar', formData);
+       
+        const result = await patchRequestAvatar('users/update-avatar', formData);
         console.log(result);
         
         if (result.status == 200) {
@@ -75,7 +68,7 @@ const GeneralProfile = () => {
                                 <h4 className="profile__details--name">General</h4>
                                 <p className="profile__details--location">Personalize and keep your profile up-to-date.</p>
                             </div>
-                          
+                          <ToastContainer />
                             <div className="row align-items-center profile__box px-3 mx-2">
                                  <div className=" col-sm-4 col-md-6 position-relative">
                                     <h6>Profile image</h6>
@@ -102,7 +95,7 @@ const GeneralProfile = () => {
                                     dob: user?.dob,
                                     bio: user?.bio,
                                     gender: user?.gender,
-                                    skills: user?.skills
+                                    skill: user?.skills
                                 }}
                                 onSubmit={handleForm}
 
@@ -126,7 +119,7 @@ const GeneralProfile = () => {
                                                  <label htmlFor="gender" className="className='signup__col--label">Gender</label>
                                                  <Field as="select" name="gender" className="form-select px-3 py-3 shadow-none
                                                      signup__col--inp" aria-label="Default select example">
-                                                     <option defaultValue={""} value="male">Male</option>
+                                                     <option defaultValue={"male"} value="male">Male</option>
                                                      <option value="female">Female</option>
                                                   
                                                  </Field>
@@ -144,7 +137,7 @@ const GeneralProfile = () => {
                                                  <div className="col-md-6 mb-3">
                                                      <label htmlFor="phone" className="className='signup__col--label">Nationality</label>
                                                         
-                                                            <Field as="select" name="gender" className="form-select px-3 py-3 shadow-none
+                                                            <Field as="select" name="nationality" className="form-select px-3 py-3 shadow-none
                                                             signup__col--inp" aria-label="Default select example">
                                                                 {
                                                                    countries.map((val:any) => (
@@ -163,7 +156,7 @@ const GeneralProfile = () => {
                                                      />
                                                  </div>
                                                  <div className="col-md-12">
-                                                     <Tag setSkills={setSkills} skills={skills}/>
+                                                     <Tag setSkills={setSkills} skills={user?.skills}/>
                                                  </div>
                                                  <div className="col-md-12 mb-3 ">
                                                  <label htmlFor="exampleFormControlTextarea1" className="form-label">Bio</label>
@@ -190,7 +183,26 @@ const GeneralProfile = () => {
                                 </Formik>
                             </div>
                         </div>
+                        
                     </div>
+                </div>
+                <div className="row mt-3">
+                           <div className="my-3">
+                           <div className="col-md-12 p-3 mt-3 my-3 bg-white venturedetails__card">
+                                
+                                <div className="d-flex align-items-start mb-2">
+                                      <div>
+                                        <h6 className="mb-2 fw-bold">Delete this venture</h6>
+                                        <p className="profile__details--mail">Enable your venture to be visible to the public</p>
+                                      </div>
+                                      <label htmlFor="" className="ms-4 ms-auto my-4">
+                                      <div className="form-check form-switch">
+                                        <input className="form-check-input shadow-none" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                                        </div>
+                                      </label>
+                                </div>
+                            </div>
+                           </div>
                 </div>
            </Fade>
         </>

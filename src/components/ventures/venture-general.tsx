@@ -7,6 +7,7 @@ import { UserContext } from "../../context/userContext";
 import { useParams } from "react-router-dom";
 import { getRequest } from "../../utility/apiRequest";
 import ReactQuill from "react-quill";
+import Sector from "../reusables/sector";
 
 const VentureGeneral = () => {
     const [skills, setSkills] = useState<any>();
@@ -102,15 +103,17 @@ const VentureGeneral = () => {
                                 </div>   
                             </div>
                             <div className="col-md-12 py-5 mt-5">
-                                <Formik initialValues={{
-                                    name: '',
-                                    dateFounded: '',
-                                    link: '',
-                                    sector: '',
-                                    businessModel: '',
-                                    stage: '',
-                                    tagline: '',
-                                    location: ''
+                                <Formik 
+                                 enableReinitialize
+                                initialValues={{
+                                    name: venture?.name,
+                                    dateFounded: venture?.dateFounded,
+                                    link: venture?.link,
+                                    sector: venture?.sector,
+                                    businessModel: venture?.businessModel,
+                                    stage: venture?.stage,
+                                    tagline: venture?.tagline,
+                                    location: venture?.location
                                 }}
                                 onSubmit={handleForm}
                                 validationSchema={validationSchema}
@@ -127,6 +130,7 @@ const VentureGeneral = () => {
                                                         placeholder="Venture name" 
                                                         type="text"
                                                         name="name"
+
                                                         className={ touched.name && errors.name? `form-control
                                                         p-2
                                                         p-lg-3
@@ -211,7 +215,7 @@ const VentureGeneral = () => {
                                                 <div className="col-md-6 mb-3">
                                                     
                                                     <label htmlFor="sector" className="signup__col--label mb-2">Sector <span>(required)</span></label>
-                                                    <Tag setSkills={setSector} skills={sector}/>
+                                                    <Sector setSector={setSector} sector={sector}/>
                                                 </div>
                                                 <div className="col-md-6 mb-3">
                                                     <label htmlFor="model" className="signup__col--label mb-2">Customer model <span>(required)</span></label>
@@ -279,6 +283,40 @@ const VentureGeneral = () => {
                             </div>
                         </div>
                     </div>
+                </div>
+                <div className="row mt-3">
+                           <div className="my-3 py-4">
+                           <div className="col-md-12 p-3 py-3 mt-3 my-3 bg-white venturedetails__card">
+                                
+                                <div className="d-flex align-items-start mb-2">
+                                      <div>
+                                        <h6 className="mb-2 fw-bold">Public visibility</h6>
+                                        <p className="profile__details--mail">Enable your venture to be visible to the public</p>
+                                      </div>
+                                      <label htmlFor="" className="ms-4 ms-auto my-4">
+                                      <div className="form-check form-switch">
+                                        <input className="form-check-input shadow-none" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
+                                        </div>
+                                      </label>
+                                </div>
+                            </div>
+                           </div>
+                </div>
+                <div className="row mt-3">
+                           <div className="my-3 py-4">
+                           <div className="col-md-12 p-3 py-3 mt-3 my-3 bg-white venturedetails__card">
+                                
+                                <div className="d-flex align-items-start mb-2">
+                                      <div>
+                                        <h6 className="mb-2 fw-bold">Delete this venture</h6>
+                                        <p className="profile__details--mail">We recommend that you back-up all important files and data before initiating this process.</p>
+                                      </div>
+                                </div>
+                                      <div className="text-end">
+                                      <button className="py-2 py-lg-3 px-lg-4 text-end btn btn-outline-danger ">Delete Venture</button>
+                                      </div>
+                            </div>
+                           </div>
                 </div>
            </Fade>
         </>

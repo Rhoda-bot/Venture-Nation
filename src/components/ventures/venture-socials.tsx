@@ -28,7 +28,9 @@ const VentureSocials = () => {
                             </div>
                             <div className="col-md-12">
                             <hr />
-                                <Formik initialValues={{linkedIn: '', twitter: '', instagram: '', facebook: ''}}
+                                <Formik 
+                                    enableReinitialize 
+                                    initialValues={{linkedIn: '', twitter: '', instagram: '', facebook: ''}}
                                             onSubmit={handleSubmitForm}
                                             validationSchema={validationSchema}
                                         >

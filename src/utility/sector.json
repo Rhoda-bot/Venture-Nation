@@ -1,0 +1,68 @@
+[
+    {
+        "id": 1,
+        "name": "Agriculture"
+    },
+    {
+        "id": 2,
+        "name": "Automobile"
+    },
+    {
+        "id": 3,
+        "name": "Banking and Finance"
+    },
+    {
+        "id": 4,
+        "name": "Construction"
+    },
+    {
+        "id": 5,
+        "name": "Education"
+    },
+    {
+        "id": 6,
+        "name": "Energy & Utilities"
+    },
+    {
+        "id": 7,
+        "name": "Entertaiment & Media"
+    },
+    {
+        "id": 8,
+        "name": "Healthcare"
+    },
+    {
+        "id": 9,
+        "name": "Hospitality & Tourism"
+    },
+    {
+        "id": 10,
+        "name": "Information Technology (IT)"
+    },
+    {
+        "id": 11,
+        "name": "Manufacturing"
+    },
+    {
+        "id": 12,
+        "name": "Mining & Extraction"
+    },
+    {
+        "id": 13,
+        "name": "Pharmaceuticals"
+    },
+    {
+        "id": 14,
+        "name": "Telecommunication"
+    }, {
+        "id": 15,
+        "name": "Retail"
+    },
+    {
+        "id": 16,
+        "name": "Real Estate"
+    }, {
+        "id": 17,
+        "name": "Transportation & Logistic"
+    }
+]
