@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import GeneralVenture from "./general-venture";
 import VentureOview from "./venture-overview";
 import VentureTeams from "./venture-teams";
 import VentureSocials from "./venture-socials";

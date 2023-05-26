@@ -42,7 +42,17 @@ export const logoutRequest = async(url:any) => {
    const result = await axios.post(url, {
       headers: {
          Authorization: `Bearer ${localStorage.getItem('token')}`,
-         'Content-Type': 'multipart/json',
+         'Content-Type': 'application/json',
+      }
+   }).then((response) => response)
+      .catch((error) => error.response)
+   return result;
+}
+export const postRequest2 = async(url:any, data:any) => {
+   const result = await axios.post(url, data, {
+      headers: {
+         Authorization: `Bearer ${localStorage.getItem('token')}`,
+         'Content-Type': 'application/json',
       }
    }).then((response) => response)
       .catch((error) => error.response)

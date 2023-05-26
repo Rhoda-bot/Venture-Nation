@@ -3,6 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { postRequest } from "../../utility/apiRequest";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
+import { toast } from "react-toastify";
 
 const SignIn: React.FC = () => {
     const [hideorshowPassword, setHideorShowPassword] = useState<boolean>(false);
@@ -37,7 +38,7 @@ const SignIn: React.FC = () => {
         if (response.data.status === 'success') {
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('userEmail', e.email)
-            setErrorMessage('success, login sucessfully');
+            toast.success('success, login sucessfully');
             setIsLoading(false);
             navigate('/profile')
 
@@ -46,7 +47,7 @@ const SignIn: React.FC = () => {
    if (response.data.errors) {
         const errorsArr = response.data.errors;
         errorsArr.map((val:any) =>{
-            setErrorMessage(val.message);
+            toast.error(val.message);
            setIsLoading(false)
     })
     }
