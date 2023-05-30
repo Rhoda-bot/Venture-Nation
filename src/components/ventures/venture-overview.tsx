@@ -1,6 +1,7 @@
 import React from "react";
 import * as Yup from 'yup';
 import { ErrorMessage, Field, Form, Formik } from "formik";
+import Metrics from "./venture-metrics";
 
 const VentureOview = () => {
     const ValidationSchema = Yup.object().shape({
@@ -115,6 +116,7 @@ const VentureOview = () => {
                     </Formik>
                     </div>
                     </div>
+                    <Metrics />
                 </div>
             </div>
         </>
