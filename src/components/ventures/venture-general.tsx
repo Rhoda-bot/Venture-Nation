@@ -313,7 +313,7 @@ const VentureGeneral = () => {
                                       </div>
                                 </div>
                                       <div className="text-end">
-                                      <button className="py-2 py-lg-3 px-lg-4 text-end btn btn-outline-danger ">Delete Venture</button>
+                                      <button className="py-2 py-lg-3 px-lg-4 text-end btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#exampleModal2">Delete Venture</button>
                                       </div>
                             </div>
                            </div>

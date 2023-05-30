@@ -32,7 +32,9 @@ const VentureTeams = () => {
                         </div>
                         <div className="col-md-12">
                         <div className="row align-items-center">
-                            <div className="col-6 text-start"></div>
+                            <div className="col-6 text-start">
+
+                            </div>
                             <div className="col-5 text-end mx-3 px-2">
                                 <button className="profile__details--edit ms-0 "  data-bs-toggle="modal" data-bs-target="#exampleModal">
                                     <i className="fa fa-plus"/> Add team member
@@ -40,24 +42,59 @@ const VentureTeams = () => {
                             </div>
                         </div>
                         <div className="row text-center">
-                            <img src="/assets/profile/emptystate.svg" alt="" />
-                            <p>No confirmed team member yet</p>
-                            {/* <div className="">
-                                <div className="col-md-12 col-12 venturedetails__card p-md-4 text-center">
-                                     <h6 className="text-start">Team members</h6>
+                        <div className="">
+                                <div className="col-md-12 col-12 p-md-4 text-center">
                                     {!venture?.team || venture?.team.length === 0 && (
-                                       <img src="/assets/profile/emptystate.svg" className="" alt="image" />
+                                        <>
+                                        {/* <h6 className="text-start">Team members</h6> */}
+                                        <img src="/assets/profile/emptystate.svg" className="" alt="image" />
+                                        <p>No confirmed team member yet</p>
+                                       </>
                                     )}
+                                    
+                                       <div className="row">
+                                             {venture?.team && (
+                                            venture?.team.map((val:any,index:number) => (
+                                                <div className="col-md-6" key={index}>
+                                                    <div className="row align-items-center p-2 p-xxl-3 w-auto">
+                                                        <div className="col-3" style={{
+                                                            backgroundImage: `url(${val?.avatar})`,
+                                                            height: '50px',
+                                                            width: '50px',
+                                                            backgroundRepeat: 'no-repeat',
+                                                            borderRadius: '50px',
+                                                            backgroundSize: 'cover'
+                                                        }}></div>
+                                                        <div className="col-9">
+                                                            <div className="d-flex align-items-start">
+                                                                <p className="fw-bold">{val?.name}</p><br />
+                                                                <p className="mb-1 py-0 fw-bold text-end ms-auto dropdown"  role="button" data-bs-toggle="dropdown" aria-expanded="false">...</p>
+                                                                <div className="dropdown-menu dropdown-menu-demo">
+                                                                    <a href="#" className="dropdown-item">Edit Role</a>
+                                                                </div>
+                                                                <p>
+                                                                {val?.role}
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            ))
+                                        )}
+                                       </div>
+                                    
                                 </div>
-                            </div> */}
+                            </div>
+                            
                         </div>
                         <div className="row py-5">
-                          <div className="">
+                          <div className="mx-3 py-3">
+                            <h6>Manage invites</h6>
                           <div className="nav nav-tabs" id="nav-tab" role="tablist">
-                            <button className="nav-link active ventures--link px-3 py-3 mx-2" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
+                            <button className="nav-link active ventures--link px-3 py-3" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
                                 Pending
                             </button>
-                            <button className="nav-link ventures--link" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
+                            <button className="nav-link ventures--link px-3 py-3 mx-2" id="nav-profile-tab" data-bs-toggle="tab" data-bs-target="#nav-profile" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">
                                 Declined</button>
                           </div>
                           <div className="tab-content" id="nav-tabContent">
