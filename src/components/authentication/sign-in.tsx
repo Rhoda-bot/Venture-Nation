@@ -68,8 +68,8 @@ const SignIn: React.FC = () => {
                                     return(
                                         <Form>
                                         <img src="/assets/venture-logo.png" className='mb-3' alt="Logo" />
-                                        <h1 className='signup__col--title'>Create an account</h1>
-                                        <p className='signup__col--text'>Please fill all the required input fields.</p>
+                                        <h1 className='signup__col--title'>Welcome back!</h1>
+                                        <p className='signup__col--text'>Kindly input your details to access your account.</p>
                                         <div className="row justify-content-center text-start">
                                             
                                             <div className="col-md-8 mb-2">
@@ -85,7 +85,7 @@ const SignIn: React.FC = () => {
                                                  <ErrorMessage name="email" component="div" className="error" />
                                                  <p className='text-danger'>{errorMessage}</p>
                                             </div>
-                                            <div className="col-md-8 mb-2 position-relative">
+                                            <div className="col-md-8 mb-3 position-relative">
                                                 <label htmlFor="password" className='signup__col--label'>Password</label>
                                                 <Field 
                                                     type={hideorshowPassword == false? "password" : "text" } 
@@ -102,7 +102,7 @@ const SignIn: React.FC = () => {
                                             </div>
                         
                                         
-                                            <div className="col-md-8">
+                                            <div className="col-md-8 mt-2">
                                             <button
                                                 type="submit"
                                                 className={dirty && isValid ? "signup__col--btn" : "disabled-btn signup__col--btn"}
@@ -113,9 +113,9 @@ const SignIn: React.FC = () => {
                                             </div>
                                             <div className="col-md-8 text-center mt-3">
                                                 <p>
-                                                Already have an account? 
-                                                <NavLink to="/auth/sign-in"><b className='mx-1' style={{color:'rgba(90, 39, 213, 1)',
-                                                }}>Log in</b></NavLink>
+                                                Don’t have an account? 
+                                                <NavLink to="/auth/sign-up"><b className='mx-1' style={{color:'rgba(90, 39, 213, 1)',
+                                                }}>Sign up</b></NavLink>
                                                 </p>
                                             </div>
                                         </div>

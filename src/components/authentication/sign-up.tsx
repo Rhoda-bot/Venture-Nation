@@ -131,7 +131,7 @@ const SignUp = () => {
                                         <p className='signup__col--text'>Please fill all the required input fields.</p>
                                         <div className="row justify-content-center text-start">
                                             <div className="col-md-8 mb-2">
-                                                <label htmlFor="fullname" className='signup__col--label'>Full Name</label>
+                                                <label htmlFor="name" className='signup__col--label'>Full Name</label>
                                                 <Field 
                                                     type="text"
                                                     name="name"
@@ -140,7 +140,7 @@ const SignUp = () => {
                                                         'form-control signup__col--inpisIvalid shadow-none' : 
                                                         'form-control signup__col--inp shadow-none'}
                                                 />
-                                                 <ErrorMessage name="fullname" component="div" className="error" />
+                                                 <ErrorMessage name="name" component="div" className="error text-danger" />
                                             
                                             </div>
                                             <div className="col-md-8 mb-2">
@@ -153,7 +153,7 @@ const SignUp = () => {
                                                         'form-control  signup__col--inpisIvalid shadow-none' 
                                                         : 'form-control  signup__col--inp shadow-none'}
                                                 />
-                                                 <ErrorMessage name="email" component="div" className="error" />
+                                                 <ErrorMessage name="email" component="div" className="error text-danger" />
                                                  <p className='text-danger'>{response}</p>
                                             </div>
                                             <div className="col-md-8 mb-2 position-relative">
@@ -166,7 +166,7 @@ const SignUp = () => {
                                                         'form-control  signup__col--inpisIvalid shadow-none' 
                                                         : 'form-control  signup__col--inp shadow-none'}
                                                 />
-                                                 <ErrorMessage name="password" component="div" className="error" />
+                                                 <ErrorMessage name="password" component="div" className="error text-danger" />
                                                 
                                                 <i className={hideorshowPassword == false?`fa-regular fa-eye signup__col--icon`:`fa-regular fa-eye-slash signup__col--icon`}
                                                  onClick={handleHideOrShowPassword}/>
