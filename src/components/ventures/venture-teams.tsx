@@ -3,6 +3,7 @@ import AddTeamModal from "../modal/add-teamModal";
 import { getRequest } from "../../utility/apiRequest";
 import { useParams } from "react-router-dom";
 import { Button, Card, CardText, CardTitle, Col, Nav, NavItem, NavLink, Row, TabContent, TabPane } from "reactstrap";
+import DeleteInviteModal from "../modal/deleteInvite";
 
 const VentureTeams = () => {
     const {venturename} = useParams();
@@ -21,6 +22,15 @@ const VentureTeams = () => {
             }
         })
     }, [])
+    const handleRemoveTeamMember = async (name:any) => {
+        const filt =  venture?.team.filter((members:any) => {
+            if (members.name === name ) {
+              console.log(members);
+              
+            }
+        });
+        
+    }
     return (
         <>
             <div className="general bg-white">
@@ -53,31 +63,38 @@ const VentureTeams = () => {
                                     )}
                                     
                                        <div className="row">
-                                             {venture?.team && (
+                                             { venture?.team && (
                                             venture?.team.map((val:any,index:number) => (
                                                 <div className="col-md-6" key={index}>
-                                                    <div className="row align-items-center p-2 p-xxl-3 w-auto">
-                                                        <div className="col-3" style={{
-                                                            backgroundImage: `url(${val?.avatar})`,
-                                                            height: '50px',
-                                                            width: '50px',
-                                                            backgroundRepeat: 'no-repeat',
-                                                            borderRadius: '50px',
-                                                            backgroundSize: 'cover'
-                                                        }}></div>
-                                                        <div className="col-9">
-                                                            <div className="d-flex align-items-start">
-                                                                <p className="fw-bold">{val?.name}</p><br />
-                                                                <p className="mb-1 py-0 fw-bold text-end ms-auto dropdown"  role="button" data-bs-toggle="dropdown" aria-expanded="false">...</p>
-                                                                <div className="dropdown-menu dropdown-menu-demo">
-                                                                    <a href="#" className="dropdown-item">Edit Role</a>
+                                                    <NavLink to="#">
+                                                        <div className="ventures__teamcard px-2">
+                                                        <div className="row align-items-center p-2 p-xxl-3 w-auto ">
+                                                            <div className="col-3" style={{ 
+                                                                backgroundImage: `url(${val?.avatar})`,
+                                                                height: '50px',
+                                                                width: '50px',
+                                                                backgroundRepeat: 'no-repeat',
+                                                                borderRadius: '50px',
+                                                                backgroundSize: 'cover'
+                                                            }}></div>
+                                                            <div className="col-9">
+                                                                <div className="d-flex align-items-start">
+                                                                    <p className="fw-bold mb-1">{val?.name}</p>
+                                                                    <p className="mb-1 py-0 fw-bold text-end ms-auto dropdown"  role="button" data-bs-toggle="dropdown" aria-expanded="false">...</p>
+                                                                    <div className="dropdown-menu dropdown-menu-demo border-0 mx-2" style={{
+                                                                        boxShadow:"0px 0px 50px -5px rgba(0, 0, 0, 0.08)"
+                                                                    }}>
+                                                                        <NavLink href="#" className="dropdown-item p-2"><i className="fa fa-edit mx-2"/> Edit Role</NavLink>
+                                                                        <NavLink href="#" className="dropdown-item p-2 text-danger" onClick={() => handleRemoveTeamMember(val?.name)}><i className="fa fa-trash mx-2"/>Remove</NavLink>
+                                                                    </div>
                                                                 </div>
-                                                                <p>
-                                                                {val?.role}
-                                                                </p>
+                                                                    <p className="mb-0 text-start">
+                                                                        <small> {val?.role}</small>
+                                                                    </p>
                                                             </div>
                                                         </div>
-                                                    </div>
+                                                        </div>
+                                                    </NavLink>
                                                 </div>
                                             ))
                                         )}
@@ -88,7 +105,7 @@ const VentureTeams = () => {
                             
                         </div>
                         <div className="row py-5">
-                          <div className="mx-3 py-3">
+                          <div className="mx-2 me-0 py-3 px-2">
                             <h6>Manage invites</h6>
                           <div className="nav nav-tabs" id="nav-tab" role="tablist">
                             <button className="nav-link active ventures--link px-3 py-3" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button" role="tab" aria-controls="nav-home" aria-selected="true">
@@ -99,7 +116,27 @@ const VentureTeams = () => {
                           </div>
                           <div className="tab-content" id="nav-tabContent">
                             <div className="tab-pane fade show active " id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab" tabIndex={0}>
-                                Pending Tab
+                                <div className="row align-items-center">
+                                    {venture?.invites &&(
+                                        <>
+                                        <div className="col-md-8">
+                                        <div className="d-flex mt-3 pt-3">
+                                            <img src="/assets/icons/inviteAvatar.svg" className=" mx-2" alt="" />
+                                          <p className="fw-bold mx-3">
+                                            {venture?.invites && Object.keys(venture?.invites)}
+                                          </p>
+                                        </div>
+                                    </div>
+                                    <div className="col-md-4">
+                                        <div className="d-flex mt-3">
+                                            <button className="profile__details--edit">Resend</button>
+                                            <i className="fa fa-trash mx-5 mt-3 text-danger" role="button" data-bs-toggle="modal" data-bs-target="#exampleModal3"/>
+                                        </div>
+                                    </div>
+                                    </>
+                                    )
+                                    }
+                                </div>
                             </div>
                             <div className="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab"  tabIndex={0}>
                                 Declined Pane
@@ -111,6 +148,7 @@ const VentureTeams = () => {
                     </div>
                 </div>
                 <AddTeamModal />
+                <DeleteInviteModal />
             </div>
         </>
     )

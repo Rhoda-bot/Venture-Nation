@@ -20,7 +20,7 @@ const UserVentures = () => {
             <div className="row">
                 {user?.ventures && user?.ventures.map((val: any) => (
                      <div className="col-md-6 col-xxl-4 my-2 my-xxl-3 mt-3" key={val?.name}>
-                     <NavLink to={`/profile/ventures/${val?.slug}`}>
+                     <NavLink to={`/ventures/${val?.slug}`}>
                      <div className="card ventures__card border-0 h-100">
                          <div className="venture__banner" style={{
                              backgroundImage: 'url(/assets/profile/banner.png)',

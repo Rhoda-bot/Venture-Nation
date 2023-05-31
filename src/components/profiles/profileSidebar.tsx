@@ -4,17 +4,16 @@ import { NavLink, useLocation } from "react-router-dom";
 
 const Sidebar = () => {
     const sidebarMenu = SIDEBAR
-    const {pathname} = useLocation();
 
     
     return(
         <>
-           <div className="sidebar " style={{
+           <div className="sidebar mt-2" style={{
             height: '100%'
            }}>
             {
                 sidebarMenu.map(({id, name, icon}) => (
-                    <NavLink to={name.toLocaleLowerCase()} key={id} className="sidebar--link ml-1 text-decoration-none d-none d-lg-block">
+                    <NavLink to={name.replace(/\s+/g, '-').toLocaleLowerCase()} key={id} className="sidebar--link ml-1 text-decoration-none d-none d-lg-block">
                         <div  className="">
                         <img src={icon} alt="image" /> {name}
                         </div>

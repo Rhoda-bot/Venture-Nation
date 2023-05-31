@@ -39,10 +39,6 @@ const ProfileNavbar = ({currentUser}: any) => {
                   </button>
                   <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0 " />
-                    <form className="d-flex navigation__form" role="search">
-                     <input className="form-control d-none d-md-block navigation__form--input shadow-none" type="search" placeholder="Search" aria-label="Search" />
-                      <span className="fa fa-search form-control-feedback navigation__form--search d-none d-md-block"></span>
-                    </form>
                     <ul className="navbar-nav px-0 mx-0">
                       <li className="nav-item mt-2 mx-2">
                         <a href="." className="nav-link">
@@ -61,10 +57,8 @@ const ProfileNavbar = ({currentUser}: any) => {
                           <a className="nav-link dropdown-toggle mt-1" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                            <span></span>
                           </a>
-                          <ul className="dropdown-menu  dropdown-menu-end">
+                          <ul className="dropdown-menu  dropdown-menu-end border-0">
                             <li role="button" onClick={handleLogout}><a className="dropdown-item" href="#">Logout</a></li>
-                            <li><hr className="dropdown-divider" /></li>
-                            
                           </ul>
                         </li>
                       

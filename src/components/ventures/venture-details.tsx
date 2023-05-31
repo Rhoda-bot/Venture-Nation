@@ -367,10 +367,38 @@ const VentureDetails = () => {
                          <div className="row my-4 px-3">
                             <div className="">
                                 <div className="col-md-12 col-12 venturedetails__card p-md-4 text-center">
-                                     <h6 className="text-start">Team members</h6>
+                                     <h6 className="text-start fw-bold">Team members</h6>
                                     {!venture?.team || venture?.team.length === 0 && (
                                        <img src="/assets/profile/emptystate.svg" className="" alt="image" />
                                     )}
+                                       <div className="row my-4">
+                                       { venture?.team && (
+                                            venture?.team.map((val:any,index:number) => (
+                                                <div className="col-md-3" key={index}>
+                                                        <div className="ventures__teamcard px-2">
+                                                        <div className="row align-items-center p-2 p-xxl-3 w-auto ">
+                                                            <div className="col-3" style={{ 
+                                                                backgroundImage: `url(${val?.avatar})`,
+                                                                height: '50px',
+                                                                width: '50px',
+                                                                backgroundRepeat: 'no-repeat',
+                                                                borderRadius: '50px',
+                                                                backgroundSize: 'cover'
+                                                            }}></div>
+                                                            <div className="col-9">
+                                                                <div className="d-flex align-items-start">
+                                                                    <p className="fw-bold mb-1">{val?.name}</p>
+                                                                </div>
+                                                                    <p className="mb-0 text-start">
+                                                                        <small> {val?.role}</small>
+                                                                    </p>
+                                                            </div>
+                                                        </div>
+                                                        </div>
+                                                </div>
+                                            ))
+                                        )}
+                                       </div>
                                 </div>
                             </div>
                          </div>

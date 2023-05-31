@@ -32,10 +32,10 @@ const ProfileHome = () => {
             <div className="profile p-0">
                 <div className="container-fluid ">
                     <div className="row">
-                        <div className={ pathname === "/venture/add-venture"?`d-none col-md-2` : 'd-block col-md-2'}>
+                        <div className={( pathname === "/venture/add-venture"?`d-none col-md-2` : 'd-block col-md-2')}>
                             <Sidebar />
                         </div>
-                        <div  className={ pathname === "/venture/add-venture"?`col-md-12 p-0` : 'col-md-10 p-0'}>
+                        <div  className={( pathname === "/venture/add-venture"?`col-md-12 p-0` : 'col-md-10 p-0') }>
                             <Outlet />
                         </div>
                         

@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { getRequest } from "../../utility/apiRequest";
 import ReactQuill from "react-quill";
 import Sector from "../reusables/sector";
+import DeleteVentureModal from "../modal/deleteVenture";
 
 const VentureGeneral = () => {
     const [skills, setSkills] = useState<any>();
@@ -319,6 +320,7 @@ const VentureGeneral = () => {
                            </div>
                 </div>
            </Fade>
+           <DeleteVentureModal />
         </>
     )
 }

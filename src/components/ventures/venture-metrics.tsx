@@ -48,7 +48,7 @@ const Metrics = () => {
                             const {errors, dirty, touched} =props;
                             return(
                                 <Form>
-                                    <div className="row">
+                                    <div className="row me-2">
                                     <div className="col-md-5 my-2 my-lg-3 px-2">
                                         <label htmlFor="revenue" className="signup__col--label mb-2">Date</label>
                                                         <Field 
@@ -103,7 +103,7 @@ const Metrics = () => {
                             const {errors, dirty, touched} =props;
                             return(
                                 <Form>
-                                    <div className="row">
+                                    <div className="row me-2">
                                     <div className="col-md-5 my-2 my-lg-3 px-2">
                                         <label htmlFor="revenue" className="signup__col--label mb-2">Date</label>
                                                         <Field 
@@ -139,6 +139,7 @@ const Metrics = () => {
                                         <div className="col-md-2 my-3 my-lg-3">
                                             <input  className="py-3 m ms-0 px-4 mt-4 fw-bold profile__details--edit" type="submit" value="Update"/>
                                         </div>
+                                        <p>Display on venture’s overview</p>
                                     </div>
                                 </Form>
                             )
@@ -158,7 +159,7 @@ const Metrics = () => {
                             const {errors, dirty, touched} =props;
                             return(
                                 <Form>
-                                    <div className="row">
+                                    <div className="row me-2">
                                     <div className="col-md-5 my-2 my-lg-3 px-2">
                                         <label htmlFor="revenue" className="signup__col--label mb-2">Date</label>
                                                         <Field 
@@ -181,7 +182,7 @@ const Metrics = () => {
                                                             placeholder="Venture name" 
                                                             type="text"
                                                             name="gtv"
-                                                            className={ touched.gtv && errors.gtv? `form-control
+                                                            className={ touched.gtv && errors.gtv?`form-control
                                                             p-2
                                                             p-lg-3
                                                             shadow-none signup__col--inpisIvalid` : `form-control
@@ -194,6 +195,7 @@ const Metrics = () => {
                                         <div className="col-md-2 my-3 my-lg-3">
                                             <input  className="py-3 m ms-0 px-4 mt-4 fw-bold profile__details--edit" type="submit" value="Update" />
                                         </div>
+                                        <p>Display on venture’s overview</p>
                                     </div>
                                 </Form>
                             )

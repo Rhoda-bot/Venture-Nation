@@ -6,13 +6,13 @@
     },
     {
         "id": 2,
-        "name": "Learning hub",
+        "name": "Learning Hub",
         "icon": "/assets/icons/book.png"
         
     },
     {
         "id": 3,
-        "name": "Resource hub",
+        "name": "Resource Hub",
         "icon": "/assets/icons/color-swatch.png"
     },
     {
@@ -22,11 +22,16 @@
     },
     {
         "id": 5,
-        "name": "Communities",
+        "name": "Ventures",
         "icon": "/assets/icons/people.png"
     },
     {
         "id": 6,
+        "name": "Communities",
+        "icon": "/assets/icons/people.png"
+    },
+    {
+        "id": 7,
         "name": "Messages",
         "icon": "/assets/icons/sms.png"
 
