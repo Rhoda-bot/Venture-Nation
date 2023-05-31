@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { postRequest } from "../../../utility/apiRequest";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Fade } from "reactstrap";
+import { UserContext } from "../../../context/userContext";
 
 const ProfileSocials = () => {
 
-
+    const {user}: any = useContext<any>(UserContext);
   
    
     const validationSchema = Yup.object().shape({
@@ -34,7 +35,9 @@ const ProfileSocials = () => {
                             </div>
                             <div className="col-md-12">
                             <hr />
-                                <Formik initialValues={{linkedIn: '', twitter: '', instagram: '', facebook: ''}}
+                                <Formik 
+                                enableReinitialize
+                                initialValues={{linkedIn: user?.socials?.linkedin, twitter: user?.socials?.twitter, instagram:user?.socials?.instagram, facebook: user?.socials?.facebook}}
                                             onSubmit={handleSubmitForm}
                                             validationSchema={validationSchema}
                                         >
@@ -48,46 +51,56 @@ const ProfileSocials = () => {
                                                             <div className="row px-4">
                                                                 <div className="col-md-6 mb-3">
                                                                     <label htmlFor="linkedIn">LinkedIn profile link</label>
-                                                                    <Field value="https://"
+                                                                    <Field 
+                                                                    placeholder="https://"
                                                                     type= "text" 
                                                                     name="linkedIn"
                                                                     id="linkedIn"
-                                                                    className={ 
-                                                                         'form-control  signup__col--inp shadow-none py-3 px-3'}
+                                                                    className={touched.linkedIn && errors.linkedIn ? 
+                                                                        'form-control  signup__col--inpisIvalid shadow-none' 
+                                                                        : 'form-control  signup__col--inp shadow-none'}
                                                                     />
+                                                                     <ErrorMessage name="linkedIn" component="div" className="error text-danger" />
+                                             
                                                                 </div>
                                                                 <div className="col-md-6 mb-3">
                                                                     <label htmlFor="twitter">Twitter profile link</label>
-                                                                    <Field value="https://"
+                                                                    <Field 
+                                                                    placeholder="https://"
                                                                     type= "text" 
                                                                     name="twitter"
                                                                     id="twitter"
-                                                                    className={ 
-                                                                         'form-control  signup__col--inp shadow-none py-3 px-3'}
+                                                                    className={touched.twitter && errors.twitter ? 
+                                                                        'form-control  signup__col--inpisIvalid shadow-none' 
+                                                                        : 'form-control  signup__col--inp shadow-none'}
                                                                     />
-                                                                     
+                                                                      <ErrorMessage name="twitter" component="div" className="error text-danger" />
                                                                 </div>
                                                                 <div className="col-md-6 mb-3">
                                                                     <label htmlFor="">Instagram profile link</label>
-                                                                    <Field value="https://"
+                                                                    <Field 
+                                                                    placeholder="https://"
                                                                     type= "text" 
                                                                     name="instagram"
                                                                     id="instagram"
-                                                                    className={ 
-                                                                         'form-control  signup__col--inp shadow-none py-3 px-3'}
+                                                                    className={touched.instagram && errors.instagram ? 
+                                                                        'form-control  signup__col--inpisIvalid shadow-none' 
+                                                                        : 'form-control  signup__col--inp shadow-none'}
                                                                     />
-                                                                     
+                                                                       <ErrorMessage name="instagram" component="div" className="error text-danger" />
                                                                 </div>
                                                                 <div className="col-md-6 mb-3">
                                                                     <label htmlFor="">Facebook profile link</label>
-                                                                    <Field value="https://"
+                                                                    <Field 
+                                                                    placeholder="https://"
                                                                     type= "text" 
                                                                     name="facebook"
                                                                     id="facebook"
-                                                                    className={ 
-                                                                         'form-control  signup__col--inp shadow-none py-3 px-3'}
+                                                                    className={touched.facebook && errors.facebook ? 
+                                                                        'form-control  signup__col--inpisIvalid shadow-none' 
+                                                                        : 'form-control  signup__col--inp shadow-none'}
                                                                     />
-                                                                     
+                                                                     <ErrorMessage name="facebook" component="div" className="error text-danger" />
                                                                 </div>
                                                                 <div className="col-md-8"/>
                                                                 <div className="col-md-4 py-4">
