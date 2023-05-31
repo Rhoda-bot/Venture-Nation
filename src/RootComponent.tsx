@@ -19,13 +19,13 @@ import VentureDetails from './components/ventures/venture-details'
 import EditVenture from './components/ventures/edit-venture'
 import Dashboard from './components/dashboard'
 import LearningHub from './components/learning-hub'
+import LearningHubs from './components/learning-hub/learningHub'
 
 const RootComponent: React.FC = () => {
     return (
         <Router>
             <Routes>
                 <Route path="*" element={<NotFoundPage />} />
-                {/* <Route path={ROUTES.HOMEPAGE_ROUTE} element={<HomePage />} /> */}
                 <Route path='/'  element={<GaurdSignInPage />}>
                     <Route path="auth/sign-in" element={<SignIn />} />
                 </Route>
@@ -45,6 +45,8 @@ const RootComponent: React.FC = () => {
                     <Route path='/edit-venture' element={<Ventures />}/>
                     <Route path='/venture/add-venture' element={<AddVenture />}/>
                     <Route path='/dashboard' element={<Dashboard />}/>
+                </Route>
+                <Route element={< LearningHubs/>}>
                     <Route path='/learning-hub' element={<LearningHub />}/>
                 </Route>
             </Routes>

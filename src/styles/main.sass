@@ -26,10 +26,9 @@ a
 p
   font-size: 1rem
 .form-check-input:checked
-  background-color: purple
-  border-color: purple
-  width: 3rem
-  height: 3rem
+  background-color: #5A27D5
+  border-color: #5A27D5
+  box-shadow: none
 body 
   position: relative
   margin: 0
@@ -68,62 +67,16 @@ code
 .file-upload label
   display: inline-block
   cursor: pointer
+.accordion-flush .accordion-item
+  border-radius: 6px !important
 
-
-  .navbar-menu 
-    display: none
-  
-  
-  .navbar-toggle 
-    display: flex
-  
-  
-  .navbar-logo 
-    order: 1
-  
-  
-  .sidenav 
-    background: $red
-    width: 100%
-    position: fixed
-    top: 60px
-    left: -100%
-    transition: 0.5s
-    background-color: #333
-    height: calc(100% - 60px)
-  
-  
-  .sidenav a 
-    display: block
-    padding: 20px
-    text-decoration: none
-    color: #fff
-    font-size: 1.2rem
-    transition: 0.3s
-  
-  
-  .sidenav a:hover 
-    background-color: #444
-  
-  
-  .sidenav.show 
-    left: 0
-  
-  
-  .navbar-menu.show 
-    display: flex
-    flex-direction: column
-    position: fixed
-    top: 60px
-    left: 0
-    right: 0
-    bottom: 0
-    background-color: #fff
-    z-index: 1
-    padding: 20px
-    overflow-y: scroll
-  
-  
-  .navbar-menu.show li 
-    margin: 10px 0
+.accordion-button
+  color: #5A27D5
+  background: #F8F5FF
+  border: 1px solid rgba(90, 39, 213, 0.2)
+.accordion-button:not(.collapsed)
+  background-color: #5A27D5
+  border: 1px solid rgba(90, 39, 213, 0.2)
+  border-radius: 6px !important
+  color: $white
   
