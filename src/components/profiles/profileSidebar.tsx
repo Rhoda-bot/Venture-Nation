@@ -8,7 +8,7 @@ const Sidebar = () => {
     
     return(
         <>
-           <div className="sidebar mt-2" style={{
+           <div className="sidebar mt-5 pt-3 my-4" style={{
             height: '100%'
            }}>
             {

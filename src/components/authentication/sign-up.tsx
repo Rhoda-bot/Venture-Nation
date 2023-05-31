@@ -48,8 +48,8 @@ const SignUp = () => {
         if (result.data.status === 'success') {
             setIsLoading(false)
                 setResponse('success, kindly check you mailbox for verification.');
-                toast('success, kindly check you mailbox for verification.')
-                navigate('/confirm-email')
+                // toast('success, kindly check you mailbox for verification.')
+                navigate('/auth/confirm-email')
         }
        if (result.data.errors) {
         setIsLoading(false)
@@ -71,6 +71,7 @@ const SignUp = () => {
                 <div className="container-fluid p-lg-0">
                     <div className="row align-items-center">
                         <div className="col-md-6 col-sm-12 signup__col">
+                            <ToastContainer />
                             <Formik initialValues={{name: '', email: '', password: ''}}
                                     validationSchema={validationSchema}
                                     onSubmit={handleSubmitForm
@@ -214,16 +215,17 @@ const SignUp = () => {
                                                 {
                                                     loading ? (
 
-                                                        <button className={!( dirty && isValid)? 'disabled-btn signup__col--btn' : 'signup__col--btn'} disabled>
-
+                                                        <button className={!( dirty && isValid)? 'disabled-btn signup__col--btn disabled' : 'signup__col--btn'} disabled>
+                                                            <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
                                                             Submit</button>
                                                     ):(
                                                         <>
                                                         <button type='submit'
                                                         className={
-                                                            !(dirty && isValid) ? 'disabled-btn signup__col--btn' : "signup__col--btn py-3 ms-0 w-100 fw-bold"
+                                                            !(dirty && isValid) ? 'disabled-btn signup__col--btn signup__col--disabled' : "signup__col--btn py-3 ms-0 w-100 fw-bold"
                                                         }
                                                         >
+                                                             
                                                              Sign up
                                                         </button>
 

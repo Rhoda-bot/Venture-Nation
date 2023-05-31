@@ -3,7 +3,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { postRequest } from "../../utility/apiRequest";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 const SignIn: React.FC = () => {
     const [hideorshowPassword, setHideorShowPassword] = useState<boolean>(false);
@@ -38,7 +38,7 @@ const SignIn: React.FC = () => {
         if (response.data.status === 'success') {
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('userEmail', e.email)
-            toast.success('success, login sucessfully');
+            // toast.success('success, login sucessfully');
             setIsLoading(false);
             navigate('/profile')
 
@@ -58,6 +58,7 @@ const SignIn: React.FC = () => {
                 <div className="container-fluid p-lg-0">
                     <div className="row align-items-center">
                         <div className="col-md-6 col-sm-12 signup__col">
+                            <ToastContainer />
                           <Formik initialValues={{email: '', password: ''}}
                           validationSchema={validationSchema}
                           onSubmit={handleSubmitForm}
@@ -103,12 +104,26 @@ const SignIn: React.FC = () => {
                         
                                         
                                             <div className="col-md-8 mt-2">
-                                            <button
-                                                type="submit"
-                                                className={dirty && isValid ? "signup__col--btn" : "disabled-btn signup__col--btn"}
-                                                disabled={!(dirty && isValid)}>
-                                                Sign In
-                                                </button>
+                                            {
+                                                    loading ? (
+
+                                                        <button className={!( dirty && isValid)? 'disabled-btn signup__col--btn disabled' : 'signup__col--btn'} disabled>
+                                                            <span className="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                                                            Submit</button>
+                                                    ):(
+                                                        <>
+                                                        <button type='submit'
+                                                        className={
+                                                            !(dirty && isValid) ? 'disabled-btn signup__col--btn signup__col--disabled' : "signup__col--btn py-3 ms-0 w-100 fw-bold"
+                                                        }
+                                                        >
+                                                             
+                                                             Sign up
+                                                        </button>
+
+                                                        </>
+                                                    )
+                                                }
                                                
                                             </div>
                                             <div className="col-md-8 text-center mt-3">
