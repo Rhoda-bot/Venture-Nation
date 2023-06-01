@@ -32,6 +32,7 @@ const SignUp = () => {
         .email("Invalid email Address")
         .required("Email is required"),
         password: Yup.string()
+        .required('Password is required')
         .min(8,"Password must be at least 8 characters")
         .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?]).{8,}$/,
         'Password must contain at least 8 characters, one uppercase letter, one number, and one special character')
@@ -138,8 +139,8 @@ const SignUp = () => {
                                                     name="name"
                                                     id="name"
                                                     className={touched.name && errors.name ? 
-                                                        'form-control signup__col--inpisIvalid shadow-none' : 
-                                                        'form-control signup__col--inp shadow-none'}
+                                                        'form-control py-3 px-3 signup__col--inpisIvalid shadow-none' : 
+                                                        'form-control py-3 px-3 signup__col--inp shadow-none'}
                                                 />
                                                  <ErrorMessage name="name" component="div" className="error text-danger" />
                                             
@@ -151,8 +152,8 @@ const SignUp = () => {
                                                     name="email"
                                                     id="email"
                                                     className={touched.email && errors.email ? 
-                                                        'form-control  signup__col--inpisIvalid shadow-none' 
-                                                        : 'form-control  signup__col--inp shadow-none'}
+                                                        'form-control py-3 px-3  signup__col--inpisIvalid shadow-none' 
+                                                        : 'form-control py-3 px-3 signup__col--inp shadow-none'}
                                                 />
                                                  <ErrorMessage name="email" component="div" className="error text-danger" />
                                                  <p className='text-danger'>{response}</p>
@@ -164,8 +165,8 @@ const SignUp = () => {
                                                     name="password"
                                                     id="password"
                                                     className={touched.password && errors.password ? 
-                                                        'form-control  signup__col--inpisIvalid shadow-none' 
-                                                        : 'form-control  signup__col--inp shadow-none'}
+                                                        'form-control py-3 px-3 signup__col--inpisIvalid shadow-none' 
+                                                        : 'form-control py-3 px-3 signup__col--inp shadow-none'}
                                                 />
                                                  <ErrorMessage name="password" component="div" className="error text-danger" />
                                                 
@@ -180,14 +181,14 @@ const SignUp = () => {
                                                     <div className="col-md-6 text-end">
                                                         { <small>{progressStrength}</small>}
                                                     </div>
-                                                    <p>
+                                                    {/* <p>
                                                         <img src="/assets/icons/i.png" className='px-1' alt="" />
                                                     <small>
                                                         Strong password must contain at least 8 characters,
                                                         digits, which includes special characters, lowercase
                                                         and uppercase letters.
                                                     </small>
-                                                    </p>
+                                                    </p> */}
                                                 </div>
                                             </div>
                                             <div className="col-md-8 text-start mb-3">

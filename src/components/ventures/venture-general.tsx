@@ -11,7 +11,7 @@ import Sector from "../reusables/sector";
 import DeleteVentureModal from "../modal/deleteVenture";
 
 const VentureGeneral = () => {
-    const [skills, setSkills] = useState<any>();
+    const [skills, setSkills] = useState<any>([]);
     const {user} = useContext(UserContext);
     const {venturename} = useParams();
     const [venture, setVenture] = useState<any>([]);
@@ -114,7 +114,8 @@ const VentureGeneral = () => {
                                     businessModel: venture?.businessModel,
                                     stage: venture?.stage,
                                     tagline: venture?.tagline,
-                                    location: venture?.location
+                                    location: venture?.location,
+                                    
                                 }}
                                 onSubmit={handleForm}
                                 validationSchema={validationSchema}
@@ -216,11 +217,12 @@ const VentureGeneral = () => {
                                                 <div className="col-md-6 mb-3">
                                                     
                                                     <label htmlFor="sector" className="signup__col--label mb-2">Sector <span>(required)</span></label>
+                                                    {sector}
                                                     <Sector setSector={setSector} sector={sector}/>
                                                 </div>
                                                 <div className="col-md-6 mb-3">
                                                     <label htmlFor="model" className="signup__col--label mb-2">Customer model <span>(required)</span></label>
-                                                     <Tag setSkills={setModel} skills={model}/>
+                                                     <Tag setSkills={setModel} skills={venture?.businessModel}/>
                                                 </div>
                                                 <div className="col-md-6 my-2 my-lg-3 px-2">
                                                     <label htmlFor="stage" className="signup__col--label mb-2">Currency</label>

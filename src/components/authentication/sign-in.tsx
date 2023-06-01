@@ -80,8 +80,8 @@ const SignIn: React.FC = () => {
                                                     name="email"
                                                     id="email"
                                                     className={touched.email && errors.email ? 
-                                                        'form-control  signup__col--inpisIvalid shadow-none' 
-                                                        : 'form-control  signup__col--inp shadow-none'}
+                                                        'form-control py-3 px-3 signup__col--inpisIvalid shadow-none' 
+                                                        : 'form-control py-3 px-3  signup__col--inp shadow-none'}
                                                 />
                                                  <ErrorMessage name="email" component="div" className="error" />
                                                  <p className='text-danger'>{errorMessage}</p>
@@ -93,8 +93,8 @@ const SignIn: React.FC = () => {
                                                     name="password"
                                                     id="password"
                                                     className={touched.password && errors.password ? 
-                                                        'form-control  signup__col--inpisIvalid shadow-none' 
-                                                        : 'form-control  signup__col--inp shadow-none'}
+                                                        'form-control py-3 px-3 signup__col--inpisIvalid shadow-none' 
+                                                        : 'form-control py-3 px-3 signup__col--inp shadow-none'}
                                                 />
                                                  <ErrorMessage name="password" component="div" className="error" />
                                                 

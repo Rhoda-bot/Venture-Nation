@@ -22,7 +22,7 @@ const GeneralProfile = () => {
         dob: Yup.string(),
         bio: Yup.string(),
         gender: Yup.string(),
-        skill: Yup.string()
+        skills: Yup.string()
 
       })
     const handleForm =async (values: any) => {
@@ -95,7 +95,7 @@ const GeneralProfile = () => {
                                     dob: user?.dob,
                                     bio: user?.bio,
                                     gender: user?.gender,
-                                    skill: user?.skills
+                                    skills: user?.skills
                                 }}
                                 onSubmit={handleForm}
 
@@ -156,7 +156,8 @@ const GeneralProfile = () => {
                                                      />
                                                  </div>
                                                  <div className="col-md-12">
-                                                     <Tag setSkills={setSkills} skills={user?.skills}/>
+                                                    {user?.skills}
+                                                     <Tag setSkills={setSkills} skills={skills}/>
                                                  </div>
                                                  <div className="col-md-12 mb-3 ">
                                                  <label htmlFor="exampleFormControlTextarea1" className="form-label">Bio</label>
