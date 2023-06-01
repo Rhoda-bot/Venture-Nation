@@ -24,16 +24,24 @@ const GeneralProfile = () => {
       })
       
     const handleForm =async (values: any) => {
+        setIsLoading(true);
         console.log({...values, skills});
         const api =await patchRequest(`users/${user.email}`, {...values,skills});
         console.log(api);
         if (api.status === 200) {
             toast.success("Profile updated successfully.")
+            setIsLoading(false);
+        }
+        else if (api.status! == 200) {
+            setTimeout(() =>{
+                setIsLoading(false);
+                toast.warning("something went wront")
+            }, 4000)
         }
         if (api.data.errors) {
             toast.error(api.data.errors.message);
         }
-        
+       
     }
     const handleGetImage = async (e: any) =>{
         const avatar = imgRef.current?.files[0];
@@ -72,7 +80,8 @@ const GeneralProfile = () => {
                                     <h6>Profile image</h6>
                                     <img src={(user?.avatar === null) ? "/assets/profile/ava.png": user?.avatar} className="img-fluid  profile__details--avatar" style={{
                                         borderRadius: '50%',
-                                        border: '5px solid white'
+                                        border: '5px solid white',
+                                        objectFit: 'cover'
                                     }} alt="" />
                                     <div className="profile__updateavatar">
                                         <label htmlFor="updateavatar" role="button">
@@ -99,7 +108,7 @@ const GeneralProfile = () => {
                                 >
                                       {
                                         (props) => {
-                                            const {touched} = props;
+                                            const {touched, dirty, isValid} = props;
                                             return(
                                                 <Form>
                                                 <div className="row px-3 mx-1">
@@ -118,6 +127,7 @@ const GeneralProfile = () => {
                                                      signup__col--inp" aria-label="Default select example">
                                                      <option defaultValue={"male"} value="male">Male</option>
                                                      <option value="female">Female</option>
+                                                     <option value="others">Others</option>
                                                   
                                                  </Field>
                                                  </div>
@@ -153,7 +163,7 @@ const GeneralProfile = () => {
                                                      />
                                                  </div>
                                                  <div className="col-md-12">
-                                                    {user?.skills}
+                                                   
                                                      <Tag setSkills={setSkills} skills={skills}/>
                                                  </div>
                                                  <div className="col-md-12 mb-3 ">
@@ -166,12 +176,27 @@ const GeneralProfile = () => {
                                                  </div>
                                                  <div className="col-md-8"></div>
                                                  <div className="col-md-4 text-end py-3">
-                                                     <button
-                                                         type="submit"
-                                                         className={"signup__col--btn px-3 py-3"}
+                                                 {
+                                                    loading ? (
+
+                                                        <button className={!( dirty && isValid)? 'disabled-btn signup__col--btn disabled' : 'signup__col--btn'} disabled>
+                                                           <div className="spinner-grow" style={{width: '2rem',height: '2rem'}} role="status">
+                                                            <span className="visually-hidden">Loading...</span>
+                                                            </div></button>
+                                                    ):(
+                                                        <>
+                                                        <button type='submit'
+                                                        className={
+                                                            !(dirty && isValid) ? 'disabled-btn signup__col--btn signup__col--disabled' : "signup__col--btn py-3 ms-0 w-100 fw-bold"
+                                                        }
                                                         >
-                                                         Save changes
-                                                         </button>
+                                                             
+                                                           Save Changes
+                                                        </button>
+
+                                                        </>
+                                                    )
+                                                }
                                                  </div>
                                              </div>
                                                 </Form>

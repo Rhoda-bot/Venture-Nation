@@ -15,8 +15,9 @@ const VentureGeneral = () => {
     const {user} = useContext(UserContext);
     const {venturename} = useParams();
     const [venture, setVenture] = useState<any>([]);
-    const [sector, setSector] = useState<any>([])
-    const [model, setModel] = useState<any>([])
+    const [sector, setSector] = useState<any>([venture?.sector])
+    const [model, setModel] = useState<any>([venture?.businessModel])
+
 
     useEffect(() => {
         const getCurrentVenture = async() => {
@@ -92,7 +93,10 @@ const VentureGeneral = () => {
                                     <div className="" style={{
                                         marginTop: '-45px'
                                     }}>
-                                    <img src={(venture?.logo !== null) ? venture?.logo: "/assets/profile/defaultBg.webp"} className="img-fluid  profile__details--avatar"  alt="" /> 
+                                    <img src={(venture?.logo !== null) ? venture?.logo: "/assets/profile/defaultBg.webp"} className="img-fluid  profile__details--avatar"  alt=""  style={{
+                                        borderRadius: '50%',
+                                        border: '5px solid white'
+                                    }}/> 
                                     <div className="profile__updateavatar">
                                         <label htmlFor="updateavatar" role="button">
                                             <img src="/assets/profile/upload.svg" alt="" />
@@ -110,8 +114,6 @@ const VentureGeneral = () => {
                                     name: venture?.name,
                                     dateFounded: venture?.dateFounded,
                                     link: venture?.link,
-                                    sector: venture?.sector,
-                                    businessModel: venture?.businessModel,
                                     stage: venture?.stage,
                                     tagline: venture?.tagline,
                                     location: venture?.location,
@@ -217,12 +219,12 @@ const VentureGeneral = () => {
                                                 <div className="col-md-6 mb-3">
                                                     
                                                     <label htmlFor="sector" className="signup__col--label mb-2">Sector <span>(required)</span></label>
-                                                    {sector}
+                                                    {venture?.sector}
                                                     <Sector setSector={setSector} sector={sector}/>
                                                 </div>
                                                 <div className="col-md-6 mb-3">
                                                     <label htmlFor="model" className="signup__col--label mb-2">Customer model <span>(required)</span></label>
-                                                     <Tag setSkills={setModel} skills={venture?.businessModel}/>
+                                                     <Tag setSkills={setModel} skills={model}/>
                                                 </div>
                                                 <div className="col-md-6 my-2 my-lg-3 px-2">
                                                     <label htmlFor="stage" className="signup__col--label mb-2">Currency</label>

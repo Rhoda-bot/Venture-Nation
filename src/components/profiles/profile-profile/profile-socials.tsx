@@ -9,6 +9,7 @@ import { UserContext } from "../../../context/userContext";
 const ProfileSocials = () => {
 
     const {user}: any = useContext<any>(UserContext);
+    const [loading, setIsLoading] = useState(false);
   
    
     const validationSchema = Yup.object().shape({

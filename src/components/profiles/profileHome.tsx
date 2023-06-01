@@ -24,7 +24,9 @@ const ProfileHome = () => {
                 
             }
         })
-    }, [])
+    }, [user])
+    console.log(user);
+    
     
     return(
         <>

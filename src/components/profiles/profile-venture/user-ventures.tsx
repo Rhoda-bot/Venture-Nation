@@ -32,7 +32,9 @@ const UserVentures = () => {
  
              
                          }}></div>
-                         <img src={val?.logo !== undefined ? val?.logo : '/assets/profile/dafaultBg.png'}  className="ventures__card--img mx-auto" alt="" />
+                         <img src={val?.logo !== undefined ? val?.logo : '/assets/profile/defaultBg.webp'}  className="ventures__card--img mx-auto" alt=""  style={{
+                            objectFit: 'cover'
+                         }}/>
                      
                          <div className="card-body text-center pt-0" >
                              <h6 className="ventures--name my-1">{val?.name}</h6>

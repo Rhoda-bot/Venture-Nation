@@ -6,8 +6,6 @@ type props = {
 }
 
 function Tag({ setSkills, skills }: props) {
-
-  console.log({skills})
   function handleKeyDown(e: React.KeyboardEvent<HTMLElement>) {
     e.preventDefault();
     if (e.key !== 'Enter')  return;
@@ -36,7 +34,6 @@ function Tag({ setSkills, skills }: props) {
           name="input"
           onKeyDown={(e:any) => e.key === "Enter" && e.preventDefault()}
           onKeyUp={handleKeyDown}
-          // onSubmit={handleKeyDown}
           className="tag__container--input"
           placeholder="Type and press enter"
         />
