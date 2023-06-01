@@ -33,7 +33,7 @@ const VentureDetails = () => {
           categories: venture?.revenue && Object.values(venture?.revenue),
         },
         fill: {
-            type: 'gradient',
+            type: 'area',
             gradient: {
               shade: 'dark',
               shadeIntensity: 0.5,

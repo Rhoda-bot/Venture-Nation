@@ -107,7 +107,7 @@ const ProfilePassword = () => {
                                                       }
                                                     return(
                                                         <Form>
-                                                            <div className="row px-3 mx-auto">
+                                                            <div className="row px-3 mx-auto align-items-center">
                                                                 <div className="col-md-10 mb-3">
                                                                     <label htmlFor="oldPassword">Old Password</label>
                                                                     <input type="text" placeholder="Old Password"

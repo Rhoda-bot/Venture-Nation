@@ -3,10 +3,11 @@ import React from 'react';
 type props = {
   setSkills: React.Dispatch<React.SetStateAction<any>>,
   skills: React.SetStateAction<any>
-
 }
 
 function Tag({ setSkills, skills }: props) {
+
+  console.log({skills})
   function handleKeyDown(e: React.KeyboardEvent<HTMLElement>) {
     e.preventDefault();
     if (e.key !== 'Enter')  return;

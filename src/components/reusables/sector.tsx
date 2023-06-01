@@ -29,7 +29,7 @@ const Sector = ({ setSector, sector }: props) => {
                     </div>
                 ))
       }
-            <select className="form-select shadow-none" aria-label="Default select example"  onKeyDown={(e:any) => e.key === "Enter" && e.preventDefault()}
+            <select className="form-select shadow-none px-3 py-3" aria-label="Default select example"  onKeyDown={(e:any) => e.key === "Enter" && e.preventDefault()}
           onKeyUp={handleKeyDown}>
             {
                 sectors.map((val:any) => (

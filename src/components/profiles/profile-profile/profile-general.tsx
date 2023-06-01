@@ -10,11 +10,10 @@ import { ToastContainer, toast } from "react-toastify";
 import countries from '../../../utility/countries.json';
 
 const GeneralProfile = () => {
-    const [skills, setSkills] = useState<any>([]);
     const {user}: any = useContext<any>(UserContext);
+    const [skills, setSkills] = useState<any>([user?.skills]);
     const [loading, setIsLoading] = useState(false);
-    const imgRef = useRef<any>()
-   
+    const imgRef = useRef<any>();
     const validationSchema = Yup.object().shape({
         name: Yup.string(),
         nationality: Yup.string(),
@@ -22,9 +21,8 @@ const GeneralProfile = () => {
         dob: Yup.string(),
         bio: Yup.string(),
         gender: Yup.string(),
-        skills: Yup.string()
-
       })
+      
     const handleForm =async (values: any) => {
         console.log({...values, skills});
         const api =await patchRequest(`users/${user.email}`, {...values,skills});
@@ -95,7 +93,6 @@ const GeneralProfile = () => {
                                     dob: user?.dob,
                                     bio: user?.bio,
                                     gender: user?.gender,
-                                    skills: user?.skills
                                 }}
                                 onSubmit={handleForm}
 
