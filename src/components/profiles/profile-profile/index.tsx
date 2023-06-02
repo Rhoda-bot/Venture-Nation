@@ -32,7 +32,7 @@ const ProfileProfile = () => {
                                     <img src={(user?.avatar === null) ? "/assets/profile/ava.png": user?.avatar} className="img-fluid  profile__details--avatar"  alt="profile image" />
                                 </div>
                                 <div className="col-6 text-center text-md-end ">
-                                    <NavLink to="/edit-profile" role="button" className="profile__details--edit ms-0"> 
+                                    <NavLink to="/profile/edit-profile" role="button" className="profile__details--edit ms-0"> 
                                        <i className="fa fa-edit"/> Edit profile    
                                     </NavLink>
                                 </div>

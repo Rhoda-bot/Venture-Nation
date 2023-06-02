@@ -39,7 +39,11 @@ const ProfilePassword = () => {
         
       })
     const handleSubmitForm = (e: any) => {
-            console.log(e);
+        setIsLoading(true);
+        setTimeout(()=> {
+            setIsLoading(false);
+
+        }, 3000)
             
     }   
     return(
@@ -108,12 +112,12 @@ const ProfilePassword = () => {
                                                     return(
                                                         <Form>
                                                             <div className="row px-3 mx-auto align-items-center">
-                                                                <div className="col-md-10 mb-3">
+                                                                <div className="col-md-12 mb-3">
                                                                     <label htmlFor="oldPassword">Old Password</label>
                                                                     <input type="text" placeholder="Old Password"
                                                                      className="form-control signup__col--inp shadow-none py-3 px-3"/>
                                                                 </div>
-                                                                <div className="col-md-10 mb-3 position-relative">
+                                                                <div className="col-md-12 mb-3 position-relative">
                                                                     <label htmlFor="newPassword">New Password</label>
                                                                     <Field placeholder="New password"
                                                                     type={hideorshowPassword == false? "password" : "text" } 
@@ -128,7 +132,7 @@ const ProfilePassword = () => {
                                                                     <i className={hideorshowPassword === false?`fa-regular fa-eye signup__col--icon`:`fa-regular fa-eye-slash signup__col--icon`}
                                                                     onClick={handleHideOrShowPassword}/>
                                                                 </div>
-                                                                <div className="col-md-10 mb-3 position-relative">
+                                                                <div className="col-md-12 mb-3 position-relative">
                                                                     <label htmlFor="confirmPassword">Confirm Password</label>
                                                                     <Field placeholder="Confirm password"
                                                                     type={hideorshowPassword2 == false? "password" : "text" } 
@@ -143,7 +147,7 @@ const ProfilePassword = () => {
                                                                     <i className={hideorshowPassword2 === false?`fa-regular fa-eye signup__col--icon`:`fa-regular fa-eye-slash signup__col--icon`}
                                                                     onClick={handleHideOrShowPassword2}/>
                                                                 </div>
-                                                                <div className="col-md-10 mb-3">
+                                                                <div className="col-md-12 mb-3">
                                                                     <div className="row">
                                                                         <div className="col-md-6">
                                                                             Password Strength
@@ -161,7 +165,7 @@ const ProfilePassword = () => {
                                                                         </p>
                                                                     </div>
                                                                 </div>
-                                                                <div className="col-md-10 text-start mb-3">
+                                                                <div className="col-md-12 text-start mb-3">
                                             
                                                                 <div
                                                                 className="progress"
@@ -182,28 +186,31 @@ const ProfilePassword = () => {
                                                                 ></div>
                                                                 </div>
                                                                 </div>
-                                                                <div className="col-md-6" />
+                                                                <div className="col-md-8" />
                                                                    
-                                                                <div className="col-md-4">
+                                                                <div className="col-md-4 mb-3">
                                                                 {
-                                                                        loading ? (
+                                                                    loading ? (
 
-                                                                            <button className={!( dirty && isValid)? 'disabled-btn signup__col--btn ' : 'signup__col--btn'} disabled>
-
-                                                                                Submit</button>
-                                                                        ):(
-                                                                            <>
-                                                                            <button type='submit'
-                                                                            className={
-                                                                                !(dirty && isValid) ? 'disabled-btn signup__col--btn' : "signup__col--btn py-3 ms-0 w-100 fw-bold"
-                                                                            }
-                                                                            >
-                                                                                Save Change
+                                                                        <button className={!( dirty && isValid)? 'disabled-btn signup__col--btn disabled' : 'signup__col--btn'} disabled>
+                                                                        <div className="spinner-grow" style={{width: '2rem',height: '2rem'}} role="status">
+                                                                            <span className="visually-hidden">Loading...</span>
+                                                                            </div>
                                                                             </button>
+                                                                    ):(
+                                                                        <>
+                                                                        <button type='submit'
+                                                                        className={
+                                                                            !(dirty && isValid) ? 'disabled-btn signup__col--btn signup__col--disabled' : "signup__col--btn py-3 ms-0 w-100 fw-bold"
+                                                                        }
+                                                                        >
+                                                                            
+                                                                            Save Changes
+                                                                        </button>
 
-                                                                            </>
-                                                                        )
-                                                                    }
+                                                                        </>
+                                                                    )
+                                                                }
                                                                 </div>
                                                             </div>
                                                         </Form>

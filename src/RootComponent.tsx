@@ -38,7 +38,7 @@ const RootComponent: React.FC = () => {
 
                 <Route path='/' element={<ProtectedRoute />}>
                     <Route path='/profile' element={<ProfileProfile />}/>
-                    <Route path='/edit-profile' element={<EditProfile />}/>
+                    <Route path='/profile/edit-profile' element={<EditProfile />}/>
                     <Route path='/ventures' element={<ProfileView />}/>
                     <Route path='/ventures/edit-venture/:venturename' element={<EditVenture />}/>
                     <Route path='/ventures/:venturename' element={<VentureDetails />}/>

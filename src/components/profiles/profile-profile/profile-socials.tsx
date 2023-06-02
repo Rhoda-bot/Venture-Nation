@@ -26,8 +26,8 @@ const ProfileSocials = () => {
             setIsLoading(false);
 
         }, 3000)
-        // const api =await patchRequest(`users/${user.email}`, {socials: e});
-        // console.log(api);
+        const api =await patchRequest(`users/${user.email}`, {socials: e});
+        console.log(api);
     }   
     return(
         <>
