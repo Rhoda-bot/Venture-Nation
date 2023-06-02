@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { postRequest } from "../../../utility/apiRequest";
+import { patchRequest, postRequest } from "../../../utility/apiRequest";
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import { Fade } from "reactstrap";
@@ -20,9 +20,14 @@ const ProfileSocials = () => {
        
         
       })
-    const handleSubmitForm = (e: any) => {
-            console.log(e);
-            
+    const handleSubmitForm = async(e: any) => {
+        setIsLoading(true);
+        setTimeout(()=> {
+            setIsLoading(false);
+
+        }, 3000)
+        // const api =await patchRequest(`users/${user.email}`, {socials: e});
+        // console.log(api);
     }   
     return(
         <>
@@ -51,7 +56,7 @@ const ProfileSocials = () => {
                                                         <Form>
                                                             <div className="row px-4">
                                                                 <div className="col-md-6 mb-3">
-                                                                    <label htmlFor="linkedIn">LinkedIn profile link</label>
+                                                                    <label className="mb-2" htmlFor="linkedIn">LinkedIn profile link</label>
                                                                     <Field 
                                                                     placeholder="https://"
                                                                     type= "text" 
@@ -65,7 +70,7 @@ const ProfileSocials = () => {
                                              
                                                                 </div>
                                                                 <div className="col-md-6 mb-3">
-                                                                    <label htmlFor="twitter">Twitter profile link</label>
+                                                                    <label className="mb-2" htmlFor="twitter">Twitter profile link</label>
                                                                     <Field 
                                                                     placeholder="https://"
                                                                     type= "text" 
@@ -78,7 +83,7 @@ const ProfileSocials = () => {
                                                                       <ErrorMessage name="twitter" component="div" className="error text-danger" />
                                                                 </div>
                                                                 <div className="col-md-6 mb-3">
-                                                                    <label htmlFor="">Instagram profile link</label>
+                                                                    <label className="mb-2" htmlFor="">Instagram profile link</label>
                                                                     <Field 
                                                                     placeholder="https://"
                                                                     type= "text" 
@@ -91,7 +96,7 @@ const ProfileSocials = () => {
                                                                        <ErrorMessage name="instagram" component="div" className="error text-danger" />
                                                                 </div>
                                                                 <div className="col-md-6 mb-3">
-                                                                    <label htmlFor="">Facebook profile link</label>
+                                                                    <label className="mb-2" htmlFor="">Facebook profile link</label>
                                                                     <Field 
                                                                     placeholder="https://"
                                                                     type= "text" 
@@ -105,7 +110,28 @@ const ProfileSocials = () => {
                                                                 </div>
                                                                 <div className="col-md-8"/>
                                                                 <div className="col-md-4 py-4">
-                                                                    <button className="signup__col--btn py-3 ms-0 w-100 fw-bold">Save changes</button>
+                                                                {
+                                                                    loading ? (
+
+                                                                        <button className={!( dirty && isValid)? 'disabled-btn signup__col--btn disabled' : 'signup__col--btn'} disabled>
+                                                                        <div className="spinner-grow" style={{width: '2rem',height: '2rem'}} role="status">
+                                                                            <span className="visually-hidden">Loading...</span>
+                                                                            </div>
+                                                                            </button>
+                                                                    ):(
+                                                                        <>
+                                                                        <button type='submit'
+                                                                        className={
+                                                                            !(dirty && isValid) ? 'disabled-btn signup__col--btn signup__col--disabled' : "signup__col--btn py-3 ms-0 w-100 fw-bold"
+                                                                        }
+                                                                        >
+                                                                            
+                                                                            Save Changes
+                                                                        </button>
+
+                                                                        </>
+                                                                    )
+                                                                }
                                                                 </div>
                                                                
                                                             </div>

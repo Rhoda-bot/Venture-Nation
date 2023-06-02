@@ -104,7 +104,11 @@ const VentureDetails = () => {
                                     <div className="profile__details px-2 px-lg-4 pb-3 pb-xxl-4 bg-white venturedetails__description">
                                         <div className="row align-items-end mb-2 mb-xxl-3 rounded">
                                             <div className="col-5">
-                                                <img src={venture?.logo && venture?.logo ? venture?.logo : "/assets/profile/defaultBg.webp"} className="ventures__card--img " alt="venture logo" />
+                                                <img src={venture?.logo && venture?.logo ? venture?.logo : "/assets/profile/defaultBg.webp"}
+                                                style={{
+                                                    objectFit: 'cover'
+                                                }}
+                                                 className="ventures__card--img " alt="venture logo" />
                                             </div>
                                             <div className="col-7 text-center text-md-end">
                                                 <span className="mx-2">

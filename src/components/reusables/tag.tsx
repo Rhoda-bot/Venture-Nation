@@ -2,10 +2,11 @@ import React from 'react';
 
 type props = {
   setSkills: React.Dispatch<React.SetStateAction<any>>,
-  skills: React.SetStateAction<any>
+  skills: React.SetStateAction<any>,
+  label?: string
 }
 
-function Tag({ setSkills, skills }: props) {
+function Tag({ setSkills, skills, label}: props,) {
   function handleKeyDown(e: React.KeyboardEvent<HTMLElement>) {
     e.preventDefault();
     if (e.key !== 'Enter')  return;
@@ -19,6 +20,8 @@ function Tag({ setSkills, skills }: props) {
     setSkills(skills.filter((el:any, i:number) => i !== index));
   };
   return (
+   <>
+        <label className="" htmlFor="tag">{label}</label>
     <div className="tag">
       <div className="tag__container">
         {
@@ -28,8 +31,8 @@ function Tag({ setSkills, skills }: props) {
           <span className="tag__container--close" onClick={() => removeTag(index)} aria-hidden="true">&times;</span>
         </div>
       ))
-      }
-        <input
+      }  <br /><br />
+          <input
           type="text"
           name="input"
           onKeyDown={(e:any) => e.key === "Enter" && e.preventDefault()}
@@ -39,6 +42,7 @@ function Tag({ setSkills, skills }: props) {
         />
       </div>
     </div>
+   </>
   );
 }
 export default Tag;

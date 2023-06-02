@@ -113,7 +113,7 @@ const GeneralProfile = () => {
                                                 <Form>
                                                 <div className="row px-3 mx-1">
                                                  <div className="col-md-6 mb-3">
-                                                     <label htmlFor="name" className="className='signup__col--label">Full name</label>
+                                                     <label htmlFor="name" className="className='signup__col--label mb-2">Full name</label>
                                                      <Field type="text" 
                                                      className="form-control py-3 px-3 shadow-none
                                                      signup__col--inp" 
@@ -122,7 +122,7 @@ const GeneralProfile = () => {
                                                      />
                                                  </div>
                                                  <div className="col-md-6 mb-3">
-                                                 <label htmlFor="gender" className="className='signup__col--label">Gender</label>
+                                                 <label htmlFor="gender" className="className='signup__col--label mb-2">Gender</label>
                                                  <Field as="select" name="gender" className="form-select px-3 py-3 shadow-none
                                                      signup__col--inp" aria-label="Default select example">
                                                      <option defaultValue={"male"} value="male">Male</option>
@@ -132,7 +132,7 @@ const GeneralProfile = () => {
                                                  </Field>
                                                  </div>
                                                  <div className="col-md-6 mb-3">
-                                                     <label htmlFor="phone" className="className='signup__col--label">Phone</label>
+                                                     <label htmlFor="phone" className="className='signup__col--label mb-2">Phone</label>
                                                      <Field 
                                                          placeholder="Phone no"
                                                          className="form-control shadow-none
@@ -142,7 +142,7 @@ const GeneralProfile = () => {
                                                      />
                                                  </div>
                                                  <div className="col-md-6 mb-3">
-                                                     <label htmlFor="phone" className="className='signup__col--label">Nationality</label>
+                                                     <label htmlFor="phone" className="className='signup__col--label mb-2">Nationality</label>
                                                         
                                                             <Field as="select" name="nationality" className="form-select px-3 py-3 shadow-none
                                                             signup__col--inp" aria-label="Default select example">
@@ -155,24 +155,22 @@ const GeneralProfile = () => {
                                                         </Field>
                                                  </div>
                                                  <div className="col-md-12 mb-3">
-                                                     <label htmlFor="dob" className="className='signup__col--label">Date of birth</label>
+                                                     <label htmlFor="dob" className="className='signup__col--label mb-2">Date of birth</label>
                                                      <Field type="date" 
                                                      className="form-control px-3 py-3 shadow-none
                                                      signup__col--inp" name="dob"
                                                      
                                                      />
                                                  </div>
-                                                 <div className="col-md-12">
-                                                   
-                                                     <Tag setSkills={setSkills} skills={skills}/>
+                                                 <div className="col-md-12 mb-3">
+                                                     <Tag setSkills={setSkills} skills={skills} label="Skills"/>
                                                  </div>
                                                  <div className="col-md-12 mb-3 ">
-                                                 <label htmlFor="exampleFormControlTextarea1" className="form-label">Bio</label>
+                                                 <label htmlFor="exampleFormControlTextarea1" className="form-label mb-2">Short bio</label>
                                                  <Field as="textarea" className="form-control px-3 py-3 shadow-none
                                                      signup__col--inp" name="bio" id="exampleFormControlTextarea1" rows={3} >
 
                                                      </Field>
-                                                     <p>Brief description for your profile.</p>
                                                  </div>
                                                  <div className="col-md-8"></div>
                                                  <div className="col-md-4 text-end py-3">

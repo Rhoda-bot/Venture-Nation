@@ -110,7 +110,8 @@ const SignIn: React.FC = () => {
                                                         <button className={!( dirty && isValid)? 'disabled-btn signup__col--btn disabled' : 'signup__col--btn'} disabled>
                                                            <div className="spinner-grow" style={{width: '2rem',height: '2rem'}} role="status">
                                                             <span className="visually-hidden">Loading...</span>
-                                                            </div></button>
+                                                            </div>
+                                                            </button>
                                                     ):(
                                                         <>
                                                         <button type='submit'

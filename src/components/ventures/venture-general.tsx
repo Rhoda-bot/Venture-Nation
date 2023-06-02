@@ -85,7 +85,7 @@ const VentureGeneral = () => {
                                                 marginLeft: '130px'
                                             }}>
                                                 <label htmlFor="updateavatar" role="button">
-                                                    <img src="/assets/profile/upload.svg" alt="" />
+                                                    <img src="/assets/profile/upload.svg" alt=""/>
                                                     <input id="file-input" type="file" />
                                                 </label>
                                             </div>
@@ -95,7 +95,8 @@ const VentureGeneral = () => {
                                     }}>
                                     <img src={(venture?.logo !== null) ? venture?.logo: "/assets/profile/defaultBg.webp"} className="img-fluid  profile__details--avatar"  alt=""  style={{
                                         borderRadius: '50%',
-                                        border: '5px solid white'
+                                        border: '5px solid white',
+                                        objectFit: 'cover'
                                     }}/> 
                                     <div className="profile__updateavatar">
                                         <label htmlFor="updateavatar" role="button">
@@ -289,16 +290,16 @@ const VentureGeneral = () => {
                         </div>
                     </div>
                 </div>
-                <div className="row mt-3">
-                           <div className="my-3 py-4">
-                           <div className="col-md-12 p-3 py-3 mt-3 my-3 bg-white venturedetails__card">
+                <div className="row">
+                           <div className="">
+                           <div className="col-md-12 p-3 mt-3 bg-white venturedetails__card">
                                 
                                 <div className="d-flex align-items-start mb-2">
                                       <div>
                                         <h6 className="mb-2 fw-bold">Public visibility</h6>
                                         <p className="profile__details--mail">Enable your venture to be visible to the public</p>
                                       </div>
-                                      <label htmlFor="" className="ms-4 ms-auto my-4">
+                                      <label htmlFor="" className="ms-4 ms-auto">
                                       <div className="form-check form-switch">
                                         <input className="form-check-input shadow-none" type="checkbox" role="switch" id="flexSwitchCheckDefault" />
                                         </div>
@@ -307,9 +308,9 @@ const VentureGeneral = () => {
                             </div>
                            </div>
                 </div>
-                <div className="row mt-3">
-                           <div className="my-3 py-4">
-                           <div className="col-md-12 p-3 py-3 mt-3 my-3 bg-white venturedetails__card">
+                <div className="row">
+                           <div className="">
+                           <div className="col-md-12 p-3 mt-3 bg-white venturedetails__card">
                                 
                                 <div className="d-flex align-items-start mb-2">
                                       <div>
