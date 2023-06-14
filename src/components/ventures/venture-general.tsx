@@ -15,8 +15,8 @@ const VentureGeneral = () => {
     const {user} = useContext(UserContext);
     const {venturename} = useParams();
     const [venture, setVenture] = useState<any>([]);
-    const [sector, setSector] = useState<any>([venture?.sector])
-    const [model, setModel] = useState<any>([venture?.businessModel])
+    const [sector, setSector] = useState<any>(venture?.sector || [])
+    const [model, setModel] = useState<any>(venture?.businessModel || [])
 
 
     useEffect(() => {
@@ -225,6 +225,7 @@ const VentureGeneral = () => {
                                                 </div>
                                                 <div className="col-md-6 mb-3">
                                                     <label htmlFor="model" className="signup__col--label mb-2">Customer model <span>(required)</span></label>
+                                                    {model}
                                                      <Tag setSkills={setModel} skills={model}/>
                                                 </div>
                                                 <div className="col-md-6 my-2 my-lg-3 px-2">

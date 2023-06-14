@@ -3,27 +3,13 @@ import React from "react";
 const LearningHubHeader = () => {
     return(
         <>
-            <div className="col-md-12" style={{
-                backgroundImage: 'url(/assets/learning-hub/Head.svg)',
-                height: '194px',
-                width: '100%',
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover',
-                borderRadius: '20px',
-                position: 'relative'
-            }} />
-            <div className="header__search mx-auto" style={{
-                marginTop: '-20px',
-                width: '652px',
-                backgroundColor: 'white',
-                boxShadow: ' 0px 0px 50px rgba(129, 42, 203, 0.08)',
-                zIndex: '3',
-                height: '70px',
-                borderRadius: '10px'
-            }}>
-                {/* <input type="text" /> */}
+            <div className="header align-items-center justify-content-center">
+                <h4 className=" header--text text-center my-5">Discover courses for startup founders and businesses</h4>
             </div>
-
+            <div className="header__search d-flex py-2">
+                <input type="text" className="header__search--input shadow-none" placeholder="Search Courses..." />
+                <button className="header__search--btn px-4">Search</button>
+            </div>
         </>
     )
 }

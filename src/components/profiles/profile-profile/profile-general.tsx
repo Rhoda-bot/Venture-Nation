@@ -11,7 +11,7 @@ import countries from '../../../utility/countries.json';
 
 const GeneralProfile = () => {
     const {user}: any = useContext<any>(UserContext);
-    const [skills, setSkills] = useState<any>([user?.skills]);
+    const [skills, setSkills] = useState<any>(user?.skills || []);
     const [loading, setIsLoading] = useState(false);
     const imgRef = useRef<any>();
     const validationSchema = Yup.object().shape({

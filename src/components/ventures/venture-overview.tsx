@@ -113,7 +113,7 @@ const VentureOview = () => {
                                             {
                                                     loading ? (
 
-                                                        <button className={!( dirty && isValid)? 'disabled-btn signup__col--btn disabled' : 'signup__col--btn'} disabled>
+                                                        <button className={!( dirty && isValid)? 'disabled-btn ventures--button disabled py-3 ms-0 px-4' : 'ventures--button py-3 ms-0 px-4'} disabled>
                                                            <div className="spinner-grow" style={{width: '2rem',height: '2rem'}} role="status">
                                                             <span className="visually-hidden">Loading...</span>
                                                             </div></button>
@@ -121,7 +121,7 @@ const VentureOview = () => {
                                                         <>
                                                         <button type='submit'
                                                         className={
-                                                            !(dirty && isValid) ? 'disabled-btn signup__col--btn signup__col--disabled' : "signup__col--btn py-3 ms-0 w-100 fw-bold"
+                                                            !(dirty && isValid) ? 'disabled-btn ventures--button signup__col--disabled py-3 ms-0 px-4' : "ventures--button py-3 ms-0 w-100 fw-bold"
                                                         }
                                                         >
                                                              
@@ -131,6 +131,7 @@ const VentureOview = () => {
                                                         </>
                                                     )
                                                 }
+                                                
                                                     {/* <button className="py-3 ms-0 px-4 fw-bold ventures--button" type="submit" style={{
                                                         minWidth: '160px'
                                                     }}>Save Changes</button> */}

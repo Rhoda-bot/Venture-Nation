@@ -10,24 +10,26 @@ import Socials from "./profile-profile/socials";
 const ProfileHome = () => {
     const {user, setUser}: any = useContext<any>(UserContext);
     const {pathname} = useLocation();
-    useEffect(() => {
 
-        const getCurrentUser = async() => {
+    useEffect(() => {
+        const getCurrentUser = async () => {
+          try {
             const fetchCurrentUser = await getRequest(`users/${localStorage.getItem('userEmail')}`);
-            return fetchCurrentUser;
-            
-        }
-        const result = getCurrentUser();
-        result.then((res:any) => {
-            if (res.data.status === "success") {
-                setUser(res.data.data);
-                
+            if (fetchCurrentUser.data.status === "success") {
+              return fetchCurrentUser.data.data;
             }
-        })
-    }, [user])
-    console.log(user);
-    
-    
+          } catch (error) {
+            console.log(error);
+          }
+          return null;
+        };
+      
+        getCurrentUser().then((userData) => {
+          if (userData) {
+            setUser(userData);
+          }
+        });
+      }, [setUser])
     return(
         <>
         <ProfileNavbar currentUser={user}/>
