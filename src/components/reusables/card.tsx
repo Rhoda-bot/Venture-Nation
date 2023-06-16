@@ -1,16 +1,29 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { getRequest } from "../../utility/apiRequest";
+import { NavLink } from "react-router-dom";
+import { CourseContext } from "../../context/userContext";
 
 const Cards = () => {
-    const [courses, setCourses] = useState<any>([]);
-    useEffect(() =>{
-        const getCourses = async() => {
-                const courses = await getRequest('courses');
-            setCourses(courses.data.data);
-            
-        }
-        getCourses();
-    }, [])
+    const {courses, setCourses}: any = useContext<any>(CourseContext);
+    useEffect(() => {
+        const  getCourses = async () => {
+          try {
+            const courses = await getRequest('courses');
+            if (courses.data.status === "success") {
+              return courses.data.data;
+            }
+          } catch (error) {
+            console.log(error);
+          }
+          return null;
+        };
+      
+        getCourses().then((userData) => {
+          if (userData) {
+            setCourses(userData);
+          }
+        });
+      }, [courses])
     console.log(courses);
     
     
@@ -19,8 +32,9 @@ const Cards = () => {
               <div className="row">
                 {
                 courses.map((course:any) => (
-                 <div className="col-md-6 col-lg-4 col-xxl-3 my-3 px-3"  key={course.id}>
-                        <div className="card cards__card border-0 p-2 h-100">
+                 <div className="col-md-6 col-lg-4 col-xxl-3 my-3 px-3 "  key={course.id}>
+                    <NavLink to={`/learning-hub/${course.slug}`}>
+                    <div className="card cards__card border-0 p-2 h-100">
                         <div className=""  style={{
                             backgroundImage: `url(${course.image})`,
                             height: '150px',
@@ -32,10 +46,10 @@ const Cards = () => {
         
                         }}/>
                         <div className="card-body">
-                            <h5 className="card-title">{course.title}</h5>
+                            <h5 className="card-title text-dark">{course.title}</h5>
                             <p className="card-text cards__bottom--text">{course.creator.name}</p>
                             <div className="d-flex">
-                                <p>
+                                <p className="text-dark">
                                     <i className="fa fa-book-open cards__bottom--heart"/> <span>0 Lesson</span>
                                 </p>
                                 <p className="ms-auto">
@@ -63,6 +77,7 @@ const Cards = () => {
                             </div>
                         </div>
                     </div>
+                    </NavLink>
                  </div>
                 ))
               }

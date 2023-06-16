@@ -20,6 +20,7 @@ import EditVenture from './components/ventures/edit-venture'
 import Dashboard from './components/dashboard'
 import LearningHub from './components/learning-hub'
 import LearningHubs from './components/learning-hub/learningHub'
+import CardDetails from './components/reusables/cardDetails'
 
 const RootComponent: React.FC = () => {
     return (
@@ -48,6 +49,7 @@ const RootComponent: React.FC = () => {
                 </Route>
                 <Route element={< LearningHubs/>}>
                     <Route path='/learning-hub' element={<LearningHub />}/>
+                    <Route path='/learning-hub/:slug' element={<CardDetails />}/>
                 </Route>
             </Routes>
         </Router>

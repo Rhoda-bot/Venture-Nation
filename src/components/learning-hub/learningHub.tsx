@@ -3,6 +3,7 @@ import { Outlet, useLocation } from "react-router-dom";
 import { UserContext } from "../../context/userContext";
 import { getRequest } from "../../utility/apiRequest";
 import ProfileNavbar from "../profiles/navbar";
+import CustomNavbar from "../reusables/customNavbar";
 
 
 const LearningHubs = () => {
@@ -26,7 +27,7 @@ const LearningHubs = () => {
     
     return(
         <>
-        <ProfileNavbar currentUser={user}/>
+        <CustomNavbar />
             <div className="profile p-0">
                 <div className="container-fluid ">
                     <div className="row">
