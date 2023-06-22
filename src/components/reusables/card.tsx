@@ -2,20 +2,35 @@ import React, { useContext, useEffect, useState } from "react";
 import { getRequest } from "../../utility/apiRequest";
 import { NavLink } from "react-router-dom";
 import { CourseContext } from "../../context/userContext";
+import Filters from "../learning-hub/filters";
 
-const Cards = () => {
+const Cards = ({search}:any) => {
     const {courses, setCourses}: any = useContext<any>(CourseContext);
+    console.log(search);
+    
+    const [selectedItems, setSelectedItems] = useState<string[]>([]);
+
+    const handleSelectItem = (itemName: string, isChecked: boolean) => {
+      if (isChecked) {
+        setSelectedItems((prevSelectedItems) => [...prevSelectedItems, itemName]);
+      } else {
+        setSelectedItems((prevSelectedItems) =>
+          prevSelectedItems.filter((item) => item !== itemName)
+        );
+      }
+    };
+   
+
+    
     useEffect(() => {
         const  getCourses = async () => {
-          try {
+          // try {
             const courses = await getRequest('courses');
             if (courses.data.status === "success") {
               return courses.data.data;
+            }else {
+              console.log(courses);
             }
-          } catch (error) {
-            console.log(error);
-          }
-          return null;
         };
       
         getCourses().then((userData) => {
@@ -23,15 +38,23 @@ const Cards = () => {
             setCourses(userData);
           }
         });
-      }, [courses])
-    console.log(courses);
+      }, [])
+    // console.log(courses);
     
     
     return (
            <>
-              <div className="row">
+            <div className="col-2">
+              <div className="filters">
+                <Filters onSelectedMediaType={handleSelectItem}/> 
+              </div>
+            </div>
+          <div className="col-10">
+          <div className="row">
                 {
-                courses.map((course:any) => (
+                courses.filter((courses:any) => selectedItems?.length=== 0 ? courses : selectedItems.includes(courses.mediaType))
+                .filter((courses:any) => search.length===0? courses :courses.title.toLowerCase().includes(search.toLowerCase()))
+                .map((course:any) => (
                  <div className="col-md-6 col-lg-4 col-xxl-3 my-3 px-3 "  key={course.id}>
                     <NavLink to={`/learning-hub/${course.slug}`}>
                     <div className="card cards__card border-0 p-2 h-100">
@@ -82,6 +105,7 @@ const Cards = () => {
                 ))
               }
                 </div>
+          </div>
            </>
         )
 }

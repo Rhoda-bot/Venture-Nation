@@ -113,22 +113,25 @@ const CardDetails = () => {
                                 </div>
                             </div>
                         </div>
-                        <div className="col-lg-4 col-xxl-4" style={{
-                            position: 'sticky'
-                        }}>
-                            <div className="card carddetails__card border-0 px-3 pb-3 mx-3">
-                                <h6 className="carddetails__body--title mt-3">Course details</h6>
-                                <div className="d-flex align-items-center">
-                                    <img src="/assets/learning-hub/inviteAvatar.svg" alt="" />
-                                    <h6 className="fw-bold ps-2">{course?.creator?.name}</h6>
+                        <div className="col-lg-4 col-xxl-4">
+                            <div className="position-sticky" style={{
+                                height: '100vh',
+                                // backgroundColor: 'red'
+                            }}>
+                                <div className="card carddetails__card border-0 px-3 pb-3 mx-3">
+                                    <h6 className="carddetails__body--title mt-3">Course details</h6>
+                                    <div className="d-flex align-items-center">
+                                        <img src="/assets/learning-hub/inviteAvatar.svg" alt="" />
+                                        <h6 className="fw-bold ps-2">{course?.creator?.name}</h6>
+                                    </div>
+                                <div className="py-3">
+                                    <button className="signup__col--btn fw-bold">Continue</button>
                                 </div>
-                               <div className="py-3">
-                                 <button className="signup__col--btn fw-bold">Continue</button>
-                               </div>
-                               <div className="">
-                                <div>Lesson 0</div>
-                                <div>Ratings 0</div>
-                               </div>
+                                <div className="">
+                                    <div>Lesson 0</div>
+                                    <div>Ratings 0</div>
+                                </div>
+                                </div>
                             </div>
                         </div>
                     </div>

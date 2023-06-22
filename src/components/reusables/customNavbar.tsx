@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 
 const CustomNavbar = () => {
     const checkUser = localStorage.getItem('token')
@@ -19,13 +19,13 @@ const CustomNavbar = () => {
                         <form className="d-flex flex-end ms-auto p-2">
                             <ul  className="navbar-nav me-auto mb-2 mb-lg-0 text-lg-center">
                             <li className="nav-item py-0">
-                                <Link to="/learning-hub" className="navi--link text-dark nav-link active px-2" aria-current="page">Learning Hub</Link>
+                                <NavLink to="/learning-hub" className="navi--link  nav-link  px-2" aria-current="page">Learning Hub</NavLink>
                             </li>
                             <li className="nav-item py-0">
-                                <Link to="/resource-hub" className="navi--link text-dark nav-link active px-2" aria-current="page">Resources Hub</Link>
+                                <NavLink to="/resource-hub" className="navi--link  nav-link  px-2" aria-current="page">Resources Hub</NavLink>
                             </li>
                             <li className="nav-item py-0">
-                                <Link to="/learning-hub" className="navi--link text-dark nav-link active px-2" aria-current="page">Services</Link>
+                                <NavLink to="/services" className="navi--link  nav-link  px-2" aria-current="page">Services</NavLink>
                             </li>
                             <li className="nav-item py-0">
                                {(localStorage.getItem("token") !== null) && 
