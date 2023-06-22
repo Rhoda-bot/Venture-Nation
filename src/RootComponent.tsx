@@ -28,11 +28,10 @@ const RootComponent: React.FC = () => {
         <Router>
             <Routes>
                 <Route path="*" element={<NotFoundPage />} />
-                <Route path='/'  element={<GaurdSignInPage />}>
-                    <Route path="auth/sign-in" element={<SignIn />} />
-                </Route>
-                <Route path='/'  element={<GaurdSignupPages />}>
-                     <Route path="auth/sign-up" element={<SignUp />} />
+                <Route path='/' element={<HomePage />}/>
+                <Route path='/auth/'  element={<GaurdSignInPage />}>
+                    <Route path="sign-in" element={<SignIn />} />
+                     <Route path="sign-up" element={<SignUp />} />
                 </Route>
                 <Route path="/auth/forgot-password" element={<ForgotPassword />} />
                 <Route path="/auth/reset-password" element={<ResetPassword />} />

@@ -1,0 +1,30 @@
+[
+    {   "id": 1,
+        "name": "Business administration"
+    },
+    {
+        "id": 2,
+        "name": "Business mergers"
+    },
+    {   "id":3,
+    "name": "Customer risk"
+    },
+    {
+    "id": 4,
+    "name": "Convincing cutomers"
+    },
+    {   "id": 5,
+    "name": "Finance model"
+    },
+    {
+        "id": 6,
+        "name": "Marketing"
+    },  
+    {   "id": 7,
+    "name": "Technology"
+    },
+    {
+        "id": 8,
+        "name": "World markets"
+    }     
+]

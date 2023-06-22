@@ -1,5 +1,6 @@
  import React from "react";
 import ResourceHeader from "./resourceHeader";
+import Filter from "./filter";
 const ResourceHub = () =>{
     return(
         <>
@@ -7,6 +8,9 @@ const ResourceHub = () =>{
             <div className="container">
                 <div className="row ">
                     <ResourceHeader />
+                </div>
+                <div className="row">
+                    <Filter />
                 </div>
             </div>
            </div>

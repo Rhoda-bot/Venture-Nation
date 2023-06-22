@@ -44,7 +44,7 @@ const Cards = ({search}:any) => {
     
     return (
            <>
-            <div className="col-2">
+            <div className="col-lg-2 my-2 px-3  my-lg-3">
               <div className="filters">
                 <Filters onSelectedMediaType={handleSelectItem}/> 
               </div>

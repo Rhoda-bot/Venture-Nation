@@ -24,7 +24,7 @@ const Filters = ({onSelectedMediaType}: ChildComponentProps) =>{
     return(
         <>
    
-              <div className="d-flex border-bottom align-items-center">
+                      <div className="d-flex border-bottom align-items-center">
                         <span className="mb-2 filters--header">Filter</span>
                         <span className="ms-auto mb-2" role="button">clear all</span>
                       </div>

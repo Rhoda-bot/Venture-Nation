@@ -12,8 +12,8 @@ const Sidebar = () => {
             height: '100%'
            }}>
             {
-                sidebarMenu.map(({id, name, icon}) => (
-                    <NavLink to={name.replace(/\s+/g, '-').toLocaleLowerCase()} key={id} className="sidebar--link ml-1 text-decoration-none d-none d-lg-block">
+                sidebarMenu.map(({id, name, icon, routePath}) => (
+                    <NavLink to={routePath.replace(/\s+/g, '-').toLocaleLowerCase()} key={id} className="sidebar--link ml-1 text-decoration-none d-none d-lg-block">
                         <div  className="">
                         <img src={icon} alt="image" /> {name}
                         </div>

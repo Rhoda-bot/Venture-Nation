@@ -2,38 +2,28 @@
     {
         "id": 1,
         "name": "Dashboard",
-        "icon": "/assets/icons/3dcube.svg"
+        "icon": "/assets/icons/3dcube.svg",
+        "routePath": "Dashboard"
     },
     {
         "id": 2,
         "name": "Learning Hub",
-        "icon": "/assets/icons/book.png"
+        "icon": "/assets/icons/book.png",
+        "routePath": "My learning hub"
         
     },
+   
     {
         "id": 3,
-        "name": "My Resource Hub",
-        "icon": "/assets/icons/color-swatch.png"
+        "name": "Profile",
+        "icon": "/assets/icons/profile.png",
+        "routePath": "Profile"
     },
     {
         "id": 4,
-        "name": "Profile",
-        "icon": "/assets/icons/profile.png"
-    },
-    {
-        "id": 5,
         "name": "Ventures",
-        "icon": "/assets/icons/people.png"
-    },
-    {
-        "id": 6,
-        "name": "Communities",
-        "icon": "/assets/icons/people.png"
-    },
-    {
-        "id": 7,
-        "name": "Messages",
-        "icon": "/assets/icons/sms.png"
-
+        "icon": "/assets/icons/people.png",
+        "routePath": "Ventures"
     }
+   
 ]

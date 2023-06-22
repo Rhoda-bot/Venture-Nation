@@ -3,18 +3,16 @@ import DateDisplay from '../components/DateDisplay'
 import SignUp from '../components/authentication/sign-up'
 import Navbar from '../components/reusables/navbar'
 import { NavLink } from 'react-router-dom'
+import CustomNavbar from '../components/reusables/customNavbar'
+import Hero from './home/hero'
 
 const HomePage: React.FC = () => {
     return (
-        <div style={{
-            textAlign: 'center'
-        }}>
-            <h3>Welcome Home!</h3>
-
-            <h1><NavLink to='/auth/sign-up'>Register here!!!</NavLink></h1>
-        </div>
-        
-    )
+        <>
+            <CustomNavbar />
+            <Hero />
+        </>
+    )   
 }
 
 export default HomePage
